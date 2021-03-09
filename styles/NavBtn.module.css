@@ -1,0 +1,19 @@
+.btn {
+  width: 92px;
+  height: 40px;
+  border-radius: 50px;
+  font-size: 15px;
+  text-align: center;
+  line-height: 40px;
+  margin-left: 10px
+}
+
+.coffee {
+  background-color: #E7F9F2;
+  color: #1CB37D;
+}
+
+.report {
+  background-color: #32D89D ;
+  color: #fff;
+}
