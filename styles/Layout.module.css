@@ -1,6 +1,8 @@
-.container {
-  width: 100%;
-  padding: 100px;
+.title {
+  padding-top: 32px;
+}
+
+.cards {
   display: grid;
   grid-template-columns: repeat(3, 300px);
   column-gap: 18px;

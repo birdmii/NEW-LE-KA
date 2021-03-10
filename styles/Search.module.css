@@ -1,17 +1,15 @@
 .input {
   border: none;
   height: 100%;
-  width: 730px;
+  width: 700px;
   outline: none;
-
-  background-image: url(../public/i_search.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  padding-left: 45px;
-
-  margin-left: 20px;
+  padding-left: 20px;
 }
 
 .input:focus {
   outline: none;
+}
+
+.searchBar {
+  margin-left: 80px;
 }

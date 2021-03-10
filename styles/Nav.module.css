@@ -1,11 +1,7 @@
 .nav {
-  width: 100%;
   background-color: #fff;
   height: 64px;
-  padding: 20px;
-  display: flex;
-  position: fixed;
-  justify-content: center; /* horizontally */
-  align-items: center; /* vertically */
-  z-index: 999;
+  position: sticky;
+  top: 0;
+  z-index: 999; 
 }
