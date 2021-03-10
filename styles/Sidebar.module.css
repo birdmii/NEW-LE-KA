@@ -1,0 +1,19 @@
+.sideBar {
+  width: 230px;
+  height: 100vh;
+  padding: 12px;
+}
+
+.li {
+  padding: 13px 16px;
+  color: var(--gray400); 
+}
+
+.li:hover {
+  background-color: var(--gray100);
+  border-radius: 8px;
+}
+
+.filter {
+  color: var(--gray600);
+}
