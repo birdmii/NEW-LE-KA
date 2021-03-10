@@ -4,7 +4,7 @@ import cardStyles from '../styles/Card.module.css';
 const Card = () => {
   return (
     <div className={cardStyles.card}>
-      <div className="row mb-1">
+      <div className="row mb-8">
         <span className={cardStyles.category}>디자인</span>
       </div>
       <h2 className={cardStyles.title}>Weekly D</h2>
@@ -15,10 +15,10 @@ const Card = () => {
 
       <div className={cardStyles.tagSection}>
         <h6 className={cardStyles.smallHeading}>발행 주기</h6>
-        <div className="mt-1">
+        <div className="mt-8">
           <span className={cardStyles.sendingTermTag}>매주</span>
         </div>
-        <div className="mt-1">
+        <div className="mt-8">
           <span className={cardStyles.sendingDayTag}>일</span>
           <span className={cardStyles.sendingDayTag}>월</span>
           <span className={cardStyles.sendingDayTag}>화</span>
@@ -30,16 +30,16 @@ const Card = () => {
           <span className={cardStyles.sendingDayTag}>토</span>
         </div>
 
-        <div className="mt-3">
+        <div className="mt-24">
           <h6 className={cardStyles.smallHeading}>관련 태그</h6>
-          <div className="mt-1 mb-3">
-            <span className={`caption mr-1 ${cardStyles.relatedTag}`}>
+          <div className="mt-8 mb-24">
+            <span className={`caption mr-8 ${cardStyles.relatedTag}`}>
               디자인
             </span>
-            <span className={`caption mr-1 ${cardStyles.relatedTag}`}>
+            <span className={`caption mr-8 ${cardStyles.relatedTag}`}>
               디자이너
             </span>
-            <span className={`caption mr-1 ${cardStyles.relatedTag}`}>
+            <span className={`caption mr- ${cardStyles.relatedTag}`}>
               아티클
             </span>
           </div>

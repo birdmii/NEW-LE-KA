@@ -5,6 +5,9 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 16px;
+
+  /* shadow */
+  box-shadow: 0px 16px 20px rgba(229, 229, 229, 0.2);
 }
 
 .category {
