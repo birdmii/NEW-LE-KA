@@ -1,0 +1,76 @@
+.card {
+  position: relative;
+  width: 300px;
+  height: 584px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.category {
+  border-radius: 8px;
+  padding: 4px 8px;
+  background-color: var(--design);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.description {
+  line-height: 150%;
+}
+
+.smallHeading {
+  color: var(--gray500);
+  margin-bottom: 8px;
+}
+
+.tagSection {
+  position: absolute;
+  bottom: 96px;
+}
+
+.sendingTermTag {
+  padding: 4px 8px;
+  color: var(--primary500);
+  background-color: var(--primary100);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sendingDayTag {
+  padding: 4px 8px;
+  background-color: var(--gray50);
+  color: var(--gray300);
+  margin-right: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.on {
+  background-color: var(--primary100);
+  color: var(--primary500);
+}
+
+.relatedTag {
+  padding: 4px 8px;
+  border: 1px solid var(--gray100);
+  border-radius: 8px;
+  color: var(--gray500);
+}
+
+.subscriptionBtn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 20px;
+  width: 260px;
+  height: 56px;
+  background-color: var(--gray50);
+  color: var(--primary600);
+  border-radius: 16px;
+}

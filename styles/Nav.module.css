@@ -7,4 +7,5 @@
   position: fixed;
   justify-content: center; /* horizontally */
   align-items: center; /* vertically */
+  z-index: 999;
 }

@@ -9,11 +9,11 @@
 }
 
 .coffee {
-  background-color: #E7F9F2;
-  color: #1CB37D;
+  background-color: var(--primary100);
+  color: var(--primary500);
 }
 
 .report {
-  background-color: #32D89D ;
+  background-color: var(--primary450);
   color: #fff;
 }
