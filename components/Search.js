@@ -4,11 +4,7 @@ import Image from 'next/image';
 const Search = () => {
   return (
     <div className={searchStyles.searchBar}>
-      <Image
-        src="/i_search.png"
-        height={16}
-        width={16}
-      />
+      <Image src="/i_search.png" height={16} width={16} />
       <input
         type="text"
         className={searchStyles.input}

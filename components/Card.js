@@ -1,16 +1,15 @@
 import Image from 'next/image';
 import cardStyles from '../styles/Card.module.css';
 
-const Card = () => {
+const Card = ({ newsletter }) => {
   return (
     <div className={cardStyles.card}>
       <div className="row mb-8">
-        <span className={cardStyles.category}>디자인</span>
+        <span className={cardStyles.category}>{newsletter.categories}</span>
       </div>
-      <h2 className={cardStyles.title}>Weekly D</h2>
+      <h2 className={cardStyles.title}>{newsletter.title}</h2>
       <p className={`bodyText2 ${cardStyles.description}`}>
-        "주로 국내 디자이너가 쓴 글이나 디자인 관련 글을 수집합니다. 매주 수요일
-        오전 8시에 만나요"
+        {newsletter.description}
       </p>
 
       <div className={cardStyles.tagSection}>

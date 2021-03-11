@@ -3,19 +3,19 @@
 :root {
   --background: #f9f9f9;
 
-  --primary100: #E7F9F2;
-  --primary200: #B6EDD9;
-  --primary300: #91E5C7;
-  --primary400: #60D9AE;
+  --primary100: #e7f9f2;
+  --primary200: #b6edd9;
+  --primary300: #91e5c7;
+  --primary400: #60d9ae;
   --primary450: #32d89d;
-  --primary500: #1CB37D;
-  --primary600: #0B8F62;
+  --primary500: #1cb37d;
+  --primary600: #0b8f62;
 
   --gray50: #f9f9f9;
   --gray100: #f0f0f2;
   --gray200: #c4c5ca;
   --gray300: #9799a2;
-  --gray400: #52545B;
+  --gray400: #52545b;
   --gray500: #2a2b2f;
   --gray600: #1f2022;
 
@@ -23,13 +23,13 @@
   --develop: #f47113;
   --career: #f9c540;
   --marketing: #d6d959;
-  --sci-tech: #9FE05E;
-  --lifestyle: #1AE885;
-  --news: #1ADBE8;
-  --travel: #1A79E8;
-  --society: #8E5CF9;
-  --economy: #D069F4;
-  --culture: #F854B6;
+  --sci-tech: #9fe05e;
+  --lifestyle: #1ae885;
+  --news: #1adbe8;
+  --travel: #1a79e8;
+  --society: #8e5cf9;
+  --economy: #d069f4;
+  --culture: #f854b6;
 
   --thin: 100;
   --light: 300;
@@ -37,7 +37,6 @@
   --medium: 500;
   --bold: 700;
   --black: 900;
-
 }
 
 html,
@@ -73,7 +72,12 @@ span {
   display: inline-block;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   padding: 0;
   margin: 0;
   font-weight: var(--regular);
@@ -129,7 +133,6 @@ h3 {
   font-size: 17px;
 }
 
-
 /* margin */
 .mt-8 {
   margin-top: 8px;
@@ -165,7 +168,11 @@ h3 {
 
 /* Padding */
 .px-16 {
-  padding: 0 16px
+  padding: 0 16px;
+}
+
+.pt-32 {
+  padding-top: 32px;
 }
 
 /* utility */

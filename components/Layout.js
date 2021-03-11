@@ -1,8 +1,8 @@
 import styles from '../styles/Layout.module.css';
 import Nav from './Nav';
-import Card from './Card';
 import Sidebar from './Sidebar';
 import Alert from './Alert';
+import Cards from './Cards';
 
 const Layout = ({ children }) => {
   return (
@@ -12,15 +12,8 @@ const Layout = ({ children }) => {
         <Sidebar />
         <div>
           <Alert />
-          <h3 className={`bold ${styles.title}`}>디자인</h3>
-          <div className={`mt-16 ${styles.cards}`}>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-          </div>
+          {/* <Cards /> */}
+          {children}
         </div>
       </div>
     </>
