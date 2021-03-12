@@ -1,13 +1,15 @@
 import searchStyles from '../styles/Search.module.css';
-import Image from 'next/image';
+import { Icon, InlineIcon } from '@iconify/react';
+import searchLine from '@iconify/icons-clarity/search-line';
 
 const Search = () => {
   return (
     <div className={searchStyles.searchBar}>
-      <Image src="/i_search.png" height={16} width={16} />
+      <Icon icon={searchLine} style={{fontSize: '16px'}} />
+
       <input
         type="text"
-        className={searchStyles.input}
+        className={`bodyText1 ${searchStyles.input}`}
         placeholder="관심있는 주제를 검색해보세요. (예: 음악, 와인, 커피 등)"
       />
     </div>

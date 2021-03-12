@@ -22,7 +22,7 @@
   --design: #f34848;
   --develop: #f47113;
   --career: #f9c540;
-  --marketing: #d6d959;
+  --marketing: #db9918;
   --sci-tech: #9fe05e;
   --lifestyle: #1ae885;
   --news: #1adbe8;
@@ -122,10 +122,12 @@ h3 {
 }
 
 .bodyText1 {
+  color: var(--gray300);
   font-size: 16px;
 }
 
 .bodyText2 {
+  color: var(--gray500);
   font-size: 14px;
 }
 
@@ -199,4 +201,40 @@ h3 {
   display: flex;
   justify-content: center;
   height: 100%;
+}
+
+/* custom category colour tags */
+
+.design {
+  background-color: var(--design);
+}
+.develop {
+  background-color: var(--develop);
+}
+.career {
+  background-color: var(--career);
+}
+.marketing {
+  background-color: var(--marketing);
+}
+.sci-tech {
+  background-color: var(--sci-tech);
+}
+.lifestyle {
+  background-color: var(--lifestyle);
+}
+.news {
+  background-color: var(--news);
+}
+.travel {
+  background-color: var(--travel);
+}
+.society {
+  background-color: var(--society);
+}
+.economy {
+  background-color: var(--economy);
+}
+.culture {
+  background-color: var(--culture);
 }

@@ -12,4 +12,5 @@
 
 .searchBar {
   margin-left: 80px;
+  color: var(--gray300);
 }
