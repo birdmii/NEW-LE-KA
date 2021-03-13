@@ -36,10 +36,10 @@ const Card = ({ newsletter }) => {
     { code: 'Sun', name: '일' },
   ];
 
-  let category;
+  let categoryTitle;
   categoryArr.forEach((item) => {
-    if (newsletter.categories === item.name) {
-      category = item.code;
+    if (newsletter.categoriesCode === item.code) {
+      categoryTitle = item.name;
     }
   });
 
@@ -53,8 +53,8 @@ const Card = ({ newsletter }) => {
   return (
     <div className={cardStyles.card}>
       <div className="row mb-8">
-        <span className={`${cardStyles.category} ${category}`}>
-          {newsletter.categories}
+        <span className={`${cardStyles.category} ${newsletter.categoriesCode}`}>
+          {categoryTitle}
         </span>
       </div>
       <h2 className={cardStyles.title}>{newsletter.title}</h2>

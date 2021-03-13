@@ -1,7 +1,9 @@
 .sideBar {
   width: 230px;
-  height: 100vh;
+  height: 100%;
   padding: 12px;
+  position: sticky;
+  top: 104px;
 }
 
 .li {
@@ -16,4 +18,9 @@
 
 .filter {
   color: var(--gray600);
+}
+
+.selected {
+  color: var(--gray600);
+  font-weight: var(--black);
 }

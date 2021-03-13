@@ -12,7 +12,6 @@ const Layout = ({ children }) => {
         <Sidebar />
         <div>
           <Alert />
-          {/* <Cards /> */}
           {children}
         </div>
       </div>

@@ -186,7 +186,7 @@ h3 {
   position: relative;
   max-width: 1232px;
   margin: 0 auto;
-  overflow: auto;
+  /* overflow: auto; */
   padding: 0 20px;
 }
 

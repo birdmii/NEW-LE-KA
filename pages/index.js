@@ -5,10 +5,10 @@ export default function Home({ newsletters }) {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>NEW・LE・KA | Find new newsletters</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Cards newsletters={newsletters}/>
+      <Cards category={'모두보기'} newsletters={newsletters}/>
     </div>
   );
 }
@@ -18,7 +18,6 @@ export const getStaticProps = async () => {
     `https://birdmii.github.io/newsletter-api/newsletters.json`,
   );
   const newsletters = await res.json();
-  console.log(newsletters);
   return {
     props: {
       newsletters,
