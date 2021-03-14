@@ -8,6 +8,7 @@
 
 .li {
   padding: 13px 16px;
+  margin-top: 4px;
   color: var(--gray400); 
 }
 
@@ -21,6 +22,8 @@
 }
 
 .selected {
+  background-color: var(--gray100);
   color: var(--gray600);
-  font-weight: var(--black);
+  font-weight: var(--bold);
+  border-radius: 8px;
 }

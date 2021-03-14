@@ -1,9 +1,8 @@
-import styles from '../styles/Layout.module.css';
+// import styles from '../styles/Layout.module.css';
+import Meta from './Meta';
 import Nav from './Nav';
 import Sidebar from './Sidebar';
 import Alert from './Alert';
-import Cards from './Cards';
-import Meta from './Meta';
 
 const Layout = ({ children }) => {
   return (
