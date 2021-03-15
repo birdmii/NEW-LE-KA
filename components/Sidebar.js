@@ -1,6 +1,8 @@
 import sideBarStyles from '../styles/Sidebar.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Icon, InlineIcon } from '@iconify/react';
+import syncLine from '@iconify/icons-clarity/sync-line';
 
 const Sidebar = () => {
   const router = useRouter();
@@ -29,9 +31,15 @@ const Sidebar = () => {
 
         <Link href="/">
           {category === undefined ? (
-            <li className={`${sideBarStyles.li} ${sideBarStyles.selected}`}> 모두보기 </li>
+            <li className={`${sideBarStyles.li} ${sideBarStyles.selected} flexVertical`}>
+              {' '}
+              모두보기 <Icon icon={syncLine} className={sideBarStyles.shuffleIcon}/>
+            </li>
           ) : (
-            <li className={`${sideBarStyles.li}`}> 모두보기 </li>
+            <li className={`${sideBarStyles.li} flexVertical`}>
+              {' '}
+              모두보기 <Icon icon={syncLine} className={sideBarStyles.shuffleIcon}/>
+            </li>
           )}
         </Link>
         {categories.map((item) => {

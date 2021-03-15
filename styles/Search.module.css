@@ -8,6 +8,11 @@
 
 .input:focus {
   outline: none;
+  color: var(--gray600);
+}
+
+.input::placeholder {
+  color: var(--gray300);
 }
 
 .searchBar {

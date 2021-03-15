@@ -68,6 +68,10 @@ ul {
   padding-inline-start: 0;
 }
 
+form {
+  display: inline-block;
+}
+
 span {
   display: inline-block;
 }
@@ -197,11 +201,17 @@ h3 {
   height: 100%;
 }
 
-.flex {
+.flexHorizontal {
   display: flex;
   justify-content: center;
   height: 100%;
 }
+
+.flexVertical {
+  display: flex;
+  align-items: center;
+  height: 100%;
+} 
 
 /* custom category colour tags */
 
