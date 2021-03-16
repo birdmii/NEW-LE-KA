@@ -1,8 +1,6 @@
 import sideBarStyles from '../styles/Sidebar.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Icon, InlineIcon } from '@iconify/react';
-import syncLine from '@iconify/icons-clarity/sync-line';
 
 const Sidebar = () => {
   const router = useRouter();
@@ -10,7 +8,7 @@ const Sidebar = () => {
 
   const categories = [
     { code: 'design', title: '디자인' },
-    { code: 'develop', title: '개발' },
+    // { code: 'develop', title: '개발' },
     { code: 'career', title: '커리어' },
     { code: 'marketing', title: '마케팅' },
     { code: 'sci-tech', title: '과학과 기술' },
@@ -33,12 +31,12 @@ const Sidebar = () => {
           {category === undefined ? (
             <li className={`${sideBarStyles.li} ${sideBarStyles.selected} flexVertical`}>
               {' '}
-              모두보기 <Icon icon={syncLine} className={sideBarStyles.shuffleIcon}/>
+              랜덤모두보기
             </li>
           ) : (
             <li className={`${sideBarStyles.li} flexVertical`}>
               {' '}
-              모두보기 <Icon icon={syncLine} className={sideBarStyles.shuffleIcon}/>
+              랜덤모두보기
             </li>
           )}
         </Link>
