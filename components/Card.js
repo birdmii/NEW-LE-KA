@@ -5,7 +5,7 @@ import arrowLine from '@iconify/icons-clarity/arrow-line';
 const Card = ({ newsletter }) => {
   const categoryArr = [
     { code: 'design', name: '디자인' },
-    { code: 'develop', name: '개발' },
+    // { code: 'develop', name: '개발' },
     { code: 'career', name: '커리어' },
     { code: 'marketing', name: '마케팅' },
     { code: 'sci-tech', name: '과학과 기술' },
