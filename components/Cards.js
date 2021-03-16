@@ -6,8 +6,7 @@ const Cards = ({ category, newsletters }) => {
   let count = newsletters.length;
   return (
     <>
-<<<<<<< HEAD
-      <h3 className="bold pt-32">{category}</h3>
+      <h3 className="bold pt-32 flexVertical">{category} <span className="subtitle ml-4"> ({count})</span></h3>
       {newsletters.length !== 0 ?
         <div className={`mt-16 ${cardsStyles.grid} mb-120`}>
           {newsletters.map((newsletter) => (
@@ -19,14 +18,6 @@ const Cards = ({ category, newsletters }) => {
           <NoCard />
         </div>
       }
-=======
-      <h3 className="bold pt-32 flexVertical">{category} <span className="subtitle ml-4"> ({count})</span></h3>
-      <div className={`mt-16 ${cardsStyles.grid}`}>
-        {newsletters.map((newsletter) => (
-          <Card key={newsletter.id} newsletter={newsletter} />
-        ))}
-      </div>
->>>>>>> main
     </>
   );
 };

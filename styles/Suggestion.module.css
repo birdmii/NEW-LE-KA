@@ -1,0 +1,33 @@
+.backgroundCard {
+  width: 600px;
+  height: 596px;
+  padding: 32px 36px;
+  background-color: var(--gray50);
+  border-radius: 16px;
+}
+
+.suggestionCard {
+  width: 250px;
+  height: 336px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 16px 20px rgba(229, 229, 229, 0.5);
+  padding: 20px;
+  color: #000;
+  margin: 30px;
+}
+
+.suggestionCard:hover {
+  background-color: var(--primary100);
+  border: 1px solid var(--primary450);
+  box-shadow: none;
+}
+
+.btnArea {
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+.textArea {
+  padding-left: 30px;
+}
