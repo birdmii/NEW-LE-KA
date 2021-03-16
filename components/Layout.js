@@ -4,12 +4,12 @@ import Nav from './Nav';
 import Sidebar from './Sidebar';
 import Alert from './Alert';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, query, handleQuery, handleSubmit }) => {
   return (
     <>
       <Meta />
-      <Nav />
-      <div className="container flex">
+      <Nav query={query} handleQuery={handleQuery} handleSubmit={handleSubmit} />
+      <div className="container flexHorizontal">
         <Sidebar />
         <div>
           <Alert />

@@ -5,3 +5,8 @@
   column-gap: 18px;
   row-gap: 18px;
 }
+
+.full {
+  width: 936px;
+  flex-direction: column;
+}

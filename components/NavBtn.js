@@ -3,11 +3,11 @@ import navBtnStyles from '../styles/NavBtn.module.css'
 const NavBtn = ({content, name}) => {
   return (
     name === 'coffee' ? 
-    <span className={`${navBtnStyles.btn} ${navBtnStyles.coffee}`}> 
+    <span className={`${navBtnStyles.navBtn} ${navBtnStyles.coffee}`}> 
       {content}
     </span>
     :
-    <span className={`${navBtnStyles.btn} ${navBtnStyles.report}`}> 
+    <span className={`${navBtnStyles.navBtn} ${navBtnStyles.report}`}> 
       {content}
     </span>
   )

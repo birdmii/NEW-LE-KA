@@ -98,6 +98,8 @@ h2 {
 
 h3 {
   font-size: 27px;
+  color: var(--gray600);
+  font-weight: var(--bold);
 }
 
 /* text */
@@ -126,7 +128,7 @@ h3 {
 }
 
 .bodyText1 {
-  color: var(--gray300);
+  color: var(--gray400);
   font-size: 16px;
 }
 
@@ -162,6 +164,10 @@ h3 {
 
 .mb-24 {
   margin-bottom: 24px;
+}
+
+.mb-120 {
+  margin-bottom: 120px;
 }
 
 .mr-8 {
@@ -212,6 +218,10 @@ h3 {
   align-items: center;
   height: 100%;
 } 
+
+.textCenter {
+  text-align: center;
+}
 
 /* custom category colour tags */
 

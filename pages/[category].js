@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Head from 'next/head';
 import Cards from '../components/Cards';
 
 const categories = [
@@ -16,25 +15,37 @@ const categories = [
   { code: 'culture', title: '문화' },
 ];
 
-const Category = ({ newsletters }) => {
+const Category = ({ newsletters, query }) => {
   const router = useRouter();
   const { category } = router.query;
-
   let categoryTitle = categories.map((item) => {
     if (item.code === category) return item.title;
   });
+
+  // newsletters = newsletters.filter((item) => {
+  //   let isQueryIncluded = false;
+  //   if (item.title.includes(query) || item.description.includes(query)) {
+  //     isQueryIncluded = true;
+  //   }
+  //   item.tags.forEach((tag) => {
+  //     if(tag.includes(query)) {
+  //       isQueryIncluded = true;
+  //     }
+  //   });
+
+  //   if(isQueryIncluded) {
+  //     return item;
+  //   }
+  // });
+
   return (
     <div>
-      <Head>
-        <title>NEW・LE・KA | Find new newsletters</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <Cards category={categoryTitle} newsletters={newsletters} />
     </div>
   );
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths = async () => {
   const paths = categories.map((category) => ({
     params: { category: category.code },
   }));
@@ -43,7 +54,7 @@ export async function getStaticPaths() {
     paths,
     fallback: true,
   };
-}
+};
 
 export const getStaticProps = async ({ params }) => {
   const res = await fetch(
