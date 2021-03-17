@@ -22,22 +22,6 @@ const Category = ({ newsletters, query }) => {
     if (item.code === category) return item.title;
   });
 
-  // newsletters = newsletters.filter((item) => {
-  //   let isQueryIncluded = false;
-  //   if (item.title.includes(query) || item.description.includes(query)) {
-  //     isQueryIncluded = true;
-  //   }
-  //   item.tags.forEach((tag) => {
-  //     if(tag.includes(query)) {
-  //       isQueryIncluded = true;
-  //     }
-  //   });
-
-  //   if(isQueryIncluded) {
-  //     return item;
-  //   }
-  // });
-
   return (
     <div>
       <Cards category={categoryTitle} newsletters={newsletters} />
@@ -52,7 +36,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
