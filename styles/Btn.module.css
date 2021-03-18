@@ -1,0 +1,17 @@
+
+.bodyBtn {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: var(--gray100);
+  color: var(--gray400);
+}
+
+.cancel {
+  background-color: var(--gray100);
+  color: var(--gray400);
+}
+
+.suggest {
+  background-color: var(--primary450);
+  color: #fff;
+}

@@ -178,6 +178,10 @@ h3 {
   margin-left: 4px;
 }
 
+.ml-8 {
+  margin-left: 8px;
+}
+
 .ml-10 {
   margin-left: 10px;
 }
@@ -198,10 +202,15 @@ h3 {
 
 .container {
   position: relative;
-  max-width: 1232px;
+  /* max-width: 1232px; */
   margin: 0 auto;
   /* overflow: auto; */
   padding: 0 20px;
+}
+
+.navContainer {
+  max-width: 1232px;
+  justify-content: space-between;
 }
 
 .flexCenter {
@@ -225,6 +234,15 @@ h3 {
 
 .textCenter {
   text-align: center;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.contentFull {
+  width: 942px;
+  height: 80vh;
 }
 
 /* custom category colour tags */

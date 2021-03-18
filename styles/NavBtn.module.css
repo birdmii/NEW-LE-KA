@@ -1,18 +1,15 @@
 .navBtn {
-  width: 92px;
-  height: 40px;
   border-radius: 50px;
   font-size: 15px;
   text-align: center;
-  line-height: 40px;
-  margin-left: 10px
+  margin-left: 10px;
+  padding: 8px 16px;
+
 }
 
-.bodyBtn {
-  padding: 12px 16px;
-  border-radius: 8px;
-  background-color: var(--primary450);
-  color: #fff;
+.navBtn:hover {
+  transform: scale(1.12);
+  transition: ease-in-out .2s ;
 }
 
 .coffee {
@@ -20,7 +17,7 @@
   color: var(--primary500);
 }
 
-.report {
+.suggest {
   background-color: var(--primary450);
   color: #fff;
 }
