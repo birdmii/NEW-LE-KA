@@ -1,12 +1,12 @@
-import React from 'react'
-import Suggestion from '../components/Suggestion'
+import React from 'react';
+import Modal from '../components/Modal';
 
 const suggest = () => {
   return (
-    <div className="contentFull flexCenter">
-      <Suggestion />
+    <div className="contentFull">
+      <Modal />
     </div>
-  )
-}
+  );
+};
 
-export default suggest
+export default suggest;

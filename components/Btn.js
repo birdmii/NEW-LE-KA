@@ -1,11 +1,31 @@
 import Link from 'next/link';
-import navBtnStyles from '../styles/NavBtn.module.css';
+import btnStyles from '../styles/Btn.module.css';
 
-const Btn = ({ content }) => {
+const Btn = ({ content, name }) => {
   return (
-    <span className={`${navBtnStyles.bodyBtn} mt-16`} >
-      {content}
-    </span>
+    <>
+      {name === 'suggest' ? (
+        <Link href="/suggest">
+          <a>
+          <span
+            className={`${btnStyles.suggest} ${btnStyles.bodyBtn} mt-16 ml-8`}
+          >
+            {content}
+          </span>
+          </a>
+        </Link>
+      ) : (
+        <Link href="/">
+          <a>
+          <span
+            className={`${btnStyles.cancel} ${btnStyles.bodyBtn} mt-16 ml-8`}
+          >
+            {content}
+          </span>
+          </a>
+        </Link>
+      )}
+    </>
   );
 };
 

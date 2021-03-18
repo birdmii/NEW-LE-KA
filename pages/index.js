@@ -1,29 +1,14 @@
 import Cards from '../components/Cards';
 
 export default function Home({ newsletters, query }) {
-  // newsletters = newsletters.filter((item) => {
-  //   let isQueryIncluded = false;
-  //   if (item.title.includes(query) || item.description.includes(query)) {
-  //     isQueryIncluded = true;
-  //   }
-  //   item.tags.forEach((tag) => {
-  //     if (tag.includes(query)) {
-  //       isQueryIncluded = true;
-  //     }
-  //   });
-
-  //   if (isQueryIncluded) {
-  //     return item;
-  //   }
-  // });
   return (
     <div>
-      <Cards category={'모두보기'} newsletters={newsletters} />
+      <Cards category={'랜덤모두보기'} newsletters={newsletters} />
     </div>
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch(
     `https://birdmii.github.io/newsletter-api/newsletters.json`,
   );
