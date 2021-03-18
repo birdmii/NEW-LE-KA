@@ -28,7 +28,7 @@ const search = ({newsletters}) => {
   )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch(
     `https://birdmii.github.io/newsletter-api/newsletters.json`,
   );

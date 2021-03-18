@@ -1,6 +1,9 @@
 import sideBarStyles from '../styles/Sidebar.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { Icon, InlineIcon } from '@iconify/react';
+import angleLine from '@iconify/icons-clarity/angle-line';
+import Filter from './Filter';
 
 const Sidebar = () => {
   const router = useRouter();
@@ -21,43 +24,58 @@ const Sidebar = () => {
   ];
   return (
     <div className={`mt-40 ${sideBarStyles.sideBar}`}>
-      <div className="subtitle bold px-16">카테고리</div>
-      <ul className={`btnText medium ${sideBarStyles}`}>
-        <li className={`${sideBarStyles.li} ${sideBarStyles.filter} bodyText2`}>
+      <div
+        className={`subtitle bold px-16 flexVertical ${sideBarStyles.flexSpaceBetween}`}
+      >
+        <span>카테고리</span>
+        {/* <span className="bodyText2">
           필터
-        </li>
-
+          <Icon icon={angleLine} className="ml-4"/>
+        </span> */}
+      </div>
+      {/* <Filter /> */}
+      <ul className={`btnText medium ${sideBarStyles}`}>
         <Link href="/">
           {category === undefined ? (
-            <li className={`${sideBarStyles.li} ${sideBarStyles.selected} flexVertical`}>
-              {' '}
-              랜덤모두보기
-            </li>
+            <a href="">
+              <li
+                className={`${sideBarStyles.li} ${sideBarStyles.selected} flexVertical`}
+              >
+                {' '}
+                랜덤모두보기
+              </li>
+            </a>
           ) : (
-            <li className={`${sideBarStyles.li} flexVertical`}>
-              {' '}
-              랜덤모두보기
-            </li>
+            <a href="">
+              <li className={`${sideBarStyles.li} flexVertical`}>
+                {' '}
+                랜덤모두보기
+              </li>
+            </a>
           )}
         </Link>
         {categories.map((item) => {
           if (item.code === category) {
             return (
               <Link key={item.code} href="/[category]" as={`/${item.code}`}>
-                <li
-                  className={`${sideBarStyles.li} ${sideBarStyles.selected}`}
-                  id={item.code}
-                >
-                  {item.title}
-                </li>
+                <a href="">
+                  <li
+                    className={`${sideBarStyles.li} ${sideBarStyles.selected}`}
+                    id={item.code}
+                  >
+                    {item.title}
+                  </li>
+                </a>
               </Link>
             );
           } else {
             return (
               <Link key={item.code} href="/[category]" as={`/${item.code}`}>
-                <li className={`${sideBarStyles.li}`} id={item.code}>
-                  {item.title}
-                </li>
+                <a href="">
+                  <li className={`${sideBarStyles.li}`} id={item.code}>
+                    {item.title}
+                  </li>
+                </a>
               </Link>
             );
           }
