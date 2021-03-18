@@ -1,0 +1,9 @@
+.filterBoard {
+  background-color: var(--gray100);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.checkbox {
+  background-color: var(--primary300);
+}
