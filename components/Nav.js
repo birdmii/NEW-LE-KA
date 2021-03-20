@@ -10,7 +10,7 @@ const Nav = ({ query, handleQuery, handleSubmit }) => {
     <nav className={`${navStyles.nav}`}>
       <div className="container flexVertical navContainer">
         <Link href="/">
-          <a>
+          <a className={navStyles.logo}>
             <Image
               src="/logo.png"
               alt="NEW・LE・KA Logo"
@@ -25,7 +25,7 @@ const Nav = ({ query, handleQuery, handleSubmit }) => {
           handleQuery={handleQuery}
           handleSubmit={handleSubmit}
         />
-        <div className="flexCenter ml-10">
+        <div className={`flexCenter ml-10 ${navStyles.navBtns}`}>
           <NavBtn content="커피한잔" name="coffee" />
           <NavBtn content="제보하기" name="suggest" />
         </div>

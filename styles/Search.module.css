@@ -16,6 +16,9 @@
 }
 
 .searchBar {
-  margin-left: 80px;
+  /* margin-left: 80px; */
+  padding-left: 20px;
   color: var(--gray300);
+  border-left: 1px solid var(--gray100);
+  border-right: 1px solid var(--gray100);
 }

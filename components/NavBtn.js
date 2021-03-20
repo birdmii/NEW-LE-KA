@@ -1,21 +1,25 @@
 import navBtnStyles from '../styles/NavBtn.module.css';
-import Link from 'next/link';
+import { useState } from 'react';
+import Modal from './Modal';
 
 const NavBtn = ({ content, name }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return name === 'coffee' ? (
     <a>
-      <span className={`${navBtnStyles.navBtn} ${navBtnStyles.coffee}`}>
+      <span className={`${navBtnStyles.navBtn} ${navBtnStyles.btnDonSm}`}>
         {content}
       </span>
     </a>
   ) : (
-    <Link href={`/${name}`}>
-      <a>
-        <span className={`${navBtnStyles.navBtn} ${navBtnStyles.suggest}`}>
+    <>
+      <a onClick={() => setShowModal(true)}>
+        <span className={`${navBtnStyles.navBtn} ${navBtnStyles.btnSuggestSm}`}>
           {content}
         </span>
       </a>
-    </Link>
+      <Modal onClose={() => setShowModal(false)} show={showModal} />
+    </>
   );
 };
 
