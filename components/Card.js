@@ -51,7 +51,7 @@ const Card = ({ newsletter }) => {
   });
 
   return (
-    <div className={cardStyles.card}>
+    <div className={`${cardStyles.card} shadow1`}>
       <div className="row mb-8">
         <span className={`${cardStyles.category} ${newsletter.categoriesCode}`}>
           {categoryTitle}

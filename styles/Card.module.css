@@ -5,10 +5,11 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 16px;
+  overflow: hidden;
+  text-align: justify;
 
   /* shadow */
-  box-shadow: 0px 16px 20px rgba(229, 229, 229, 0.5);
-  transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.2s;
 }
 
 .card:hover {
@@ -22,6 +23,12 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+.title {
+  /* letter-spacing: -1.5px; */
+  text-align: left;
+  word-break: keep-all;
 }
 
 .description {
@@ -86,4 +93,8 @@
 .subscriptionBtn:hover {
   background-color: var(--primary450);
   color: #fff;
+}
+
+.subscriptionBtn:active {
+  background-color: var(--primary500);
 }

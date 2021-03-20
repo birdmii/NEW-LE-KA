@@ -1,8 +1,12 @@
 import Image from 'next/image';
 import cardsStyles from '../styles/Cards.module.css';
 import Btn from './Btn';
+import { useState } from 'react';
+import Modal from './Modal';
 
 const NoCard = () => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className={`flexCenter ${cardsStyles.full}`}>
       <Image
@@ -15,7 +19,10 @@ const NoCard = () => {
       <div className="textCenter mt-24">
         <h3>등록된 뉴스레터가 없어요 ㅠㅠ</h3>
         <p className="bodyText1">알고있는 뉴스레터를 제보해주세요!</p>
-        <Btn content={"제보하기"} name={"suggest"} class={"nocard"}/>
+        <a onClick={() => setShowModal(true)}>
+          <Btn content={'제보하기'} name={'suggest'} />
+        </a>
+        <Modal onClose={() => setShowModal(false)} show={showModal} />
       </div>
     </div>
   );
