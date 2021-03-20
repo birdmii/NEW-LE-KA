@@ -1,8 +1,10 @@
 import Cards from '../components/Cards';
+import Alert from '../components/Alert';
 
 export default function Home({ newsletters, query }) {
   return (
     <div>
+      <Alert />
       <Cards category={'랜덤모두보기'} newsletters={newsletters} />
     </div>
   );

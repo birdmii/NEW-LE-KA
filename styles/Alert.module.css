@@ -3,6 +3,6 @@
   color: var(--gray400);
   padding: 12px 16px;
   border-radius: 8px;
-  margin-top: 104px;
-  box-shadow: 0px 16px 20px rgba(229, 229, 229, 0.5);
+  margin-top: 40px;
+  /* box-shadow: 0px 16px 20px rgba(229, 229, 229, 0.5); */
 }
