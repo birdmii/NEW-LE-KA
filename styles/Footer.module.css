@@ -1,0 +1,14 @@
+.footer {
+  background-color: var(--gray100);
+  padding: 28px;
+  margin-top: 80px;
+}
+
+.textSection {
+  margin-left: 80px;
+  text-align: left;
+}
+
+.introduction {
+  font-size: 34px;
+}

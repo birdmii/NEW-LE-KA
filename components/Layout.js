@@ -3,6 +3,7 @@ import Meta from './Meta';
 import Nav from './Nav';
 import Sidebar from './Sidebar';
 import Alert from './Alert';
+import Footer from './Footer';
 
 const Layout = ({ children, query, handleQuery, handleSubmit }) => {
   return (
@@ -12,10 +13,10 @@ const Layout = ({ children, query, handleQuery, handleSubmit }) => {
       <div className="container flexHorizontal">
         <Sidebar />
         <div>
-          <Alert />
           {children}
         </div>
       </div>
+      <Footer />
     </>
   );
 };
