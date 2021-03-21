@@ -2,54 +2,49 @@ import btnStyles from '../styles/Btn.module.css';
 
 const Btn = ({ content, name, link, onClick }) => {
   let btn;
+  let btnClass = `${btnStyles.btn} mt-16 ml-8`
 
-  console.log(link);
   if (name === 'suggest') {
     btn = (
-      <a>
-        <span
-          className={`${btnStyles.btnMdDefault} ${btnStyles.btn} mt-16 ml-8`}
-        >
-          {content}
-        </span>
-      </a>
+      <button
+        className={`${btnClass} ${btnStyles.btnMdDefault}`}
+      >
+        {content}
+      </button>
     );
   } else if (name === 'cancel') {
     btn = (
-      <a onClick={onClick}>
-        <span
-          className={`${btnStyles.btnCancelMdDefault} ${btnStyles.btn} mt-16 ml-8`}
-        >
-          {content}
-        </span>
-      </a>
+      <button
+        className={`${btnClass} ${btnStyles.btnCancelMdDefault}`}
+        onClick={onClick}
+      >
+        {content}
+      </button>
     );
   } else if (name === 'footer') {
     btn = (
       <a href={link}>
-        <span className={`${btnStyles.btnMdDefault} ${btnStyles.btn} mt-16`}>
+        <button className={`${btnClass} ${btnStyles.btnMdDefault} ml-0`}>
           {content}
-        </span>
+        </button>
       </a>
     );
   } else if (name === 'suggest-disable') {
     btn = (
-      <a>
-        <span
-          className={`${btnStyles.btn} ${btnStyles.btnMdDisable} ml-8 mt-16`}
-        >
-          {content}
-        </span>
-      </a>
+      <button
+        className={`${btnClass} ${btnStyles.btnMdDisable}`}
+      >
+        {content}
+      </button>
     );
-  } else if(name === 'suggest-link') {
+  } else if (name === 'suggest-link') {
     btn = (
       <a href={link} target="_blank">
-        <span
-          className={`${btnStyles.btnMdDefault} ${btnStyles.btn} mt-16 ml-8`}
+        <button
+          className={`${btnClass} ${btnStyles.btnMdDefault}`}
         >
           {content}
-        </span>
+        </button>
       </a>
     );
   }

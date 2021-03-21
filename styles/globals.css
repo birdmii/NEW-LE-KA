@@ -58,6 +58,10 @@ a {
   text-decoration: none;
 }
 
+button {
+  all:unset;
+}
+
 ul {
   /* display: block;
   margin-block-start: 1em;
@@ -70,6 +74,11 @@ ul {
 
 form {
   display: inline-block;
+}
+
+input, input:focus {
+  border: none;
+  outline: none;
 }
 
 span {
@@ -117,22 +126,22 @@ h3 {
   letter-spacing: 1.5%;
 }
 
-.smallText {
+.small-text {
   font-size: 12px;
   letter-spacing: 10%;
 }
 
-.btnText {
+.btn-text {
   font-size: 15px;
   font-weight: var(--medium);
 }
 
-.bodyText1 {
+.body-text1 {
   color: var(--gray400);
   font-size: 16px;
 }
 
-.bodyText2 {
+.body-text2 {
   color: var(--gray500);
   font-size: 14px;
 }
@@ -158,6 +167,10 @@ h3 {
   margin-top: 40px;
 }
 
+.mt-80 {
+  margin-top: 80px;
+}
+
 .mb-8 {
   margin-bottom: 8px;
 }
@@ -174,6 +187,10 @@ h3 {
   margin-right: 8px;
 }
 
+.ml-0 {
+  margin-left: 0px;
+}
+
 .ml-4 {
   margin-left: 4px;
 }
@@ -186,6 +203,10 @@ h3 {
   margin-left: 10px;
 }
 
+.ml-80 {
+  margin-left: 80px;
+}
+
 /* Padding */
 .px-16 {
   padding: 0 16px;
@@ -195,49 +216,55 @@ h3 {
   padding-top: 32px;
 }
 
-/* utility */
-.row {
-  display: flex;
+.pl-20 {
+  padding-left: 20px;
 }
 
+/* utility */
 .container {
   position: relative;
-  /* max-width: 1232px; */
+  max-width: 1232px;
   margin: 0 auto;
-  /* overflow: auto; */
   padding: 0 20px;
 }
 
-.navContainer {
-  max-width: 1232px;
-  /* justify-content: space-between; */
+.flex {
+  display: flex;
 }
 
-.flexCenter {
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
 }
 
-.flexHorizontal {
+.flex-horizontal-center {
   display: flex;
   justify-content: center;
   height: 100%;
 }
 
-.flexVertical {
+.flex-vertical-center {
   display: flex;
   align-items: center;
   height: 100%;
 } 
 
-.textCenter {
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.text-center {
   text-align: center;
 }
 
-.flexColumn {
-  flex-direction: column;
+.text-left {
+  text-align: left;
 }
 
 /* custom category colour tags */
@@ -277,6 +304,23 @@ h3 {
 }
 
 /* Shadow */
-.shadow1 {
+.shadow-1 {
   box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+}
+
+.shadow-2 {
+  box-shadow: 0px 16px 20px rgba(229, 229, 229, 0.2);
+}
+
+/* Border radius */ 
+.border-rad-8 {
+  border-radius: 8px;
+}
+
+.border-rad-16 {
+  border-radius: 16px;
+}
+
+.border-rad-50 {
+  border-radius: 50px;
 }

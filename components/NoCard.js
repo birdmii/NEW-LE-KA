@@ -8,17 +8,16 @@ const NoCard = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className={`flexCenter ${cardsStyles.full}`}>
+    <div className={`flex-center ${cardsStyles.full}`}>
       <Image
         src="/no-result.png"
         alt="No newsletters"
         width={387}
         height={335}
-        layout="fixed"
       />
-      <div className="textCenter mt-24">
+      <div className="text-center mt-24">
         <h3>등록된 뉴스레터가 없어요 ㅠㅠ</h3>
-        <p className="bodyText1">알고있는 뉴스레터를 제보해주세요!</p>
+        <p className="body-text1">알고있는 뉴스레터를 제보해주세요!</p>
         <a onClick={() => setShowModal(true)}>
           <Btn content={'제보하기'} name={'suggest'} />
         </a>

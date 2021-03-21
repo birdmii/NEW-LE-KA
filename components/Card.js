@@ -51,14 +51,14 @@ const Card = ({ newsletter }) => {
   });
 
   return (
-    <div className={`${cardStyles.card} shadow1`}>
-      <div className="row mb-8">
+    <div className={`${cardStyles.card} shadow-1`}>
+      <div className="flex mb-8">
         <span className={`${cardStyles.category} ${newsletter.categoriesCode}`}>
           {categoryTitle}
         </span>
       </div>
       <h2 className={cardStyles.title}>{newsletter.title}</h2>
-      <p className={`bodyText2 ${cardStyles.description}`}>
+      <p className={`body-text2 ${cardStyles.description}`}>
         {newsletter.description}
       </p>
 

@@ -1,20 +1,19 @@
 .sideBar {
-  width: 230px;
-  height: 100%;
-  /* padding: 12px; */
-  margin-right: 20px;
-   
   position: sticky;
   top: 104px;
+  width: 230px;
+  height: 100%;
+  margin-right: 20px;
+   
 }
 
-.li {
+.liItem {
   padding: 13px 16px;
   margin-top: 4px;
   color: var(--gray400); 
 }
 
-.li:hover {
+.liItem:hover {
   background-color: var(--gray100);
   border-radius: 8px;
 }
@@ -28,8 +27,4 @@
   color: var(--gray600);
   font-weight: var(--bold);
   border-radius: 8px;
-}
-
-.flexSpaceBetween {
-  justify-content: space-between;
 }

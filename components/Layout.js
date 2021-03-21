@@ -10,7 +10,7 @@ const Layout = ({ children, query, handleQuery, handleSubmit }) => {
     <>
       <Meta />
       <Nav query={query} handleQuery={handleQuery} handleSubmit={handleSubmit} />
-      <div className="container flexHorizontal">
+      <div className="container flex-horizontal-center">
         <Sidebar />
         <div>
           {children}

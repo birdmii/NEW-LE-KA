@@ -1,13 +1,9 @@
 .input {
-  border: none;
   height: 100%;
   width: 700px;
-  outline: none;
-  padding-left: 20px;
 }
 
 .input:focus {
-  outline: none;
   color: var(--gray600);
 }
 
@@ -16,8 +12,6 @@
 }
 
 .searchBar {
-  /* margin-left: 80px; */
-  padding-left: 20px;
   color: var(--gray300);
   border-left: 1px solid var(--gray100);
   border-right: 1px solid var(--gray100);

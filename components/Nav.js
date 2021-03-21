@@ -7,8 +7,8 @@ import NavBtn from './NavBtn';
 
 const Nav = ({ query, handleQuery, handleSubmit }) => {
   return (
-    <nav className={`${navStyles.nav}`}>
-      <div className="container flexVertical navContainer">
+    <nav className={`${navStyles.nav} shadow-2`}>
+      <div className="container flex-vertical-center">
         <Link href="/">
           <a className={navStyles.logo}>
             <Image
@@ -25,8 +25,8 @@ const Nav = ({ query, handleQuery, handleSubmit }) => {
           handleQuery={handleQuery}
           handleSubmit={handleSubmit}
         />
-        <div className={`flexCenter ml-10 ${navStyles.navBtns}`}>
-          <NavBtn content="커피한잔" name="coffee" />
+        <div className={`flex-vertical-center ${navStyles.navBtns}`}>
+          <NavBtn content="커피한잔" name="donation" />
           <NavBtn content="제보하기" name="suggest" />
         </div>
       </div>

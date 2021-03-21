@@ -1,8 +1,6 @@
 import sideBarStyles from '../styles/Sidebar.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Icon, InlineIcon } from '@iconify/react';
-import angleLine from '@iconify/icons-clarity/angle-line';
 import Filter from './Filter';
 
 const Sidebar = () => {
@@ -25,21 +23,21 @@ const Sidebar = () => {
   return (
     <div className={`mt-40 ${sideBarStyles.sideBar}`}>
       <div
-        className={`subtitle bold px-16 flexVertical ${sideBarStyles.flexSpaceBetween}`}
+        className={`subtitle bold px-16 flex-vertical-center flex-space-between`}
       >
         <span>카테고리</span>
-        {/* <span className="bodyText2">
+        {/* <span className="body-text2">
           필터
           <Icon icon={angleLine} className="ml-4"/>
         </span> */}
       </div>
       {/* <Filter /> */}
-      <ul className={`btnText medium ${sideBarStyles}`}>
+      <ul className={`btn-text medium ${sideBarStyles}`}>
         <Link href="/">
           {category === undefined ? (
             <a href="">
               <li
-                className={`${sideBarStyles.li} ${sideBarStyles.selected} flexVertical`}
+                className={`${sideBarStyles.liItem} ${sideBarStyles.selected} flex-vertical-center`}
               >
                 {' '}
                 랜덤모두보기
@@ -47,7 +45,7 @@ const Sidebar = () => {
             </a>
           ) : (
             <a href="">
-              <li className={`${sideBarStyles.li} flexVertical`}>
+              <li className={`${sideBarStyles.liItem} flex-vertical-center`}>
                 {' '}
                 랜덤모두보기
               </li>
@@ -60,7 +58,7 @@ const Sidebar = () => {
               <Link key={item.code} href="/[category]" as={`/${item.code}`}>
                 <a href="">
                   <li
-                    className={`${sideBarStyles.li} ${sideBarStyles.selected}`}
+                    className={`${sideBarStyles.liItem} ${sideBarStyles.selected}`}
                     id={item.code}
                   >
                     {item.title}
@@ -72,7 +70,7 @@ const Sidebar = () => {
             return (
               <Link key={item.code} href="/[category]" as={`/${item.code}`}>
                 <a href="">
-                  <li className={`${sideBarStyles.li}`} id={item.code}>
+                  <li className={`${sideBarStyles.liItem}`} id={item.code}>
                     {item.title}
                   </li>
                 </a>

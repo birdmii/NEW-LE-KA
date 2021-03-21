@@ -33,6 +33,8 @@
 
 .description {
   line-height: 150%;
+  text-align: left;
+  word-break:keep-all;
 }
 
 .smallHeading {

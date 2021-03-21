@@ -4,8 +4,8 @@ import Btn from './Btn';
 
 const Footer = () => {
   return (
-    <div className={`${footerStyles.footer} textCenter`}>
-      <div className="flexHorizontal">
+    <div className={`${footerStyles.footer} text-center mt-80`}>
+      <div className="flex-horizontal-center">
         <Image
           src="/peeps.png"
           alt="Suggest about NEW・LE・KA"
@@ -13,7 +13,7 @@ const Footer = () => {
           height={359}
           layout="fixed"
         />
-        <div className={footerStyles.textSection}>
+        <div className="text-left ml-80">
           <p className={`${footerStyles.introduction} bold`}>
             개발자 누나와 디자이너 동생이 한팀인 <br />
             LIFEGUARD STUDIO 입니다.
