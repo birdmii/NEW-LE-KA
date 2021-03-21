@@ -9,13 +9,13 @@ const Sidebar = () => {
 
   const categories = [
     { code: 'design', title: '디자인' },
-    // { code: 'develop', title: '개발' },
     { code: 'career', title: '커리어' },
     { code: 'marketing', title: '마케팅' },
     { code: 'sci-tech', title: '과학과 기술' },
     { code: 'lifestyle', title: '라이프스타일' },
     { code: 'news', title: '뉴스' },
     { code: 'travel', title: '여행' },
+    { code: 'education', title: '교육' },
     { code: 'society', title: '사회' },
     { code: 'economy', title: '경제' },
     { code: 'culture', title: '문화' },

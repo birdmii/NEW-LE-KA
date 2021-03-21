@@ -5,13 +5,13 @@ import arrowLine from '@iconify/icons-clarity/arrow-line';
 const Card = ({ newsletter }) => {
   const categoryArr = [
     { code: 'design', name: '디자인' },
-    // { code: 'develop', name: '개발' },
     { code: 'career', name: '커리어' },
     { code: 'marketing', name: '마케팅' },
     { code: 'sci-tech', name: '과학과 기술' },
     { code: 'lifestyle', name: '라이프스타일' },
     { code: 'news', name: '뉴스' },
     { code: 'travel', name: '여행' },
+    { code: 'education', name: '교육' },
     { code: 'society', name: '사회' },
     { code: 'economy', name: '경제' },
     { code: 'culture', name: '문화' },
