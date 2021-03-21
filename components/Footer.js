@@ -4,7 +4,7 @@ import Btn from './Btn';
 
 const Footer = () => {
   return (
-    <div className={`${footerStyles.footer} text-center mt-80`}>
+    <div className={`${footerStyles.footer} text-center mt-40vh`}>
       <div className="flex-horizontal-center">
         <Image
           src="/peeps.png"

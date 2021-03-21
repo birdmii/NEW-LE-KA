@@ -171,6 +171,10 @@ h3 {
   margin-top: 80px;
 }
 
+.mt-40vh {
+  margin-top: 40vh;
+}
+
 .mb-8 {
   margin-bottom: 8px;
 }
@@ -272,8 +276,8 @@ h3 {
 .design {
   background-color: var(--design);
 }
-.develop {
-  background-color: var(--develop);
+.education {
+  background-color: var(--education);
 }
 .career {
   background-color: var(--career);
