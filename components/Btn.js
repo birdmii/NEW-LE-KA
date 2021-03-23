@@ -1,4 +1,5 @@
 import btnStyles from '../styles/Btn.module.css';
+import Link from 'next/link';
 
 const Btn = ({ content, name, link, onClick }) => {
   let btn;
@@ -46,6 +47,16 @@ const Btn = ({ content, name, link, onClick }) => {
           {content}
         </button>
       </a>
+    );
+  } else if (name === 'go-back') {
+    btn = (
+      <Link href={link}>
+        <button
+          className={`${btnClass} ${btnStyles.btnMdDefault}`}
+        >
+          {content}
+        </button>
+      </Link>
     );
   }
   return <>{btn}</>;
