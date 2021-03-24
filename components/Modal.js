@@ -59,7 +59,7 @@ const Modal = ({ show, onClose }) => {
                 alt="Suggest about NEW・LE・KA"
                 width={210}
                 height={246}
-                layout="fixed"
+                layout="intrinsic"
               />
               <span className="buttonText mt-24" id="suggestNewleka">뉴레카에 대해 제보하기</span>
             </div>
@@ -76,7 +76,7 @@ const Modal = ({ show, onClose }) => {
                 alt="Suggest about NEW・LE・KA"
                 width={210}
                 height={246}
-                layout="fixed"
+                layout="intrinsic"
               />
               <span className="buttonText mt-24" id="suggestNewsletter">새로운 뉴스레터 제보하기</span>
             </div>
@@ -84,7 +84,7 @@ const Modal = ({ show, onClose }) => {
         </div>
         <div className={modalStyles.btnArea}>
           <Btn content={'취소'} name={'cancel'} onClick={handleCloseClick} />
-          <Btn content={'제보하기'} name={`${isClickedA || isClickedB ? 'suggest-link': 'suggest-disable'}`} link={`${isClickedA ? 'https://www.google.com' : isClickedB ? 'https://www.naver.com' : ''}`}/>
+          <Btn content={'제보하기'} name={`${isClickedA || isClickedB ? 'suggest-link': 'suggest-disable'}`} link={`${isClickedA ? 'https://forms.gle/S8rcCoCvxAYA6YbGA' : isClickedB ? 'https://forms.gle/jYrE9TeSnXEnfk7S6' : ''}`}/>
         </div>
       </div>
     </div>
