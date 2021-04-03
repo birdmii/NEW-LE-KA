@@ -19,7 +19,7 @@
   --gray500: #2a2b2f;
   --gray600: #1f2022;
 
-  --design: #f34848;
+  /* --design: #f34848;
   --education: #f47113;
   --career: #f9c540;
   --marketing: #db9918;
@@ -29,7 +29,19 @@
   --travel: #1a79e8;
   --society: #8e5cf9;
   --economy: #d069f4;
-  --culture: #f854b6;
+  --culture: #f854b6; */
+
+  --economy: #f34848;
+  --education: #f47113;
+  --news: #f9c540;
+  --design: #db9918;
+  --lifestyle: #9fe05e;
+  --marketing: #1ae885;
+  --culture: #1adbe8;
+  --work: #1a79e8;
+  --society: #8e5cf9;
+  --tech: #d069f4;
+  --trend: #f854b6;
 
   --thin: 100;
   --light: 300;
@@ -59,15 +71,10 @@ a {
 }
 
 button {
-  all:unset;
+  all: unset;
 }
 
 ul {
-  /* display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px; */
   list-style-type: none;
   padding-inline-start: 0;
 }
@@ -76,7 +83,8 @@ form {
   display: inline-block;
 }
 
-input, input:focus {
+input,
+input:focus {
   border: none;
   outline: none;
 }
@@ -187,12 +195,16 @@ h3 {
   margin-bottom: 120px;
 }
 
+.mb-180 {
+  margin-bottom: 180px;
+}
+
 .mr-8 {
   margin-right: 8px;
 }
 
 .ml-0 {
-  margin-left: 0px;
+  margin-left: 0px !important;
 }
 
 .ml-4 {
@@ -257,7 +269,7 @@ h3 {
   display: flex;
   align-items: center;
   height: 100%;
-} 
+}
 
 .flex-space-between {
   justify-content: space-between;
@@ -272,21 +284,21 @@ h3 {
 }
 
 /* custom category colour tags */
-
 .design {
   background-color: var(--design);
 }
+
 .education {
   background-color: var(--education);
 }
-.career {
-  background-color: var(--career);
+.work {
+  background-color: var(--work);
 }
 .marketing {
   background-color: var(--marketing);
 }
-.sci-tech {
-  background-color: var(--sci-tech);
+.tech {
+  background-color: var(--tech);
 }
 .lifestyle {
   background-color: var(--lifestyle);
@@ -294,29 +306,27 @@ h3 {
 .news {
   background-color: var(--news);
 }
-.travel {
-  background-color: var(--travel);
-}
-.society {
-  background-color: var(--society);
-}
 .economy {
   background-color: var(--economy);
 }
 .culture {
   background-color: var(--culture);
 }
+.trend {
+  background-color: var(--trend);
+}
 
 /* Shadow */
 .shadow-1 {
-  box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12), 0px 8px 24px -4px rgba(24, 39, 75, 0.08);
+  box-shadow: 0px 6px 12px -6px rgba(24, 39, 75, 0.12),
+    0px 8px 24px -4px rgba(24, 39, 75, 0.08);
 }
 
 .shadow-2 {
   box-shadow: 0px 16px 20px rgba(229, 229, 229, 0.2);
 }
 
-/* Border radius */ 
+/* Border radius */
 .border-rad-8 {
   border-radius: 8px;
 }

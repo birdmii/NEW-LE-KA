@@ -30,3 +30,10 @@
   background-color: var(--primary500);
   color: #fff;
 }
+
+@media (max-width: 1050px) {
+  .navBtn {
+    margin-left: 0;
+    margin-right: 10px;
+  }
+}

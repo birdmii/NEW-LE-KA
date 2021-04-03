@@ -14,6 +14,7 @@ const NoCard = () => {
         alt="No newsletters"
         width={387}
         height={335}
+        layout="intrinsic"
       />
       <div className="text-center mt-24">
         <h3>등록된 뉴스레터가 없어요 ㅠㅠ</h3>

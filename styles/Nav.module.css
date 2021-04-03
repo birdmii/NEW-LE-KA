@@ -8,7 +8,13 @@
 }
 
 .logo {
-  width: 230px;
+  width: 20%;
+}
+
+.mobileLogo {
+  width: 100vw;
+  text-align: center;
+  padding-right: 0;
 }
 
 .navBtns {

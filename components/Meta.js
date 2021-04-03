@@ -6,6 +6,8 @@ const Meta = ({ title, keywords, description }) => {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <meta name="keywords" content={keywords} />
       <meta name="description" content={description} />
+      <meta name="google-site-verification" content="eKuO8qwY0TSHjwS20pJVPHsxlNEuUg3sJzginrPca9c" />
+      <meta name="naver-site-verification" content="0eb9c28596583cafe3efb2ce1f0ecb972080f5a7" />
       <meta charSet="utf-8" />
       <link rel='icon' href='/favicon.ico' />
       <title>{title}</title>

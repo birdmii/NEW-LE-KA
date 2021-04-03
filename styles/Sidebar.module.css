@@ -1,16 +1,63 @@
+.background {
+  position: fixed;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  left: -100%;
+  z-index: 99998;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  /* transition: 500ms; */
+}
+
 .sideBar {
   position: sticky;
   top: 104px;
   width: 230px;
-  height: 100%;
   margin-right: 20px;
-   
+}
+
+.sideBarMobile {
+  position: fixed;
+  display: block;
+  top: 0px;
+  width: 80%;
+  height: 100vh;
+  z-index: 99999;
+  background-color: #fff;
+  padding: 16px;
+  left: -100%;
+  /* transition: 500ms; */
+}
+
+.background.active, .sideBarMobile.active {
+  left: 0;
+  /* transition: 500ms; */
+}
+
+.categoryTitle {
+  padding: 11px 0px 16px 11px;
+}
+
+.categoryTitleMobile {
+  padding: 0;
+}
+
+.closeBtn {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  z-index: 999999;
+  justify-content: flex-end;
+  color: #fff;
+  padding: 8px;
 }
 
 .liItem {
   padding: 13px 16px;
   margin-top: 4px;
-  color: var(--gray400); 
+  color: var(--gray400);
+  width: 100%;
 }
 
 .liItem:hover {
@@ -27,4 +74,11 @@
   color: var(--gray600);
   font-weight: var(--bold);
   border-radius: 8px;
+}
+
+.navBtnsMobile {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: left;
 }

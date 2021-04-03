@@ -1,26 +1,25 @@
 import cardStyles from '../styles/Card.module.css';
-import { Icon, InlineIcon } from '@iconify/react';
+import { Icon } from '@iconify/react';
 import arrowLine from '@iconify/icons-clarity/arrow-line';
 
 const Card = ({ newsletter }) => {
   const categoryArr = [
-    { code: 'design', name: '디자인' },
-    { code: 'career', name: '커리어' },
-    { code: 'marketing', name: '마케팅' },
-    { code: 'sci-tech', name: '과학과 기술' },
-    { code: 'lifestyle', name: '라이프스타일' },
-    { code: 'news', name: '뉴스' },
-    { code: 'travel', name: '여행' },
-    { code: 'education', name: '교육' },
-    { code: 'society', name: '사회' },
-    { code: 'economy', name: '경제' },
-    { code: 'culture', name: '문화' },
+    { code: 'economy', title: '경제' },
+    { code: 'education', title: '교육' },
+    { code: 'news', title: '뉴스' },
+    { code: 'design', title: '디자인' },
+    { code: 'lifestyle', title: '라이프스타일' },
+    { code: 'marketing', title: '마케팅' },
+    { code: 'culture', title: '문화' },
+    { code: 'work', title: '일과 노동' },
+    { code: 'tech', title: '테크' },
+    { code: 'trend', title: '트렌드' },
   ];
 
   const sendingTermArr = [
     { code: 'daily', name: '매일' },
     { code: 'weekly', name: '매주' },
-    { code: '10 days', name: '10일' },
+    { code: 'tendays', name: '10일' },
     { code: 'biweekly', name: '격주' },
     { code: 'monthly', name: '매달' },
     { code: '?', name: '?' },
@@ -38,8 +37,8 @@ const Card = ({ newsletter }) => {
 
   let categoryTitle;
   categoryArr.forEach((item) => {
-    if (newsletter.categoriesCode === item.code) {
-      categoryTitle = item.name;
+    if (newsletter.category === item.code) {
+      categoryTitle = item.title;
     }
   });
 
@@ -53,7 +52,7 @@ const Card = ({ newsletter }) => {
   return (
     <div className={`${cardStyles.card} shadow-1`}>
       <div className="flex mb-8">
-        <span className={`${cardStyles.category} ${newsletter.categoriesCode}`}>
+        <span className={`${cardStyles.category} ${newsletter.category}`}>
           {categoryTitle}
         </span>
       </div>
@@ -99,7 +98,7 @@ const Card = ({ newsletter }) => {
         <div className="mt-24">
           <h6 className="caption">관련 태그</h6>
           <div className="mt-8 mb-24">
-            {newsletter.tags.map((tag) => {
+            {newsletter.tag.map((tag) => {
               return (
                 <span
                   key={tag}

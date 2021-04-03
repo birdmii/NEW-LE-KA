@@ -1,34 +1,56 @@
-import { useRouter } from 'next/router'
-import Cards from '../components/Cards'
+import { useRouter } from 'next/router';
+import Cards from '../components/Cards';
 
-const search = ({newsletters}) => {
+const search = ({ newsletters }) => {
   const router = useRouter();
-  const query = router.query.q
+  const searchQuery = router.query.q;
+  // const filterQuery = router.query.filter;
 
-  newsletters = newsletters.filter((item) => {
-    let isQueryIncluded = false;
-    if (item.title.includes(query) || item.description.includes(query)) {
-      isQueryIncluded = true;
-    }
-    item.tags.forEach((tag) => {
-      if (tag.includes(query)) {
+  if (searchQuery !== undefined) {
+    newsletters = newsletters.filter((item) => {
+      let isQueryIncluded = false;
+      if (
+        item.title.includes(searchQuery) ||
+        item.description.includes(searchQuery)
+      ) {
         isQueryIncluded = true;
       }
-    });
+      item.tag.forEach((tag) => {
+        if (tag.includes(searchQuery)) {
+          isQueryIncluded = true;
+        }
+      });
 
-    if (isQueryIncluded) {
-      return item;
-    }
-  });
+      if (isQueryIncluded) {
+        return item;
+      }
+    });
+  }
+
+  // if(filterQuery !== undefined) {
+  //   let filterQuaryArr = filterQuery.split('|');
+  //   newsletters = newsletters.filter((item) => {
+  //     let isFiltered = false;
+  //     filterQuaryArr.forEach((filter) => {
+  //       if (item.sendingTerm === filter) {
+  //         isFiltered = true;
+  //       }
+  //     });
+
+  //     if (isFiltered) {
+  //       return item;
+  //     }
+  //   });
+  // }
 
   return (
     <div>
       <Cards category={'검색 결과'} newsletters={newsletters} />
     </div>
-  )
-}
+  );
+};
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const res = await fetch(
     `https://birdmii.github.io/newsletter-api/newsletters.json`,
   );
@@ -38,8 +60,8 @@ export const getServerSideProps = async () => {
     props: {
       newsletters,
     },
+    revalidate: 1,
   };
 };
 
-
-export default search
+export default search;

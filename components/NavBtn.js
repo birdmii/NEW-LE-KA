@@ -2,13 +2,14 @@ import navBtnStyles from '../styles/NavBtn.module.css';
 import { useState } from 'react';
 import Modal from './Modal';
 
-const NavBtn = ({ content, name }) => {
+const NavBtn = ({ content, name, link }) => {
   const [showModal, setShowModal] = useState(false);
-
   return name === 'donation' ? (
-    <button className={`${navBtnStyles.navBtn} ${navBtnStyles.btnDonSm}`}>
-      {content}
-    </button>
+    <a href={link} target="_blank">
+      <button className={`${navBtnStyles.navBtn} ${navBtnStyles.btnDonSm}`}>
+        {content}
+      </button>
+    </a>
   ) : (
     <>
       <button

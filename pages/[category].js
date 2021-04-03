@@ -2,17 +2,17 @@ import { useRouter } from 'next/router';
 import Cards from '../components/Cards';
 
 const categories = [
-  { code: 'design', title: '디자인' },
-  { code: 'career', title: '커리어' },
-  { code: 'marketing', title: '마케팅' },
-  { code: 'sci-tech', title: '과학과 기술' },
-  { code: 'lifestyle', title: '라이프스타일' },
-  { code: 'news', title: '뉴스' },
-  { code: 'travel', title: '여행' },
-  { code: 'education', title: '교육' },
-  { code: 'society', title: '사회' },
   { code: 'economy', title: '경제' },
+  { code: 'education', title: '교육' },
+  { code: 'news', title: '뉴스' },
+  { code: 'design', title: '디자인' },
+  { code: 'lifestyle', title: '라이프스타일' },
+  { code: 'marketing', title: '마케팅' },
   { code: 'culture', title: '문화' },
+  { code: 'work', title: '일과 노동' },
+  // { code: 'society', title: '사회' },
+  { code: 'tech', title: '테크' },
+  { code: 'trend', title: '트렌드' },
 ];
 
 const Category = ({ newsletters, query }) => {
@@ -47,12 +47,13 @@ export const getStaticProps = async ({ params }) => {
   let newsletters = await res.json();
 
   newsletters = newsletters.filter(
-    (newsletter) => newsletter.categoriesCode === params.category,
+    (newsletter) => newsletter.category === params.category,
   );
   return {
     props: {
       newsletters,
     },
+    revalidate: 1,
   };
 };
 

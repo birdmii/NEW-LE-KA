@@ -9,9 +9,11 @@
     "netlify-deploy": "next build && next export"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "next": "10.0.8",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-responsive": "^8.2.0"
   },
   "devDependencies": {
     "@iconify/icons-clarity": "^1.1.0",
