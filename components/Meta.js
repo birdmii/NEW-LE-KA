@@ -1,11 +1,6 @@
 import Head from 'next/head';
 
 const Meta = ({ title, keywords, description }) => {
-  const analytics = `window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-396SQ9NZYF');`;
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -22,11 +17,6 @@ const Meta = ({ title, keywords, description }) => {
       <meta charSet="utf-8" />
       <link rel="icon" href="/favicon.ico" />
       <title>{title}</title>
-      <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-396SQ9NZYF"
-      ></script>
-      <script>{analytics}</script>
     </Head>
   );
 };
