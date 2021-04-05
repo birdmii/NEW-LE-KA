@@ -4,8 +4,34 @@ const Meta = ({ title, keywords, description }) => {
   return (
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      {/* <!-- Primary Meta Tags --> */}
       <meta name="keywords" content={keywords} />
       <meta name="description" content={description} />
+      <title>{title}</title>
+
+      {/* <!-- Open Graph / Facebook --> */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://www.newleka.xyz/" />
+      <meta property="og:title" content={title} />
+      <meta
+        property="og:description"
+        content={description}
+      />
+      <meta property="og:image" content="https://www.newleka.xyz/metadata-img.png" />
+
+      {/* <!-- Twitter --> */}
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content="https://www.newleka.xyz/" />
+      <meta
+        property="twitter:title"
+        content={title}
+      />
+      <meta
+        property="twitter:description"
+        content={description}
+      />
+      <meta property="twitter:image" content="https://www.newleka.xyz/metadata-img.png"></meta>
+      
       <meta
         name="google-site-verification"
         content="eKuO8qwY0TSHjwS20pJVPHsxlNEuUg3sJzginrPca9c"
@@ -16,14 +42,13 @@ const Meta = ({ title, keywords, description }) => {
       />
       <meta charSet="utf-8" />
       <link rel="icon" href="/favicon.ico" />
-      <title>{title}</title>
     </Head>
   );
 };
 
 Meta.defaultProps = {
   title: 'NEW・LE・KA | Find Your Newsletter',
-  keywords: 'newsletter',
+  keywords: 'newsletter, 뉴스레터',
   description:
     '새로운 뉴스레터를 찾고 계신가요? NEW・LE・KA(뉴레카)에서 원하는 뉴스레터를 손쉽게 찾아보세요!',
 };
