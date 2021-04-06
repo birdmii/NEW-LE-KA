@@ -315,6 +315,9 @@ h3 {
 .trend {
   background-color: var(--trend);
 }
+.society {
+  background-color: var(--society);
+}
 
 /* Shadow */
 .shadow-1 {

@@ -21,7 +21,7 @@
   padding: 4px 8px;
   color: #fff;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: var(--bold);
   letter-spacing: 1px;
 }
 
@@ -52,7 +52,7 @@
   background-color: var(--primary100);
   border-radius: 8px;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: var(--bold);
 }
 
 .sendingDayTag {
@@ -61,7 +61,7 @@
   color: var(--gray300);
   margin-right: 4px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: var(--medium);
   border-radius: 8px;
 }
 

@@ -7,7 +7,6 @@
   z-index: 99998;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
-  /* transition: 500ms; */
 }
 
 .sideBar {
@@ -18,21 +17,19 @@
 }
 
 .sideBarMobile {
-  position: fixed;
   display: block;
   top: 0px;
   width: 80%;
-  height: 100vh;
+  height: 100%;
+  overflow-y: scroll;
   z-index: 99999;
   background-color: #fff;
   padding: 16px;
   left: -100%;
-  /* transition: 500ms; */
 }
 
 .background.active, .sideBarMobile.active {
   left: 0;
-  /* transition: 500ms; */
 }
 
 .categoryTitle {

@@ -14,6 +14,7 @@ const Card = ({ newsletter }) => {
     { code: 'work', title: '일과 노동' },
     { code: 'tech', title: '테크' },
     { code: 'trend', title: '트렌드' },
+    { code: 'society', title: '사회'}
   ];
 
   const sendingTermArr = [
