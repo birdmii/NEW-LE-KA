@@ -24,7 +24,7 @@
   overflow-y: scroll;
   z-index: 99999;
   background-color: #fff;
-  padding: 16px;
+  padding: 16px 16px 120px 16px;
   left: -100%;
 }
 
