@@ -30,9 +30,9 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
   ];
 
   let desktopSideBar = (
-    <div className={`mt-40 ${sideBarStyles.sideBar}`}>
+    <div className={`mt-40 ${sideBarStyles.Sidebar}`}>
       <div
-        className={`subtitle bold flex-vertical-center flex-space-between ${sideBarStyles.categoryTitle}`}
+        className={`subtitle bold flex-vertical-center flex-space-between ${sideBarStyles['Sidebar__title']}`}
       >
         <span>카테고리</span>
         {/* <span className="body-text2">
@@ -42,12 +42,12 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
       </div>
       {/* <Filter /> */}
 
-      <ul className={`btn-text medium ${sideBarStyles.categoryItem}`}>
+      <ul className={`btn-text medium`}>
         <Link href="/">
           {category === undefined ? (
             <a href="">
               <li
-                className={`${sideBarStyles.liItem} ${sideBarStyles.selected} flex-vertical-center`}
+                className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected} flex-vertical-center`}
               >
                 {' '}
                 랜덤모두보기
@@ -55,7 +55,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
             </a>
           ) : (
             <a href="">
-              <li className={`${sideBarStyles.liItem} flex-vertical-center`}>
+              <li className={`${sideBarStyles['Sidbar__categoryTitle']} flex-vertical-center`}>
                 {' '}
                 랜덤모두보기
               </li>
@@ -68,7 +68,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
               <Link key={item.code} href="/[category]" as={`/${item.code}`}>
                 <a href="">
                   <li
-                    className={`${sideBarStyles.liItem} ${sideBarStyles.selected}`}
+                    className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected}`}
                     id={item.code}
                   >
                     {item.title}
@@ -80,7 +80,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
             return (
               <Link key={item.code} href="/[category]" as={`/${item.code}`}>
                 <a href="">
-                  <li className={`${sideBarStyles.liItem}`} id={item.code}>
+                  <li className={`${sideBarStyles['Sidbar__categoryTitle']}`} id={item.code}>
                     {item.title}
                   </li>
                 </a>
@@ -96,11 +96,11 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
     <div
       className={
         isSideBarOpen
-          ? `${sideBarStyles.background} ${sideBarStyles.active}`
-          : `${sideBarStyles.background}`
+          ? `${sideBarStyles['Sidebar--background']} ${sideBarStyles.open}`
+          : `${sideBarStyles['Sidebar--background']}`
       }
     >
-      <div className={sideBarStyles.closeBtn}>
+      <div className={sideBarStyles['Sidebar__closeBtn--mobile']}>
         <Icon
           icon={closeLine}
           style={{ fontSize: '32px' }}
@@ -110,12 +110,12 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
       <div
         className={
           isSideBarOpen
-            ? `${sideBarStyles.sideBarMobile} ${sideBarStyles.active}`
-            : `${sideBarStyles.sideBarMobile}`
+            ? `${sideBarStyles['Sidebar--mobile']} ${sideBarStyles.open}`
+            : `${sideBarStyles['Sidebar--mobile']}`
         }
       >
         <Alert />
-        <div className={`${sideBarStyles.navBtnsMobile}`}>
+        <div className={`${sideBarStyles['Sidebar__btnContainer--mobile']}`}>
           <NavBtn
             content="커피한잔"
             name="donation"
@@ -124,16 +124,16 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
           <NavBtn content="제보하기" name="suggest" />
         </div>
         <div
-          className={`subtitle bold mt-24 ${sideBarStyles.categoryTitleMobile}`}
+          className={`subtitle bold mt-24 ${sideBarStyles['Sidebar__title--mobile']}`}
         >
           <span>카테고리</span>
         </div>
-        <ul className={`btn-text medium ${sideBarStyles.categoryItem}`}>
+        <ul className={`btn-text medium`}>
           <Link href="/">
             {category === undefined ? (
               <a href="">
                 <li
-                  className={`${sideBarStyles.liItem} ${sideBarStyles.selected} flex-vertical-center`}
+                  className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected} flex-vertical-center`}
                 >
                   {' '}
                   랜덤모두보기
@@ -142,7 +142,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
             ) : (
               <a href="">
                 <li
-                  className={`${sideBarStyles.liItem} flex-vertical-center`}
+                  className={`${sideBarStyles['Sidbar__categoryTitle']} flex-vertical-center`}
                   onClick={handleShowSideNav}
                 >
                   {' '}
@@ -157,7 +157,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
                 <Link key={item.code} href="/[category]" as={`/${item.code}`}>
                   <a href="">
                     <li
-                      className={`${sideBarStyles.liItem} ${sideBarStyles.selected}`}
+                      className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected}`}
                       id={item.code}
                     >
                       {item.title}
@@ -169,7 +169,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
               return (
                 <Link key={item.code} href="/[category]" as={`/${item.code}`}>
                   <a href="" onClick={handleShowSideNav}>
-                    <li className={`${sideBarStyles.liItem}`} id={item.code}>
+                    <li className={`${sideBarStyles['Sidbar__categoryTitle']}`} id={item.code}>
                       {item.title}
                     </li>
                   </a>
@@ -178,15 +178,6 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
             }
           })}
         </ul>
-      </div>
-      <div className={sideBarStyles.background}>
-        <div className={sideBarStyles.closeBtn}>
-          <Icon
-            icon={closeLine}
-            style={{ fontSize: '32px' }}
-            onClick={handleShowSideNav}
-          />
-        </div>
       </div>
     </div>
   ) : null;

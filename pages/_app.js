@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import '../styles/globals.css';
-import * as gtag from '../lib/gtag';
+import pageView from '../lib/gtag';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -12,17 +12,17 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      gtag.pageview(url)
-    }
-    router.events.on('routerChangeComplete', handleRouteChange)
+      pageView(url);
+    };
+    router.events.on('routerChangeComplete', handleRouteChange);
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   const handleShowSearchBar = () => {
     setSearchShow(!isSearchShow);
-  }
+  };
 
   const handleQuery = (e) => {
     setQuery(e.target.value);
@@ -35,7 +35,12 @@ function MyApp({ Component, pageProps }) {
   };
 
   return (
-    <Layout handleQuery={handleQuery} handleSubmit={handleSubmit} handleShowSearchBar={handleShowSearchBar} isSearchShow={isSearchShow}>
+    <Layout
+      handleQuery={handleQuery}
+      handleSubmit={handleSubmit}
+      handleShowSearchBar={handleShowSearchBar}
+      isSearchShow={isSearchShow}
+    >
       <Component {...pageProps} query={query} />
     </Layout>
   );

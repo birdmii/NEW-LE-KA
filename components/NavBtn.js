@@ -6,14 +6,14 @@ const NavBtn = ({ content, name, link }) => {
   const [showModal, setShowModal] = useState(false);
   return name === 'donation' ? (
     <a href={link} target="_blank">
-      <button className={`${navBtnStyles.navBtn} ${navBtnStyles.btnDonSm}`}>
+      <button className={`${navBtnStyles.NavBtn} ${navBtnStyles['NavBtn--donation--sm']}`}>
         {content}
       </button>
     </a>
   ) : (
     <>
       <button
-        className={`${navBtnStyles.navBtn} ${navBtnStyles.btnSuggestSm}`}
+        className={`${navBtnStyles.NavBtn} ${navBtnStyles['NavBtn--suggest--sm']}`}
         onClick={() => setShowModal(true)}
       >
         {content}

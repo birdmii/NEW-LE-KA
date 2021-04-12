@@ -51,21 +51,21 @@ const Card = ({ newsletter }) => {
   });
 
   return (
-    <div className={`${cardStyles.card} shadow-1`}>
+    <div className={`${cardStyles.Card} shadow-1`}>
       <div className="flex mb-8">
-        <span className={`${cardStyles.category} ${newsletter.category}`}>
+        <span className={`${cardStyles['Card__category']} ${newsletter.category}`}>
           {categoryTitle}
         </span>
       </div>
-      <h2 className={cardStyles.title}>{newsletter.title}</h2>
-      <p className={`body-text2 ${cardStyles.description}`}>
+      <h2 className={cardStyles['Card__title']}>{newsletter.title}</h2>
+      <p className={`body-text2 ${cardStyles['Card__description']}`}>
         {newsletter.description}
       </p>
 
-      <div className={cardStyles.tagSection}>
+      <div className={cardStyles['Card__tagSection']}>
         <h6 className="caption">발행 주기</h6>
         <div className="mt-8">
-          <span className={cardStyles.sendingTermTag}>{sendingTerm}</span>
+          <span className={cardStyles['tagSection__sendingTermTag']}>{sendingTerm}</span>
         </div>
         <div className="mt-8">
           {newsletter.sendingTerm === 'daily'
@@ -73,7 +73,7 @@ const Card = ({ newsletter }) => {
                 return (
                   <span
                     key={day.code}
-                    className={`${cardStyles.sendingDayTag} ${cardStyles.on}`}
+                    className={`${cardStyles['tagSection__sendingDayTag']} ${cardStyles.on}`}
                   >
                     {day.name}
                   </span>
@@ -84,14 +84,14 @@ const Card = ({ newsletter }) => {
                   return (
                     <span
                       key={day.code}
-                      className={`${cardStyles.sendingDayTag} ${cardStyles.on}`}
+                      className={`${cardStyles['tagSection__sendingDayTag']} ${cardStyles.on}`}
                     >
                       {day.name}
                     </span>
                   );
                 }
                 return (
-                  <span key={day.code} className={cardStyles.sendingDayTag}>{day.name}</span>
+                  <span key={day.code} className={cardStyles['tagSection__sendingDayTag']}>{day.name}</span>
                 );
               })}
         </div>
@@ -103,7 +103,7 @@ const Card = ({ newsletter }) => {
               return (
                 <span
                   key={tag}
-                  className={`caption mr-8 ${cardStyles.relatedTag}`}
+                  className={`caption mr-8 ${cardStyles['tagSection__relatedTag']}`}
                 >
                   {tag}
                 </span>
@@ -117,7 +117,7 @@ const Card = ({ newsletter }) => {
         href={newsletter.subscriptionLink}
         rel="noopener noreferrer"
       >
-        <div className={cardStyles.subscriptionBtn}>
+        <div className={cardStyles['Card__subscriptionBtn']}>
           구독하기
           <Icon icon={arrowLine} rotate="90deg" />
         </div>

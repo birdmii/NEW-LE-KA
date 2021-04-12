@@ -11,21 +11,21 @@ const Search = ({
   handleShowSearchBar,
   isSearchShow,
 }) => {
-  let desktopSearch = (
-    <div className={`${searchStyles.searchBar}`}>
+  const desktopSearch = (
+    <div className={`${searchStyles.Search}`}>
       <Icon icon={searchLine} style={{ fontSize: '16px' }} />
 
       <form
         onSubmit={handleSubmit}
         id="searchForm"
-        className={searchStyles.form}
+        className={searchStyles['Search__form']}
       >
         <input
           type="text"
           name="search"
           value={query}
           id="searchBox"
-          className={`${searchStyles.input} pl-20`}
+          className={`${searchStyles['form__input']} pl-20`}
           placeholder="관심있는 주제를 검색해보세요. (예: 음악, 스타트업, 마케팅 등)"
           onChange={handleQuery}
         />
@@ -34,9 +34,9 @@ const Search = ({
   );
 
   let mobileSearch = isSearchShow ? (
-    <div className={searchStyles.background}>
-      <div className={searchStyles.mobileSearchBar}>
-        <div className={`${searchStyles.mobileSearch}`}>
+    <div className={searchStyles['Search__background--mobile']}>
+      <div className={searchStyles['Search__container--mobile']}>
+        <div className={`${searchStyles['Search__search--mobile']}`}>
           <Icon
             icon={searchLine}
             style={{ fontSize: '16px' }}
@@ -46,14 +46,14 @@ const Search = ({
           <form
             onSubmit={handleSubmit}
             id="searchForm"
-            className={searchStyles.mobileForm}
+            className={searchStyles['Search__form--mobile']}
           >
             <input
               type="text"
               name="search"
               value={query}
               id="searchBox"
-              className={`${searchStyles.mobileInput} body-text1 pl-20`}
+              className={`${searchStyles['Search__input--mobile']} body-text1 pl-20`}
               placeholder="관심있는 주제를 검색해보세요. (예: 책, 마케팅 등)"
               onChange={handleQuery}
             />

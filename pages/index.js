@@ -23,9 +23,9 @@ export const getStaticProps = async () => {
   );
   const newsletters = await res.json();
 
-  let m = newsletters.length,
-    t,
-    i;
+  let m = newsletters.length;
+  let t;
+  let i;
   while (m) {
     i = Math.floor(Math.random() * m--);
     t = newsletters[m];

@@ -1,39 +1,39 @@
-.btn {
+.Btn {
   padding: 12px 16px;
   border-radius: 8px;
 }
 
-.btnMdDefault {
+.Btn--md--default {
   background-color: var(--primary450);
   color: #fff;
 }
 
-.btnMdDefault:active {
+.Btn--md--default:active {
   background-color: var(--primary500);
   color: #fff;
 }
 
-.btnMdDefault:hover {
+.Btn--md--default:hover {
   background-color: var(--primary400);
   color: #fff;
 }
 
-.btnMdPushed {
+.Btn--md--pushed {
   background-color: var(--primary500);
   color: #fff;
 }
 
-.btnCancelMdDefault {
+.Btn--cancel--md--default {
   background-color: var(--gray100);
   color: var(--gray400);
 }
 
-.btnCancelMdDefault:active {
+.Btn--cancel--md--default:active {
   background-color: var(--gray200);
   color: var(--gray400);
 }
 
-.btnMdDisable {
+.Btn--md--disable {
   background-color: var(--gray300);
   color: #fff;
 }

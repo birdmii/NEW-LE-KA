@@ -1,10 +1,10 @@
-import cardStyles from '../styles/Cards.module.css'
+import cardsStyles from '../styles/Cards.module.css'
 import Image from 'next/image'
 import Btn from '../components/Btn'
 
 const FourOFour = () => {
   return (
-    <div className={`${cardStyles.full} flex-vertical-center mt-80`}>
+    <div className={`${cardsStyles['Cards--full']} flex-vertical-center mt-80`}>
       <Image
         src="/404.png"
         alt="No newsletters"

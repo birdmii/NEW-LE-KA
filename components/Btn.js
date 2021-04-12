@@ -2,13 +2,13 @@ import btnStyles from '../styles/Btn.module.css';
 import Link from 'next/link';
 
 const Btn = ({ content, name, link, onClick }) => {
+  const btnClass = `${btnStyles.Btn} mt-16 ml-8`
   let btn;
-  let btnClass = `${btnStyles.btn} mt-16 ml-8`
 
   if (name === 'suggest') {
     btn = (
       <button
-        className={`${btnClass} ${btnStyles.btnMdDefault}`}
+        className={`${btnClass} ${btnStyles['Btn--md--default']}`}
       >
         {content}
       </button>
@@ -16,7 +16,7 @@ const Btn = ({ content, name, link, onClick }) => {
   } else if (name === 'cancel') {
     btn = (
       <button
-        className={`${btnClass} ${btnStyles.btnCancelMdDefault}`}
+        className={`${btnClass} ${btnStyles['Btn--cancel--md--default']}`}
         onClick={onClick}
       >
         {content}
@@ -25,7 +25,7 @@ const Btn = ({ content, name, link, onClick }) => {
   } else if (name === 'footer') {
     btn = (
       <a href={link}>
-        <button className={`${btnClass} ${btnStyles.btnMdDefault} ml-0`}>
+        <button className={`${btnClass} ${btnStyles['Btn--md--default']} ml-0`}>
           {content}
         </button>
       </a>
@@ -33,7 +33,7 @@ const Btn = ({ content, name, link, onClick }) => {
   } else if (name === 'suggest-disable') {
     btn = (
       <button
-        className={`${btnClass} ${btnStyles.btnMdDisable}`}
+        className={`${btnClass} ${btnStyles['Btn--md--default']}`}
       >
         {content}
       </button>
@@ -42,7 +42,7 @@ const Btn = ({ content, name, link, onClick }) => {
     btn = (
       <a href={link} target="_blank">
         <button
-          className={`${btnClass} ${btnStyles.btnMdDefault}`}
+          className={`${btnClass} ${btnStyles['Btn--md--default']}`}
         >
           {content}
         </button>
@@ -52,7 +52,7 @@ const Btn = ({ content, name, link, onClick }) => {
     btn = (
       <Link href={link}>
         <button
-          className={`${btnClass} ${btnStyles.btnMdDefault}`}
+          className={`${btnClass} ${btnStyles['Btn--md--default']}`}
         >
           {content}
         </button>

@@ -1,4 +1,4 @@
-.nav {
+.Nav {
   background-color: #fff;
   height: 64px;
   position: sticky;
@@ -7,16 +7,16 @@
   z-index: 999;
 }
 
-.logo {
+.Nav__logo {
   width: 20%;
 }
 
-.mobileLogo {
+.Nav__btnContainer {
+  margin-left: auto;
+}
+
+.Nav__logo--mobile {
   width: 100vw;
   text-align: center;
   padding-right: 0;
-}
-
-.navBtns {
-  margin-left: auto;
 }

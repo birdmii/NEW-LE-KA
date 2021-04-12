@@ -1,43 +1,40 @@
-.grid {
+.Cards--grid {
   display: grid;
   grid-template-columns: repeat(3, 300px);
   column-gap: 18px;
   row-gap: 18px;
 }
 
-.full {
+.Cards--full {
   min-width: 936px;
   flex-direction: column;
 }
 
 @media (max-width: 1220px) {
-  .grid {
+  .Cards--grid {
     grid-template-columns: repeat(2, 300px);
     column-gap: 18px;
   }
 }
 
 @media (max-width: 1200px) {
-  .full {
-    min-width: 70vw;;
+  .Cards--full {
+    min-width: 70vw;
   }
 }
 
-
 @media (max-width: 1050px) {
-  .grid {
+  .Cards--grid {
     grid-template-columns: repeat(2, 2fr);
   }
 
-  .full {
+  .Cards--full {
     min-width: 90vw;
   }
 }
 
-
 @media (max-width: 660px) {
-  
-  .grid {
+  .Cards--grid {
     grid-template-columns: repeat(1, 1fr);
     align-self: center;
     justify-content: center;

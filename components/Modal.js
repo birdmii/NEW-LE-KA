@@ -21,28 +21,27 @@ const Modal = ({ show, onClose }) => {
   const handleCardClick = (e) => {
     e.preventDefault();
     const cardId = e.target.id;
-    if(cardId === "suggestNewleka" && !isClickedB) {
+    if (cardId === 'suggestNewleka' && !isClickedB) {
       setIsClickedA(true);
-    } else if(cardId === "suggestNewsletter" && !isClickedA) {
+    } else if (cardId === 'suggestNewsletter' && !isClickedA) {
       setIsClickedB(true);
-    } else if(cardId === "suggestNewleka") {
+    } else if (cardId === 'suggestNewleka') {
       let setClicked = !isClickedA;
-      setIsClickedA(setClicked) 
-      setIsClickedB(!setClicked)
-    }
-    else if(cardId === "suggestNewsletter") {
+      setIsClickedA(setClicked);
+      setIsClickedB(!setClicked);
+    } else if (cardId === 'suggestNewsletter') {
       let setClicked = !isClickedB;
-      setIsClickedA(!setClicked) 
-      setIsClickedB(setClicked)
+      setIsClickedA(!setClicked);
+      setIsClickedB(setClicked);
     }
-  }
+  };
 
   const modalContent = show ? (
-    <div className={`${modalStyles.backgroundBlack} flex-center`}>
-      <div className={modalStyles.backgroundCard}>
-        <div className={modalStyles.textArea}>
+    <div className={`${modalStyles['Modal--background']} flex-center`}>
+      <div className={modalStyles.Modal}>
+        <div className={modalStyles['Modal__textContainer']}>
           <h3>제보하기</h3>
-          <p className={`${modalStyles.suggestionText} body-text2 mt-16`}>
+          <p className={`${modalStyles['textContainer__suggestion']} body-text2 mt-16`}>
             제보해주셔서 감사합니다! <br />
             여러분의 소중한 제보 하나하나가 더 나은 뉴레카를 만들어 갑니다!
           </p>
@@ -50,7 +49,9 @@ const Modal = ({ show, onClose }) => {
         <div className="flex-center">
           <a onClick={handleCardClick}>
             <div
-              className={`flex-center flex-col ${modalStyles.modalCard} shadow-1 ${isClickedA ? modalStyles.selected : ""}`}
+              className={`flex-center flex-col ${
+                modalStyles['Modal__card']
+              } shadow-1 ${isClickedA ? modalStyles.selected : ''}`}
               id="suggestNewleka"
             >
               <Image
@@ -61,13 +62,17 @@ const Modal = ({ show, onClose }) => {
                 height={246}
                 layout="intrinsic"
               />
-              <span className="buttonText mt-24" id="suggestNewleka">뉴레카에 대해 제보하기</span>
+              <span className="buttonText mt-24" id="suggestNewleka">
+                뉴레카에 대해 제보하기
+              </span>
             </div>
           </a>
 
           <a onClick={handleCardClick}>
             <div
-              className={`flex-center flex-col ${modalStyles.modalCard} shadow-1 ${isClickedB ? modalStyles.selected : ""}`}
+              className={`flex-center flex-col ${
+                modalStyles['Modal__card']
+              } shadow-1 ${isClickedB ? modalStyles.selected : ''}`}
               id="suggestNewsletter"
             >
               <Image
@@ -78,13 +83,27 @@ const Modal = ({ show, onClose }) => {
                 height={246}
                 layout="intrinsic"
               />
-              <span className="buttonText mt-24" id="suggestNewsletter">새로운 뉴스레터 제보하기</span>
+              <span className="buttonText mt-24" id="suggestNewsletter">
+                새로운 뉴스레터 제보하기
+              </span>
             </div>
           </a>
         </div>
-        <div className={modalStyles.btnArea}>
+        <div className={modalStyles['Modal__btnContainer']}>
           <Btn content={'취소'} name={'cancel'} onClick={handleCloseClick} />
-          <Btn content={'제보하기'} name={`${isClickedA || isClickedB ? 'suggest-link': 'suggest-disable'}`} link={`${isClickedA ? 'https://forms.gle/S8rcCoCvxAYA6YbGA' : isClickedB ? 'https://forms.gle/jYrE9TeSnXEnfk7S6' : ''}`}/>
+          <Btn
+            content={'제보하기'}
+            name={`${
+              isClickedA || isClickedB ? 'suggest-link' : 'suggest-disable'
+            }`}
+            link={`${
+              isClickedA
+                ? 'https://forms.gle/S8rcCoCvxAYA6YbGA'
+                : isClickedB
+                ? 'https://forms.gle/jYrE9TeSnXEnfk7S6'
+                : ''
+            }`}
+          />
         </div>
       </div>
     </div>

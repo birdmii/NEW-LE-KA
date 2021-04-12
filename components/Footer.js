@@ -4,9 +4,9 @@ import Btn from './Btn';
 
 const Footer = () => {
   return (
-    <div className={`${footerStyles.footer} text-center`}>
-      <div className={` ${footerStyles.flexColumn}`}>
-        <div className={footerStyles.imgContainer}>
+    <div className={`${footerStyles.Footer} text-center`}>
+      <div className={` ${footerStyles['Footer--flexColumn']}`}>
+        <div className={footerStyles['Footer__imgContainer']}>
           <Image
             src="/peeps.png"
             alt="Suggest about NEW・LE・KA"
@@ -15,8 +15,8 @@ const Footer = () => {
             layout="intrinsic"
           />
         </div>
-        <div className={`${footerStyles.textContainer}`}>
-          <p className={`${footerStyles.introduction} bold`}>
+        <div className={`${footerStyles['Footer__textContainer']}`}>
+          <p className={`${footerStyles['textContainer__introduction']} bold`}>
             개발자 누나와 디자이너 동생이 한팀인 <br />
             LIFEGUARD STUDIO 입니다.
             <br />

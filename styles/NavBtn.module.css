@@ -1,4 +1,4 @@
-.navBtn {
+.NavBtn {
   border-radius: 50px;
   font-size: 15px;
   text-align: center;
@@ -6,33 +6,33 @@
   padding: 8px 16px;
 }
 
-.navBtn:hover {
+.NavBtn:hover {
   transform: scale(1.09);
   transition: ease-in-out .2s ;
 }
 
-.btnDonSm {
+.NavBtn--donation--sm {
   background-color: var(--primary100);
   color: var(--primary500);
 }
 
-.btnDonSm:active {
+.NavBtn--donation--sm:active {
   background-color: var(--primary200);
   color: var(--primary500);
 }
 
-.btnSuggestSm {
+.NavBtn--suggest--sm {
   background-color: var(--primary450);
   color: #fff;
 }
 
-.btnSuggestSm:active {
+.NavBtn--suggest--sm:active {
   background-color: var(--primary500);
   color: #fff;
 }
 
 @media (max-width: 1050px) {
-  .navBtn {
+  .NavBtn {
     margin-left: 0;
     margin-right: 10px;
   }

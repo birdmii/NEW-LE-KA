@@ -8,7 +8,7 @@ const NoCard = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className={`flex-center ${cardsStyles.full}`}>
+    <div className={`flex-center ${cardsStyles['Cards--full']}`}>
       <Image
         src="/no-result.png"
         alt="No newsletters"

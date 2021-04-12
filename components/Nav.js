@@ -9,9 +9,9 @@ import MediaQuery from 'react-responsive';
 
 const Nav = ({ query, handleQuery, handleSubmit, handleShowSideNav, handleShowSearchBar, isSearchShow }) => {
 
-  let desktopNav = (
+  const desktopNav = (
     <>
-      <div className={navStyles.logo}>
+      <div className={navStyles['Nav__logo']}>
         <a href="https://www.newleka.xyz/">
           <Image
             src="/logo.png"
@@ -28,7 +28,7 @@ const Nav = ({ query, handleQuery, handleSubmit, handleShowSideNav, handleShowSe
         handleQuery={handleQuery}
         handleSubmit={handleSubmit}
       />
-      <div className={`flex-vertical-center ${navStyles.navBtns}`}>
+      <div className={`flex-vertical-center ${navStyles['Nav__btnContainer']}`}>
         <NavBtn
           content="커피한잔"
           name="donation"
@@ -39,14 +39,14 @@ const Nav = ({ query, handleQuery, handleSubmit, handleShowSideNav, handleShowSe
     </>
   );
 
-  let mobileNav = (
+  const mobileNav = (
     <>
       <Icon
         icon={barsLine}
         style={{ fontSize: '24px' }}
         onClick={handleShowSideNav}
       />
-      <div className={navStyles.mobileLogo}>
+      <div className={navStyles['Nav__logo--mobile']}>
         <a href="https://www.newleka.xyz/">
           <Image
             src="/logo.png"
@@ -69,7 +69,7 @@ const Nav = ({ query, handleQuery, handleSubmit, handleShowSideNav, handleShowSe
   );
 
   return (
-    <nav className={`${navStyles.nav} shadow-2`}>
+    <nav className={`${navStyles.Nav} shadow-2`}>
       <div className={`container flex-vertical-center`}>
         <MediaQuery minWidth={1051}>{desktopNav}</MediaQuery> 
         <MediaQuery maxWidth={1050}>{mobileNav}</MediaQuery> 

@@ -9,8 +9,8 @@ const Cards = ({ category, newsletters }) => {
       <h3 className="bold pt-32">
         {category} <span className="subtitle"> ({count})</span>
       </h3>
-      {newsletters.length > 0 ? (
-        <div className={`mt-16 mb-120 ${cardsStyles.grid}`}>
+      {newsletters.length ? (
+        <div className={`mt-16 mb-120 ${cardsStyles['Cards--grid']}`}>
           {newsletters.map((newsletter) => (
             <Card key={newsletter.id} newsletter={newsletter} />
           ))}
