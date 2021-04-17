@@ -8,6 +8,7 @@ const search = ({ newsletters }) => {
 
   if (searchQuery !== undefined) {
     newsletters = newsletters.filter((item) => {
+      const tags = item.tag.tag;
       let isQueryIncluded = false;
       if (
         item.title.includes(searchQuery) ||
@@ -15,7 +16,7 @@ const search = ({ newsletters }) => {
       ) {
         isQueryIncluded = true;
       }
-      item.tag.forEach((tag) => {
+      tags.forEach((tag) => {
         if (tag.includes(searchQuery)) {
           isQueryIncluded = true;
         }
@@ -52,7 +53,8 @@ const search = ({ newsletters }) => {
 
 export const getStaticProps = async () => {
   const res = await fetch(
-    `https://birdmii.github.io/newsletter-api/newsletters.json`,
+    // `https://birdmii.github.io/newsletter-api/newsletters.json`,
+    `https://newleka.herokuapp.com/newsletters?_limit=-1`,
   );
   const newsletters = await res.json();
 
