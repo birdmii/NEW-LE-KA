@@ -19,7 +19,8 @@ export default function Home({ newsletters, query }) {
 
 export const getStaticProps = async () => {
   const res = await fetch(
-    `https://birdmii.github.io/newsletter-api/newsletters.json`,
+    // `https://birdmii.github.io/newsletter-api/newsletters.json`,
+    `https://newleka.herokuapp.com/newsletters?_limit=-1`,
   );
   const newsletters = await res.json();
 

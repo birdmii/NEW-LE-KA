@@ -36,6 +36,8 @@ const Card = ({ newsletter }) => {
     { code: 'Sun', name: '일' },
   ];
 
+  const tagArr = newsletter.tag.tag;
+  const sendingDays = newsletter.sendingday.day;
   let categoryTitle;
   categoryArr.forEach((item) => {
     if (newsletter.category === item.code) {
@@ -45,7 +47,7 @@ const Card = ({ newsletter }) => {
 
   let sendingTerm;
   sendingTermArr.forEach((item) => {
-    if (item.code === newsletter.sendingTerm) {
+    if (item.code === newsletter.sendingterm) {
       sendingTerm = item.name;
     }
   });
@@ -68,7 +70,7 @@ const Card = ({ newsletter }) => {
           <span className={cardStyles['tagSection__sendingTermTag']}>{sendingTerm}</span>
         </div>
         <div className="mt-8">
-          {newsletter.sendingTerm === 'daily'
+          {newsletter.sendingterm === 'daily'
             ? sendingDayArr.map((day) => {
                 return (
                   <span
@@ -80,7 +82,7 @@ const Card = ({ newsletter }) => {
                 );
               })
             : sendingDayArr.map((day) => {
-                if (newsletter.sendingDay.includes(day.code)) {
+                if (sendingDays.includes(day.code)) {
                   return (
                     <span
                       key={day.code}
@@ -99,7 +101,7 @@ const Card = ({ newsletter }) => {
         <div className="mt-24">
           <h6 className="caption">관련 태그</h6>
           <div className="mt-8 mb-24">
-            {newsletter.tag.map((tag) => {
+            {tagArr.map((tag) => {
               return (
                 <span
                   key={tag}
