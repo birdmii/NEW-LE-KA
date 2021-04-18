@@ -116,7 +116,7 @@ const Card = ({ newsletter }) => {
       </div>
       <a
         target="_blank"
-        href={newsletter.subscriptionLink}
+        href={newsletter.subscriptionlink}
         rel="noopener noreferrer"
       >
         <div className={cardStyles['Card__subscriptionBtn']}>
