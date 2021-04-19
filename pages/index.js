@@ -2,12 +2,11 @@ import Cards from '../components/Cards';
 import Alert from '../components/Alert';
 import MediaQuery from 'react-responsive';
 
-export default function Home({ newsletters, query }) {
-
+export default function Home({ newsletters, alertContent, query }) {
   return (
     <div className="mt-40">
       <MediaQuery minWidth={1051}>
-        <Alert />
+        <Alert alertContent={alertContent}/>
         <Cards category={'랜덤모두보기'} newsletters={newsletters} />
       </MediaQuery>
       <MediaQuery maxWidth={1050}>
@@ -19,10 +18,12 @@ export default function Home({ newsletters, query }) {
 
 export const getStaticProps = async () => {
   const res = await fetch(
-    // `https://birdmii.github.io/newsletter-api/newsletters.json`,
     `https://newleka.herokuapp.com/newsletters?_limit=-1`,
   );
   const newsletters = await res.json();
+
+  const resAlert = await fetch(`https://newleka.herokuapp.com/alerts/1`,);
+  const alertContent = await resAlert.json();
 
   let m = newsletters.length;
   let t;
@@ -36,6 +37,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       newsletters,
+      alertContent
     },
     revalidate: 1,
   };
