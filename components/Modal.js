@@ -40,10 +40,10 @@ const Modal = ({ show, onClose }) => {
     <div className={`${modalStyles['Modal--background']} flex-center`}>
       <div className={modalStyles.Modal}>
         <div className={modalStyles['Modal__textContainer']}>
-          <h3>제보하기</h3>
+          <h3>제안하기</h3>
           <p className={`${modalStyles['textContainer__suggestion']} body-text2 mt-16`}>
-            제보해주셔서 감사합니다! <br />
-            여러분의 소중한 제보 하나하나가 더 나은 뉴레카를 만들어 갑니다!
+            제안해주셔서 감사합니다! <br />
+            여러분의 소중한 피드백 하나하나가 더 나은 뉴레카를 만들어 갑니다!
           </p>
         </div>
         <div className="flex-center">
@@ -63,7 +63,7 @@ const Modal = ({ show, onClose }) => {
                 layout="intrinsic"
               />
               <span className="buttonText mt-24" id="suggestNewleka">
-                뉴레카에 대해 제보하기
+                뉴레카에 대해 제안하기
               </span>
             </div>
           </a>
@@ -84,7 +84,7 @@ const Modal = ({ show, onClose }) => {
                 layout="intrinsic"
               />
               <span className="buttonText mt-24" id="suggestNewsletter">
-                새로운 뉴스레터 제보하기
+                새로운 뉴스레터 알려주기
               </span>
             </div>
           </a>
@@ -92,7 +92,13 @@ const Modal = ({ show, onClose }) => {
         <div className={modalStyles['Modal__btnContainer']}>
           <Btn content={'취소'} name={'cancel'} onClick={handleCloseClick} />
           <Btn
-            content={'제보하기'}
+            content={`${
+              isClickedA
+                ? '제안하기'
+                : isClickedB
+                ? '알려주기'
+                : '제안하기'
+            }`}
             name={`${
               isClickedA || isClickedB ? 'suggest-link' : 'suggest-disable'
             }`}

@@ -34,7 +34,7 @@ const Nav = ({ query, handleQuery, handleSubmit, handleShowSideNav, handleShowSe
           name="donation"
           link="https://donaricano.com/mypage/1679663183_mMG77l"
         />
-        <NavBtn content="제보하기" name="suggest" />
+        <NavBtn content="제안하기" name="suggest" />
       </div>
     </>
   );

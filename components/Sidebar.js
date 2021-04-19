@@ -114,14 +114,14 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
             : `${sideBarStyles['Sidebar--mobile']}`
         }
       >
-        <Alert />
+        {/* <Alert /> */}
         <div className={`${sideBarStyles['Sidebar__btnContainer--mobile']}`}>
           <NavBtn
             content="커피한잔"
             name="donation"
             link="https://donaricano.com/mypage/1679663183_mMG77l"
           />
-          <NavBtn content="제보하기" name="suggest" />
+          <NavBtn content="제안하기" name="suggest" />
         </div>
         <div
           className={`subtitle bold mt-24 ${sideBarStyles['Sidebar__title--mobile']}`}

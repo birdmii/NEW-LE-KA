@@ -42,7 +42,6 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const res = await fetch(
-    // `https://birdmii.github.io/newsletter-api/newsletters.json`,
     `https://newleka.herokuapp.com/newsletters?_limit=-1`,
   );
   let newsletters = await res.json();

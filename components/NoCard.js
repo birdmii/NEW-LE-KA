@@ -18,9 +18,9 @@ const NoCard = () => {
       />
       <div className="text-center mt-24">
         <h3>등록된 뉴스레터가 없어요 ㅠㅠ</h3>
-        <p className="body-text1">알고있는 뉴스레터를 제보해주세요!</p>
+        <p className="body-text1">알고있는 뉴스레터를 알려주세요!</p>
         <a onClick={() => setShowModal(true)}>
-          <Btn content={'제보하기'} name={'suggest'} />
+          <Btn content={'알려주기'} name={'suggest'} />
         </a>
         <Modal onClose={() => setShowModal(false)} show={showModal} />
       </div>
