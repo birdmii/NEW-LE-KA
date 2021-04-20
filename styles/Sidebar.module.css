@@ -42,7 +42,7 @@
   width: 100vw;
   height: 100vh;
   left: -100%;
-  z-index: 99998;
+  z-index: 9999;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(3px);
 }
@@ -70,10 +70,9 @@
 
 .Sidebar__closeBtn--mobile {
   position: absolute;
-  display: flex;
-  width: 100vw;
-  z-index: 999999;
-  justify-content: flex-end;
+  right: 0;
+  text-align: right;
+  z-index: 10000;
   color: #fff;
   padding: 8px;
 }
