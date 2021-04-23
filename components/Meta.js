@@ -47,8 +47,8 @@ const Meta = ({ title, keywords, description }) => {
 };
 
 Meta.defaultProps = {
-  title: 'NEW・LE・KA | Find Your Newsletter',
-  keywords: 'newsletter, 뉴스레터',
+  title: 'NEW・LE・KA | 새로운 뉴스레터를 찾아보세요!',
+  keywords: 'newsletter,뉴스레터,뉴레카,newleka',
   description:
     '새로운 뉴스레터를 찾고 계신가요? NEW・LE・KA(뉴레카)에서 원하는 뉴스레터를 손쉽게 찾아보세요!',
 };
