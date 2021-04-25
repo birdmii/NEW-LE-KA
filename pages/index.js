@@ -16,7 +16,7 @@ export default function Home({ newsletters, alertContent, query }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const res = await fetch(
     `https://newleka.herokuapp.com/newsletters?_limit=-1`,
   );
@@ -39,6 +39,5 @@ export const getStaticProps = async () => {
       newsletters,
       alertContent
     },
-    revalidate: 1,
   };
 };
