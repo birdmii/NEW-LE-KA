@@ -1,3 +1,7 @@
+.Card--skeleton {
+  border-radius: 4px;
+}
+
 .Card {
   position: relative;
   min-width: 300px;

@@ -1,3 +1,6 @@
+.Alert--skeleteon {
+  border-radius: 4px;
+}
 .Alert {
   background-color: #fff;
   color: var(--gray400);
