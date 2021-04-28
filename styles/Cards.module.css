@@ -1,3 +1,23 @@
+@keyframes loading {
+  0% {
+    background-color: #e1e1e4;
+  }
+  50% {
+    background-color: #d3d4d8;
+  }
+  100% {
+    background-color: #e1e1e4;
+  }
+}
+
+.Category__title--skltn {
+  height: 39px;
+  width: 200px;
+  background-color: var(--gray200);
+  animation: loading 2s infinite;
+  border-radius: 8px;
+}
+
 .Cards--grid {
   display: grid;
   grid-template-columns: repeat(3, 300px);
@@ -12,7 +32,7 @@
 
 @media (max-width: 1220px) {
   .Cards--grid {
-    grid-template-columns: repeat(2, 300px);
+    grid-template-columns: repeat(2, 2fr);
     column-gap: 18px;
   }
 }
@@ -24,10 +44,6 @@
 }
 
 @media (max-width: 1050px) {
-  .Cards--grid {
-    grid-template-columns: repeat(2, 2fr);
-  }
-
   .Cards--full {
     min-width: 90vw;
   }

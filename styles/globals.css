@@ -61,8 +61,12 @@ body {
   letter-spacing: 1px;
 }
 
-* {
+*,
+*:after,
+*:before{
   box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 a {
@@ -247,6 +251,10 @@ p, span {
   max-width: 1232px;
   margin: 0 auto;
   padding: 0 20px;
+}
+
+.w-100 {
+  width: 100%;
 }
 
 .flex {

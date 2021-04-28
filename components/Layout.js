@@ -17,7 +17,7 @@ const Layout = ({ children, query, handleQuery, handleSubmit, handleShowSearchBa
       <Nav query={query} handleQuery={handleQuery} handleSubmit={handleSubmit} handleShowSideNav={handleShowSideNav} handleShowSearchBar={handleShowSearchBar} isSearchShow={isSearchShow} />
       <div className="container flex-horizontal-center">
         <Sidebar isSideBarOpen={isSideBarOpen} handleShowSideNav={handleShowSideNav}/>
-        <div>
+        <div className="w-100">
           {children}
         </div>
       </div>
