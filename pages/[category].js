@@ -25,11 +25,7 @@ const Category = ({ newsletters, query }) => {
 
   return (
     <div>
-      {newsletters ? (
-        <Cards category={categoryTitle} newsletters={newsletters} />
-      ) : (
-        <SkeletonGrid />
-      )}
+      <Cards category={categoryTitle} newsletters={newsletters} />
     </div>
   );
 };

@@ -47,11 +47,7 @@ const search = ({ newsletters }) => {
 
   return (
     <div>
-      {newsletters ? (
-        <Cards category={'검색 결과'} newsletters={newsletters} />
-      ) : (
-        <SkeletonGrid />
-      )}
+      <Cards category={'검색 결과'} newsletters={newsletters} />
     </div>
   );
 };

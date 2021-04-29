@@ -8,24 +8,11 @@ export default function Home({ newsletters, alertContent }) {
   return (
     <div className="mt-40">
       <MediaQuery minWidth={1051}>
-        {alertContent ? (
-          <Alert alertContent={alertContent} />
-        ) : (
-          <SkeletonAlert />
-        )}
-
-        {newsletters ? (
-          <Cards category={'랜덤모두보기'} newsletters={newsletters} />
-        ) : (
-          <SkeletonGrid />
-        )}
+        <Alert alertContent={alertContent} />
+        <Cards category={'랜덤모두보기'} newsletters={newsletters} />
       </MediaQuery>
       <MediaQuery maxWidth={1050}>
-        {newsletters ? (
-          <Cards category={'랜덤모두보기'} newsletters={newsletters} />
-        ) : (
-          <SkeletonGrid />
-        )}
+        <Cards category={'랜덤모두보기'} newsletters={newsletters} />
       </MediaQuery>
     </div>
   );
