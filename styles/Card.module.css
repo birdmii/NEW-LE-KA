@@ -52,33 +52,6 @@
   animation: loading 2s infinite;
 }
 
-.Card__caption--skltn {
-  height: 17px;
-  border-radius: 4px;
-  width: 60px;
-  background-color: var(--gray200);
-  animation: loading 2s infinite;
-}
-
-.tagSection__sendingTermTag--skltn {
-  box-sizing: content-box;
-  padding: 4px 8px;
-  background-color: var(--gray200);
-  border-radius: 8px;
-  width: 24px;
-  height: 17px;
-  animation: loading 2s infinite;
-}
-
-.tagSection__sendingDayTag--skltn {
-  background-color: var(--gray200);
-  margin-right: 4px;
-  border-radius: 8px;
-  width: 224px;
-  height: 26px;
-  animation: loading 2s infinite;
-}
-
 .Card__subscriptionBtn--skltn {
   position: absolute;
   display: flex;
