@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import Cards from '../components/Cards';
+import SkeletonGrid from '../components/SkeletonGrid';
 
 const categories = [
   { code: 'economy', title: '경제' },
@@ -24,7 +25,11 @@ const Category = ({ newsletters, query }) => {
 
   return (
     <div>
-      <Cards category={categoryTitle} newsletters={newsletters} />
+      {newsletters ? (
+        <Cards category={categoryTitle} newsletters={newsletters} />
+      ) : (
+        <SkeletonGrid />
+      )}
     </div>
   );
 };
