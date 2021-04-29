@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import Cards from '../components/Cards';
-import SkeletonGrid from '../components/SkeletonGrid';
 
 const categories = [
   { code: 'economy', title: '경제' },

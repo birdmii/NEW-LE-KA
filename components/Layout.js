@@ -4,7 +4,7 @@ import Nav from './Nav';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 
-const Layout = ({ children, query, handleQuery, handleSubmit, handleShowSearchBar, isSearchShow}) => {
+const Layout = ({ children, query, handleQuery, handleSubmit, handleShowSearchBar, isSearchShow, handleClick}) => {
   const [isSideBarOpen, setSideBar] = useState(false);
 
   const handleShowSideNav = () => {
@@ -16,7 +16,7 @@ const Layout = ({ children, query, handleQuery, handleSubmit, handleShowSearchBa
       <Meta />
       <Nav query={query} handleQuery={handleQuery} handleSubmit={handleSubmit} handleShowSideNav={handleShowSideNav} handleShowSearchBar={handleShowSearchBar} isSearchShow={isSearchShow} />
       <div className="container flex-horizontal-center">
-        <Sidebar isSideBarOpen={isSideBarOpen} handleShowSideNav={handleShowSideNav}/>
+        <Sidebar isSideBarOpen={isSideBarOpen} handleShowSideNav={handleShowSideNav} handleClick={handleClick}/>
         <div className="w-100">
           {children}
         </div>

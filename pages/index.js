@@ -1,18 +1,20 @@
 import Cards from '../components/Cards';
 import Alert from '../components/Alert';
 import MediaQuery from 'react-responsive';
-import SkeletonGrid from '../components/SkeletonGrid';
-import SkeletonAlert from '../components/SkeletonAlert';
 
 export default function Home({ newsletters, alertContent }) {
   return (
-    <div className="mt-40">
+    <div>
       <MediaQuery minWidth={1051}>
-        <Alert alertContent={alertContent} />
-        <Cards category={'랜덤모두보기'} newsletters={newsletters} />
+        <div className="mt-40">
+          <Alert alertContent={alertContent} />
+          <Cards category={'랜덤모두보기'} newsletters={newsletters} />
+        </div>
       </MediaQuery>
       <MediaQuery maxWidth={1050}>
-        <Cards category={'랜덤모두보기'} newsletters={newsletters} />
+        <div>
+          <Cards category={'랜덤모두보기'} newsletters={newsletters} />
+        </div>
       </MediaQuery>
     </div>
   );

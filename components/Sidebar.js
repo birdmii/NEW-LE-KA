@@ -11,7 +11,7 @@ import MediaQuery from 'react-responsive';
 // import { Icon, InlineIcon } from '@iconify/react';
 // import angleLine from '@iconify/icons-clarity/angle-line';
 
-const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
+const Sidebar = ({ isSideBarOpen, handleShowSideNav, handleClick }) => {
   const router = useRouter();
   const { category } = router.query;
 
@@ -45,7 +45,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
       <ul className={`btn-text medium`}>
         <Link href="/">
           {category === undefined ? (
-            <a href="">
+            <a href="" onClick={handleClick}>
               <li
                 className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected} flex-vertical-center`}
               >
@@ -54,7 +54,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
               </li>
             </a>
           ) : (
-            <a href="">
+            <a href="" onClick={handleClick}>
               <li className={`${sideBarStyles['Sidbar__categoryTitle']} flex-vertical-center`}>
                 {' '}
                 랜덤모두보기
@@ -66,7 +66,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
           if (item.code === category) {
             return (
               <Link key={item.code} href="/[category]" as={`/${item.code}`}>
-                <a href="">
+                <a href="" onClick={handleClick}>
                   <li
                     className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected}`}
                     id={item.code}
@@ -79,7 +79,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
           } else {
             return (
               <Link key={item.code} href="/[category]" as={`/${item.code}`}>
-                <a href="">
+                <a href="" onClick={handleClick}>
                   <li className={`${sideBarStyles['Sidbar__categoryTitle']}`} id={item.code}>
                     {item.title}
                   </li>
@@ -114,7 +114,6 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav }) => {
             : `${sideBarStyles['Sidebar--mobile']}`
         }
       >
-        {/* <Alert /> */}
         <div className={`${sideBarStyles['Sidebar__btnContainer--mobile']}`}>
           <NavBtn
             content="커피한잔"

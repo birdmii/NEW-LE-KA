@@ -4,13 +4,13 @@ import Layout from '../components/Layout';
 import '../styles/globals.css';
 import pageView from '../lib/gtag';
 import SkeletonGrid from '../components/SkeletonGrid';
-import SkeletonAlert from '../components/SkeletonAlert';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [query, setQuery] = useState('');
   const [isSearchShow, setSearchShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [currCategory, setCategory] = useState('');
 
   useEffect(() => {
     const start = () => {
@@ -48,14 +48,22 @@ function MyApp({ Component, pageProps }) {
     router.push(`/search?q=${query}`);
     setSearchShow(false);
   };
+
+  const handleClick = (e) => {
+    let clicked = e.target.id;
+    let currentCategory = clicked === '' ? 'home' : clicked;
+    setCategory(currentCategory);
+  }
+
   return (
     <Layout
       handleQuery={handleQuery}
       handleSubmit={handleSubmit}
       handleShowSearchBar={handleShowSearchBar}
       isSearchShow={isSearchShow}
+      handleClick={handleClick}
     >
-      {loading ? <SkeletonGrid /> : <Component {...pageProps} query={query} />}
+      {loading ? <SkeletonGrid category={currCategory}/> : <Component {...pageProps} query={query} />}
     </Layout>
   );
 }
