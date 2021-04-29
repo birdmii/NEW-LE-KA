@@ -2,6 +2,9 @@
   background-color: var(--gray100);
   padding: 30px 80px;
   margin-top: 80px;
+  position: static;
+  bottom: 0;
+  width: 100%;
 }
 
 .Footer--flexColumn {
@@ -88,6 +91,6 @@
   }
 
   .textContainer__introduction {
-    font-size: 20px;
+    font-size: 19px;
   }
 }
