@@ -1,3 +1,71 @@
+@keyframes loading {
+  0% {
+    background-color: #e1e1e4;
+  }
+  50% {
+    background-color: #d3d4d8;
+  }
+  100% {
+    background-color: #e1e1e4;
+  }
+}
+
+.Card--skltn {
+  position: relative;
+  min-width: 300px;
+  height: 584px;
+  background-color: var(--gray100);
+  padding: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  text-align: justify;
+}
+
+.Card__category--skltn {
+  box-sizing: content-box;
+  border-radius: 8px;
+  padding: 4px 8px;
+  height: 17px;
+  width: 36px;
+  background-color: var(--gray200);
+  animation: loading 2s infinite;
+}
+
+.Card__title--skltn {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--gray200);
+  animation: loading 2s infinite;
+}
+
+.Card__description--skltn {
+  margin-top: 14px;
+}
+
+.Card__desciprtionText--skltn {
+  width: 100%;
+  height: 17px;
+  border-radius: 4px;
+  margin-top: 4px;
+  background-color: var(--gray200);
+  animation: loading 2s infinite;
+}
+
+.Card__subscriptionBtn--skltn {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  height: 56px;
+  background-color: var(--gray200);
+  border-radius: 16px;
+  animation: loading 2s infinite;
+}
+
 .Card {
   position: relative;
   min-width: 300px;
