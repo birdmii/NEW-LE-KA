@@ -50,8 +50,8 @@ function MyApp({ Component, pageProps }) {
   };
 
   const handleClick = (e) => {
-    let clicked = e.target.id;
-    let currentCategory = clicked === '' ? 'home' : clicked;
+    const clicked = e.target.id;
+    const currentCategory = clicked === '' ? 'home' : clicked;
     setCategory(currentCategory);
   }
 

@@ -29,7 +29,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav, handleClick }) => {
     { code: 'trend', title: '트렌드' },
   ];
 
-  let desktopSideBar = (
+  const desktopSideBar = (
     <div className={`mt-40 ${sideBarStyles.Sidebar}`}>
       <div
         className={`subtitle bold flex-vertical-center flex-space-between ${sideBarStyles['Sidebar__title']}`}
@@ -92,7 +92,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav, handleClick }) => {
     </div>
   );
 
-  let mobileSideBar = isSideBarOpen ? (
+  const mobileSideBar = isSideBarOpen ? (
     <div
       className={
         isSideBarOpen

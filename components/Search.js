@@ -33,7 +33,7 @@ const Search = ({
     </div>
   );
 
-  let mobileSearch = isSearchShow ? (
+  const mobileSearch = isSearchShow ? (
     <div className={searchStyles['Search__background--mobile']}>
       <div className={searchStyles['Search__container--mobile']}>
         <div className={`${searchStyles['Search__search--mobile']}`}>
@@ -75,8 +75,6 @@ const Search = ({
       <MediaQuery maxWidth={1050}>{mobileSearch}</MediaQuery>
     </>
   );
-
-  // return
 };
 
 export default Search;
