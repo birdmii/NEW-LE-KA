@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
 :root {
   --background: #f9f9f9;
@@ -19,18 +19,6 @@
   --gray500: #2a2b2f;
   --gray600: #1f2022;
 
-  /* --design: #f34848;
-  --education: #f47113;
-  --career: #f9c540;
-  --marketing: #db9918;
-  --sci-tech: #9fe05e;
-  --lifestyle: #1ae885;
-  --news: #1adbe8;
-  --travel: #1a79e8;
-  --society: #8e5cf9;
-  --economy: #d069f4;
-  --culture: #f854b6; */
-
   --economy: #f34848;
   --education: #f47113;
   --news: #f9c540;
@@ -43,12 +31,9 @@
   --tech: #d069f4;
   --trend: #f854b6;
 
-  --thin: 100;
-  --light: 300;
   --regular: 400;
   --medium: 500;
   --bold: 700;
-  --black: 900;
 }
 
 html,

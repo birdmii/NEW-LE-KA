@@ -17,6 +17,12 @@
   padding-right: 40px;
 }
 
+.imgContainer__img {
+  width: 100%;
+  max-width: 430px;
+  height: auto;
+}
+
 .Footer__textContainer {
   padding: 40px 0;
   text-align: left;

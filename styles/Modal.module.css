@@ -49,6 +49,12 @@
   color: var(--gray400);
 }
 
+.suggestion__img {
+  width: 100%;
+  max-width: 210px;
+  height: auto;
+}
+
 @media (max-width: 575px) {
   .Modal {
     width: 80vw;
