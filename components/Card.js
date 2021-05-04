@@ -65,7 +65,7 @@ const Card = ({ newsletter }) => {
       </p>
 
       <div className={cardStyles['Card__tagSection']}>
-        <h6 className="caption">발행 주기</h6>
+        <div className="caption">발행 주기</div>
         <div className="mt-8">
           <span className={cardStyles['tagSection__sendingTermTag']}>{sendingTerm}</span>
         </div>
@@ -99,7 +99,7 @@ const Card = ({ newsletter }) => {
         </div>
 
         <div className="mt-24">
-          <h6 className="caption">관련 태그</h6>
+          <div className="caption">관련 태그</div>
           <div className="mt-8 mb-24">
             {tagArr.map((tag) => {
               return (

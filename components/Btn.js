@@ -40,7 +40,7 @@ const Btn = ({ content, name, link, onClick }) => {
     );
   } else if (name === 'suggest-link') {
     btn = (
-      <a href={link} target="_blank">
+      <a href={link} target="_blank" rel="noopener">
         <button
           className={`${btnClass} ${btnStyles['Btn--md--default']}`}
         >

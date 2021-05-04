@@ -45,45 +45,46 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav, handleClick }) => {
       <ul className={`btn-text medium`}>
         <Link href="/">
           {category === undefined ? (
-            <a href="" onClick={handleClick}>
-              <li
-                className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected} flex-vertical-center`}
-              >
-                {' '}
-                랜덤모두보기
-              </li>
-            </a>
+            <li
+              className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected} flex-vertical-center`}
+              onClick={handleClick}
+            >
+              {' '}
+              랜덤모두보기
+            </li>
           ) : (
-            <a href="" onClick={handleClick}>
-              <li className={`${sideBarStyles['Sidbar__categoryTitle']} flex-vertical-center`}>
-                {' '}
-                랜덤모두보기
-              </li>
-            </a>
+            <li
+              className={`${sideBarStyles['Sidbar__categoryTitle']} flex-vertical-center`}
+              onClick={handleClick}
+            >
+              {' '}
+              랜덤모두보기
+            </li>
           )}
         </Link>
         {categories.map((item) => {
           if (item.code === category) {
             return (
               <Link key={item.code} href="/[category]" as={`/${item.code}`}>
-                <a href="" onClick={handleClick}>
-                  <li
-                    className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected}`}
-                    id={item.code}
-                  >
-                    {item.title}
-                  </li>
-                </a>
+                <li
+                  className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected}`}
+                  id={item.code}
+                  onClick={handleClick}
+                >
+                  {item.title}
+                </li>
               </Link>
             );
           } else {
             return (
               <Link key={item.code} href="/[category]" as={`/${item.code}`}>
-                <a href="" onClick={handleClick}>
-                  <li className={`${sideBarStyles['Sidbar__categoryTitle']}`} id={item.code}>
-                    {item.title}
-                  </li>
-                </a>
+                <li
+                  className={`${sideBarStyles['Sidbar__categoryTitle']}`}
+                  id={item.code}
+                  onClick={handleClick}
+                >
+                  {item.title}
+                </li>
               </Link>
             );
           }
@@ -130,48 +131,44 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav, handleClick }) => {
         <ul className={`btn-text medium`}>
           <Link href="/">
             {category === undefined ? (
-              <a href="">
-                <li
-                  className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected} flex-vertical-center`}
-                >
-                  {' '}
-                  랜덤모두보기
-                </li>
-              </a>
+              <li
+                className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected} flex-vertical-center`}
+              >
+                {' '}
+                랜덤모두보기
+              </li>
             ) : (
-              <a href="">
-                <li
-                  className={`${sideBarStyles['Sidbar__categoryTitle']} flex-vertical-center`}
-                  onClick={handleShowSideNav}
-                >
-                  {' '}
-                  랜덤모두보기
-                </li>
-              </a>
+              <li
+                className={`${sideBarStyles['Sidbar__categoryTitle']} flex-vertical-center`}
+                onClick={handleShowSideNav}
+              >
+                {' '}
+                랜덤모두보기
+              </li>
             )}
           </Link>
           {categories.map((item) => {
             if (item.code === category) {
               return (
                 <Link key={item.code} href="/[category]" as={`/${item.code}`}>
-                  <a href="">
-                    <li
-                      className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected}`}
-                      id={item.code}
-                    >
-                      {item.title}
-                    </li>
-                  </a>
+                  <li
+                    className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected}`}
+                    id={item.code}
+                  >
+                    {item.title}
+                  </li>
                 </Link>
               );
             } else {
               return (
                 <Link key={item.code} href="/[category]" as={`/${item.code}`}>
-                  <a href="" onClick={handleShowSideNav}>
-                    <li className={`${sideBarStyles['Sidbar__categoryTitle']}`} id={item.code}>
-                      {item.title}
-                    </li>
-                  </a>
+                  <li
+                    className={`${sideBarStyles['Sidbar__categoryTitle']}`}
+                    id={item.code}
+                    onClick={handleShowSideNav}
+                  >
+                    {item.title}
+                  </li>
                 </Link>
               );
             }

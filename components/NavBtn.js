@@ -5,7 +5,7 @@ import Modal from './Modal';
 const NavBtn = ({ content, name, link }) => {
   const [showModal, setShowModal] = useState(false);
   return name === 'donation' ? (
-    <a href={link} target="_blank">
+    <a href={link} target="_blank" rel="noopener">
       <button className={`${navBtnStyles.NavBtn} ${navBtnStyles['NavBtn--donation--sm']}`}>
         {content}
       </button>
