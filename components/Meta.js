@@ -9,6 +9,9 @@ const Meta = ({ title, keywords, description }) => {
       <meta name="description" content={description} />
       <title>{title}</title>
 
+      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" as="style" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" />
+
       {/* <!-- Open Graph / Facebook --> */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://www.newleka.xyz/" />
