@@ -9,32 +9,32 @@ const Meta = ({ title, keywords, description }) => {
       <meta name="description" content={description} />
       <title>{title}</title>
 
-      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" as="style" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+        rel="stylesheet"
+      />
 
       {/* <!-- Open Graph / Facebook --> */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://www.newleka.xyz/" />
       <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
       <meta
-        property="og:description"
-        content={description}
+        property="og:image"
+        content="https://www.newleka.xyz/metadata-img.png"
       />
-      <meta property="og:image" content="https://www.newleka.xyz/metadata-img.png" />
 
       {/* <!-- Twitter --> */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content="https://www.newleka.xyz/" />
+      <meta property="twitter:title" content={title} />
+      <meta property="twitter:description" content={description} />
       <meta
-        property="twitter:title"
-        content={title}
-      />
-      <meta
-        property="twitter:description"
-        content={description}
-      />
-      <meta property="twitter:image" content="https://www.newleka.xyz/metadata-img.png"></meta>
-      
+        property="twitter:image"
+        content="https://www.newleka.xyz/metadata-img.png"
+      ></meta>
+
       <meta
         name="google-site-verification"
         content="eKuO8qwY0TSHjwS20pJVPHsxlNEuUg3sJzginrPca9c"
