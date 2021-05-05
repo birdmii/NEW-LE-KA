@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 const Meta = ({ title, keywords, description }) => {
   return (
@@ -9,10 +10,23 @@ const Meta = ({ title, keywords, description }) => {
       <meta name="description" content={description} />
       <title>{title}</title>
 
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
-        rel="stylesheet"
+        rel="preload"
+        href="/fonts/NotoSans-Regular.woff2"
+        as="font"
+        crossOrigin=""
+      />
+      <link
+        rel="preload"
+        href="/fonts/NotoSans-Medium.woff2"
+        as="font"
+        crossOrigin=""
+      />
+      <link
+        rel="preload"
+        href="/fonts/NotoSans-Bold.woff2"
+        as="font"
+        crossOrigin=""
       />
 
       {/* <!-- Open Graph / Facebook --> */}
