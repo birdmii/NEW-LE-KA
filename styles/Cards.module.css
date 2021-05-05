@@ -30,6 +30,18 @@
   flex-direction: column;
 }
 
+.NoCard__img {
+  width: 100%;
+  max-width: 387px;
+  height: auto;
+}
+
+.Error404__img {
+  width: 100%;
+  max-width: 519px;
+  height: auto;
+}
+
 @media (max-width: 1220px) {
   .Cards--grid {
     grid-template-columns: repeat(2, 2fr);

@@ -1,16 +1,17 @@
 import cardsStyles from '../styles/Cards.module.css'
-import Image from 'next/image'
+// import Image from 'next/image'
 import Btn from '../components/Btn'
 
 const FourOFour = () => {
   return (
     <div className={`${cardsStyles['Cards--full']} flex-vertical-center mt-80`}>
-      <Image
+      {/* <Image
         src="/404.png"
         alt="No newsletters"
         width={519}
         height={409}
-      />
+      /> */}
+      <img src="/404.png" alt="No newsletters" className={cardsStyles['Error404__img']} />
       <div className="text-center mt-24">
         <h3>이런! 찾을 수 없는 페이지네요...</h3>
         

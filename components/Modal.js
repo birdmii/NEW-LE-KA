@@ -1,5 +1,5 @@
 import modalStyles from '../styles/Modal.module.css';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Btn from './Btn';
 import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
@@ -41,7 +41,9 @@ const Modal = ({ show, onClose }) => {
       <div className={modalStyles.Modal}>
         <div className={modalStyles['Modal__textContainer']}>
           <h3>제안하기</h3>
-          <p className={`${modalStyles['textContainer__suggestion']} body-text2 mt-16`}>
+          <p
+            className={`${modalStyles['textContainer__suggestion']} body-text2 mt-16`}
+          >
             제안해주셔서 감사합니다! <br />
             여러분의 소중한 피드백 하나하나가 더 나은 뉴레카를 만들어 갑니다!
           </p>
@@ -54,13 +56,19 @@ const Modal = ({ show, onClose }) => {
               } shadow-1 ${isClickedA ? modalStyles.selected : ''}`}
               id="suggestNewleka"
             >
-              <Image
+              {/* <Image
                 src="/peep-1.png"
                 id="suggestNewleka"
                 alt="Suggest about NEW・LE・KA"
                 width={210}
                 height={246}
                 layout="intrinsic"
+              /> */}
+              <img
+                src="/peep-1.png"
+                id="suggestNewleka"
+                alt="Suggest about NEW・LE・KA"
+                className={modalStyles['suggestion__img']}
               />
               <span className="buttonText mt-24" id="suggestNewleka">
                 뉴레카에 대해 제안하기
@@ -75,13 +83,19 @@ const Modal = ({ show, onClose }) => {
               } shadow-1 ${isClickedB ? modalStyles.selected : ''}`}
               id="suggestNewsletter"
             >
-              <Image
+              {/* <Image
                 src="/peep-2.png"
                 id="suggestNewsletter"
                 alt="Suggest about NEW・LE・KA"
                 width={210}
                 height={246}
                 layout="intrinsic"
+              /> */}
+              <img
+                src="/peep-2.png"
+                id="suggestNewsletter"
+                alt="Suggest about Newsletters"
+                className={modalStyles['suggestion__img']}
               />
               <span className="buttonText mt-24" id="suggestNewsletter">
                 새로운 뉴스레터 알려주기
@@ -93,11 +107,7 @@ const Modal = ({ show, onClose }) => {
           <Btn content={'취소'} name={'cancel'} onClick={handleCloseClick} />
           <Btn
             content={`${
-              isClickedA
-                ? '제안하기'
-                : isClickedB
-                ? '알려주기'
-                : '제안하기'
+              isClickedA ? '제안하기' : isClickedB ? '알려주기' : '제안하기'
             }`}
             name={`${
               isClickedA || isClickedB ? 'suggest-link' : 'suggest-disable'

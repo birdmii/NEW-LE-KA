@@ -1,5 +1,5 @@
 import footerStyles from '../styles/Footer.module.css';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Btn from './Btn';
 
 const Footer = () => {
@@ -7,13 +7,14 @@ const Footer = () => {
     <div className={`${footerStyles.Footer} text-center`}>
       <div className={` ${footerStyles['Footer--flexColumn']}`}>
         <div className={footerStyles['Footer__imgContainer']}>
-          <Image
+          {/* <Image
             src="/peeps.png"
             alt="Suggest about NEW・LE・KA"
             width={430}
             height={359}
             layout="intrinsic"
-          />
+          /> */}
+          <img src="/peeps.png" alt="Suggest about NEW・LE・KA" className={footerStyles['imgContainer__img']} />
         </div>
         <div className={`${footerStyles['Footer__textContainer']}`}>
           <p className={`${footerStyles['textContainer__introduction']} bold`}>

@@ -42,13 +42,10 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const res = await fetch(
-    `https://newleka.herokuapp.com/newsletters?_limit=-1`,
+    `https://newleka.herokuapp.com/newsletters?category=${params.category}`,
   );
   let newsletters = await res.json();
 
-  newsletters = newsletters.filter(
-    (newsletter) => newsletter.category === params.category,
-  );
   return {
     props: {
       newsletters,

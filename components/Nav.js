@@ -1,5 +1,5 @@
 import navStyles from '../styles/Nav.module.css';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Search from './Search';
 import NavBtn from './NavBtn';
 import { Icon } from '@iconify/react';
@@ -7,20 +7,27 @@ import barsLine from '@iconify/icons-clarity/bars-line';
 import searchLine from '@iconify/icons-clarity/search-line';
 import MediaQuery from 'react-responsive';
 
-const Nav = ({ query, handleQuery, handleSubmit, handleShowSideNav, handleShowSearchBar, isSearchShow }) => {
-
+const Nav = ({
+  query,
+  handleQuery,
+  handleSubmit,
+  handleShowSideNav,
+  handleShowSearchBar,
+  isSearchShow,
+}) => {
   const desktopNav = (
     <>
       <div className={navStyles['Nav__logo']}>
         <a href="https://www.newleka.xyz/">
-          <Image
+          {/* <Image
             src="/logo.png"
             alt="NEW・LE・KA Logo"
             width={127}
             height={32}
             layout="fixed"
             priority="true"
-          />
+          /> */}
+          <img src="/logo.png" alt="NEW・LE・KA Logo" width={127} height={32} />
         </a>
       </div>
       <Search
@@ -48,16 +55,21 @@ const Nav = ({ query, handleQuery, handleSubmit, handleShowSideNav, handleShowSe
       />
       <div className={navStyles['Nav__logo--mobile']}>
         <a href="https://www.newleka.xyz/">
-          <Image
+          {/* <Image
             src="/logo.png"
             alt="NEW・LE・KA Logo"
             width={127}
             height={32}
             layout="fixed"
-          />
+          /> */}
+          <img src="/logo.png" alt="NEW・LE・KA Logo" width={127} height={32} />
         </a>
       </div>
-      <Icon icon={searchLine} style={{ fontSize: '24px' }} onClick={handleShowSearchBar}/>
+      <Icon
+        icon={searchLine}
+        style={{ fontSize: '24px' }}
+        onClick={handleShowSearchBar}
+      />
       <Search
         query={query}
         handleQuery={handleQuery}
@@ -71,8 +83,8 @@ const Nav = ({ query, handleQuery, handleSubmit, handleShowSideNav, handleShowSe
   return (
     <nav className={`${navStyles.Nav} shadow-2`}>
       <div className={`container flex-vertical-center`}>
-        <MediaQuery minWidth={1051}>{desktopNav}</MediaQuery> 
-        <MediaQuery maxWidth={1050}>{mobileNav}</MediaQuery> 
+        <MediaQuery minWidth={1051}>{desktopNav}</MediaQuery>
+        <MediaQuery maxWidth={1050}>{mobileNav}</MediaQuery>
       </div>
     </nav>
   );
