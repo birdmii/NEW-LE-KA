@@ -45,6 +45,7 @@ function MyApp({ Component, pageProps }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setCategory('');
     router.push(`/search?q=${query}`);
     setSearchShow(false);
   };
