@@ -7,10 +7,13 @@ const Cards = ({ category, newsletters }) => {
   return (
     <>
       <h3 className="bold pt-32">
-        {category} <span className="subtitle"> ({count})</span>
+        {category}{' '}
+        {category !== '랜덤모두보기' ? (
+          <span className="subtitle"> ({count})</span>
+        ) : null}
       </h3>
       {count ? (
-        <div className={`mt-16 mb-120 ${cardsStyles['Cards--grid']}`}>
+        <div className={`mt-16 ${cardsStyles['Cards--grid']}`}>
           {newsletters.map((newsletter) => (
             <Card key={newsletter.id} newsletter={newsletter} />
           ))}
