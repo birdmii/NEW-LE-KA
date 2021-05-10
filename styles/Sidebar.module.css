@@ -6,12 +6,12 @@
 }
 
 .Sidebar__title {
-  padding: 11px 0px 16px 11px;
+  padding: 11px 0px 11px 11px;
 }
 
 .Sidbar__categoryTitle {
-  padding: 13px 16px;
-  margin-top: 4px;
+  padding: 9px 16px;
+  margin-top: 3px;
   color: var(--gray400);
   width: 100%;
   cursor: pointer;

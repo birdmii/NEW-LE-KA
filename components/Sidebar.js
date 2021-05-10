@@ -32,9 +32,9 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav, handleClick }) => {
   const desktopSideBar = (
     <div className={`mt-40 ${sideBarStyles.Sidebar}`}>
       <div
-        className={`subtitle bold flex-vertical-center flex-space-between ${sideBarStyles['Sidebar__title']}`}
+        className={`subtitle bold flex-space-between ${sideBarStyles['Sidebar__title']}`}
       >
-        <span>카테고리</span>
+        카테고리
         {/* <span className="body-text2">
       필터
       <Icon icon={angleLine} className="ml-4"/>
@@ -46,7 +46,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav, handleClick }) => {
         <Link href="/">
           {category === undefined ? (
             <li
-              className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected} flex-vertical-center`}
+              className={`${sideBarStyles['Sidbar__categoryTitle']} ${sideBarStyles.selected}`}
               onClick={handleClick}
             >
               {' '}
@@ -54,7 +54,7 @@ const Sidebar = ({ isSideBarOpen, handleShowSideNav, handleClick }) => {
             </li>
           ) : (
             <li
-              className={`${sideBarStyles['Sidbar__categoryTitle']} flex-vertical-center`}
+              className={`${sideBarStyles['Sidbar__categoryTitle']}`}
               onClick={handleClick}
             >
               {' '}
