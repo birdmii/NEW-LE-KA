@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/Layout';
 import '../styles/globals.css';
-import pageView from '../lib/gtag';
+// import pageView from '../lib/gtag';
 import SkeletonGrid from '../components/SkeletonGrid';
 
 function MyApp({ Component, pageProps }) {
@@ -20,18 +20,18 @@ function MyApp({ Component, pageProps }) {
       setLoading(false);
     };
 
-    const handleRouteChange = (url) => {
-      pageView(url);
-    };
+    // const handleRouteChange = (url) => {
+    //   pageView(url);
+    // };
     router.events.on('routeChangeStart', start);
     router.events.on('routeChangeComplete', end);
     router.events.on('routeChangeError', end);
-    router.events.on('routerChangeComplete', handleRouteChange);
+    // router.events.on('routerChangeComplete', handleRouteChange);
     return () => {
       router.events.off('routeChangeStart', start);
       router.events.off('routeChangeComplete', end);
       router.events.off('routeChangeError', end);
-      router.events.off('routeChangeComplete', handleRouteChange);
+      // router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
 
