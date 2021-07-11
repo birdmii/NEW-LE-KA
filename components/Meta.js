@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import Link from 'next/link';
+import Head from "next/head";
+import Link from "next/link";
 
 const Meta = ({ title, keywords, description }) => {
   return (
@@ -51,7 +51,7 @@ const Meta = ({ title, keywords, description }) => {
 
       <meta
         name="google-site-verification"
-        content="eKuO8qwY0TSHjwS20pJVPHsxlNEuUg3sJzginrPca9c"
+        content="pdHrVJAlANrHtBrWZwh8UXmDEjHPkGkuhor1Fd_4DU0"
       />
       <meta
         name="naver-site-verification"
@@ -64,10 +64,10 @@ const Meta = ({ title, keywords, description }) => {
 };
 
 Meta.defaultProps = {
-  title: 'NEW・LE・KA | 새로운 뉴스레터를 찾아보세요!',
-  keywords: 'newsletter,뉴스레터,뉴레카,newleka',
+  title: "NEW・LE・KA | 새로운 뉴스레터를 찾아보세요!",
+  keywords: "newsletter,뉴스레터,뉴레카,newleka",
   description:
-    '새로운 뉴스레터를 찾고 계신가요? NEW・LE・KA(뉴레카)에서 원하는 뉴스레터를 손쉽게 찾아보세요!',
+    "새로운 뉴스레터를 찾고 계신가요? NEW・LE・KA(뉴레카)에서 원하는 뉴스레터를 손쉽게 찾아보세요!",
 };
 
 export default Meta;
