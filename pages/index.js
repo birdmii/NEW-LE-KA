@@ -7,6 +7,15 @@ import SkeletonCard from "../components/SkeletonCard";
 import cardsStyles from "../styles/Cards.module.css";
 
 export default function Home({ newsletters, newslettersCnt, alertContent }) {
+  let m = newsletters.length;
+  let t;
+  let i;
+  while (m) {
+    i = Math.floor(Math.random() * m--);
+    t = newsletters[m];
+    newsletters[m] = newsletters[i];
+    newsletters[i] = t;
+  }
   const [newsletterList, setNewsletterList] = useState(newsletters);
   const [hasMore, setHasMore] = useState(true);
 
@@ -87,15 +96,15 @@ export const getStaticProps = async () => {
   );
   const newslettersCnt = await resNewslettersCnt.json();
 
-  let m = newsletters.length;
-  let t;
-  let i;
-  while (m) {
-    i = Math.floor(Math.random() * m--);
-    t = newsletters[m];
-    newsletters[m] = newsletters[i];
-    newsletters[i] = t;
-  }
+  // let m = newsletters.length;
+  // let t;
+  // let i;
+  // while (m) {
+  //   i = Math.floor(Math.random() * m--);
+  //   t = newsletters[m];
+  //   newsletters[m] = newsletters[i];
+  //   newsletters[i] = t;
+  // }
   return {
     props: {
       newsletters,
