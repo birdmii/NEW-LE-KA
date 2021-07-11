@@ -1,17 +1,17 @@
-import MediaQuery from 'react-responsive';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { useEffect, useState } from 'react';
-import Cards from '../components/Cards';
-import Alert from '../components/Alert';
-import SkeletonCard from '../components/SkeletonCard';
-import cardsStyles from '../styles/Cards.module.css';
+import MediaQuery from "react-responsive";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useEffect, useState } from "react";
+import Cards from "../components/Cards";
+import Alert from "../components/Alert";
+import SkeletonCard from "../components/SkeletonCard";
+import cardsStyles from "../styles/Cards.module.css";
 
 export default function Home({ newsletters, newslettersCnt, alertContent }) {
   const [newsletterList, setNewsletterList] = useState(newsletters);
   const [hasMore, setHasMore] = useState(true);
 
   const loadingSkltnComponent = (
-    <div className={cardsStyles['Cards--grid']}>
+    <div className={cardsStyles["Cards--grid"]}>
       <SkeletonCard />
       <SkeletonCard />
       <SkeletonCard />
@@ -23,7 +23,7 @@ export default function Home({ newsletters, newslettersCnt, alertContent }) {
 
   const getMoreNewsletters = async () => {
     const res = await fetch(
-      `https://newleka.herokuapp.com/newsletters?_start=${newsletterList.length}&_limit=18`,
+      `https://newleka.herokuapp.com/newsletters?_start=${newsletterList.length}&_limit=18`
     );
     const newNewsletterList = await res.json();
 
@@ -54,7 +54,7 @@ export default function Home({ newsletters, newslettersCnt, alertContent }) {
       hasMore={hasMore}
       loader={loadingSkltnComponent}
     >
-      <Cards category={'랜덤모두보기'} newsletters={newsletterList} />
+      <Cards category={"랜덤모두보기"} newsletters={newsletterList} />
     </InfiniteScroll>
   );
 
@@ -73,9 +73,9 @@ export default function Home({ newsletters, newslettersCnt, alertContent }) {
   );
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const res = await fetch(
-    `https://newleka.herokuapp.com/newsletters?_limit=18`,
+    `https://newleka.herokuapp.com/newsletters?_limit=18`
   );
   const newsletters = await res.json();
 
@@ -83,7 +83,7 @@ export const getServerSideProps = async () => {
   const alertContent = await resAlert.json();
 
   const resNewslettersCnt = await fetch(
-    `https://newleka.herokuapp.com/newsletters/count`,
+    `https://newleka.herokuapp.com/newsletters/count`
   );
   const newslettersCnt = await resNewslettersCnt.json();
 
