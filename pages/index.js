@@ -111,5 +111,6 @@ export const getStaticProps = async () => {
       newslettersCnt: +newslettersCnt,
       alertContent,
     },
+    revalidate: 1,
   };
 };
