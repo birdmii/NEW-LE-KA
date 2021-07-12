@@ -1,5 +1,6 @@
 import Cards from '../components/Cards';
 import qs from 'qs';
+import { getSearchResult } from './api/newsletter';
 
 const search = ({ newsletters }) => {
   // const filterQuery = router.query.filter;
@@ -39,10 +40,7 @@ export const getServerSideProps = async (context) => {
     },
   });
 
-  const res = await fetch(
-    `https://newleka.herokuapp.com/newsletters?${query}`,
-  );
-  const newsletters = await res.json();
+  const newsletters = await getSearchResult(query);
 
   return {
     props: {

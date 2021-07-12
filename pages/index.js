@@ -5,18 +5,10 @@ import Cards from "../components/Cards";
 import Alert from "../components/Alert";
 import SkeletonCard from "../components/SkeletonCard";
 import cardsStyles from "../styles/Cards.module.css";
+import { getAlert, getAllData, getCnt } from "./api/newsletter";
 
 export default function Home({ newsletters, newslettersCnt, alertContent }) {
-  let m = newsletters.length;
-  let t;
-  let i;
-  while (m) {
-    i = Math.floor(Math.random() * m--);
-    t = newsletters[m];
-    newsletters[m] = newsletters[i];
-    newsletters[i] = t;
-  }
-  const [newsletterList, setNewsletterList] = useState(newsletters);
+  const [newsletterList, setNewsletterList] = useState(newsletters.slice(0, 18));
   const [hasMore, setHasMore] = useState(true);
 
   const loadingSkltnComponent = (
@@ -31,20 +23,7 @@ export default function Home({ newsletters, newslettersCnt, alertContent }) {
   );
 
   const getMoreNewsletters = async () => {
-    const res = await fetch(
-      `https://newleka.herokuapp.com/newsletters?_start=${newsletterList.length}&_limit=18`
-    );
-    const newNewsletterList = await res.json();
-
-    let m = newNewsletterList.length;
-    let t;
-    let i;
-    while (m) {
-      i = Math.floor(Math.random() * m--);
-      t = newNewsletterList[m];
-      newNewsletterList[m] = newNewsletterList[i];
-      newNewsletterList[i] = t;
-    }
+    const newNewsletterList = newsletters.slice(newsletterList.length, newsletterList.length + 18);
 
     setNewsletterList((newsletterList) => [
       ...newsletterList,
@@ -83,34 +62,27 @@ export default function Home({ newsletters, newslettersCnt, alertContent }) {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch(
-    `https://newleka.herokuapp.com/newsletters?_limit=18`
-  );
-  const newsletters = await res.json();
+  const newsletters = await getAllData();
+  const alertContent = await getAlert();
 
-  const resAlert = await fetch(`https://newleka.herokuapp.com/alerts/1`);
-  const alertContent = await resAlert.json();
+  let m = newsletters.length;
+  let t;
+  let i;
+  while (m) {
+    i = Math.floor(Math.random() * m--);
+    t = newsletters[m];
+    newsletters[m] = newsletters[i];
+    newsletters[i] = t;
+  };
 
-  const resNewslettersCnt = await fetch(
-    `https://newleka.herokuapp.com/newsletters/count`
-  );
-  const newslettersCnt = await resNewslettersCnt.json();
+  const newslettersCnt = await getCnt();
 
-  // let m = newsletters.length;
-  // let t;
-  // let i;
-  // while (m) {
-  //   i = Math.floor(Math.random() * m--);
-  //   t = newsletters[m];
-  //   newsletters[m] = newsletters[i];
-  //   newsletters[i] = t;
-  // }
   return {
     props: {
       newsletters,
       newslettersCnt: +newslettersCnt,
       alertContent,
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };
