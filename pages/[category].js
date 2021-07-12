@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import Cards from '../components/Cards';
+import { getCategoryData } from './api/newsletter';
 
 const categories = [
   { code: 'economy', title: '경제' },
@@ -41,16 +42,13 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const res = await fetch(
-    `https://newleka.herokuapp.com/newsletters?category=${params.category}`,
-  );
-  let newsletters = await res.json();
+  const newsletters = await getCategoryData(params.category);
 
   return {
     props: {
       newsletters,
     },
-    revalidate: 1,
+    revalidate: 10,
   };
 };
 
