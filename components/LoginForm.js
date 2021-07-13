@@ -1,35 +1,9 @@
-import { useState } from "react";
 import adminStyle from "../styles/Admin.module.css";
 
-const LoginForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const LoginForm = ({handleUsername, handlePassword, handleSubmit}) => {
+  
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const admin = {
-      identifier: username,
-      password,
-    };
-
-    fetch("/api/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(admin),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if(!data.user) {
-          // TODO: Show Invalid Username or password
-
-          return;
-        } 
-        // TODO: Show admin page
-      });
-  };
+  
   return (
     <div
       className={`w-100 flex-vertical-center flex-col ${adminStyle["Admin__panel"]}`}
@@ -44,6 +18,7 @@ const LoginForm = () => {
       <div className={`subtitle ${adminStyle["panel__msg"]}`}>
         Sign in to NEW・LE・KA
       </div>
+      {(<div></div>)}
       <div className={``}>
         <form
           className={`flex flex-col mt-80 border-rad-16 ${adminStyle["panel__loginForm"]}`}
@@ -59,7 +34,7 @@ const LoginForm = () => {
             id="username"
             className={`border-rad-8 shadow-2 ${adminStyle["panel__loginForm--input"]}`}
             placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => handleUsername(e)}
           ></input>
           <label
             htmlFor="password"
@@ -72,7 +47,7 @@ const LoginForm = () => {
             id="password"
             className={`border-rad-8 shadow-2 ${adminStyle["panel__loginForm--input"]}`}
             placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => handlePassword(e)}
           ></input>
           <input
             type="submit"
