@@ -1,7 +1,35 @@
+import { useState } from "react";
 import adminStyle from "../styles/Admin.module.css";
 
 const LoginForm = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const admin = {
+      identifier: username,
+      password,
+    };
+
+    fetch("/api/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(admin),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(!data.user) {
+          // TODO: Show Invalid Username or password
+
+          return;
+        } 
+        // TODO: Show admin page
+      });
+  };
   return (
     <div
       className={`w-100 flex-vertical-center flex-col ${adminStyle["Admin__panel"]}`}
@@ -31,6 +59,7 @@ const LoginForm = () => {
             id="username"
             className={`border-rad-8 shadow-2 ${adminStyle["panel__loginForm--input"]}`}
             placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
           ></input>
           <label
             htmlFor="password"
@@ -43,11 +72,13 @@ const LoginForm = () => {
             id="password"
             className={`border-rad-8 shadow-2 ${adminStyle["panel__loginForm--input"]}`}
             placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
           ></input>
           <input
             type="submit"
             value="Sign in"
             className={`mt-24 border-rad-8 ${adminStyle["panel__loginForm--btn"]}`}
+            onClick={handleSubmit}
           ></input>
         </form>
       </div>

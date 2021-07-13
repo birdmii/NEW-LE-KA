@@ -16,6 +16,6 @@
 .panel__loginForm--btn {
     background-color: var(--primary400);
     color: var(--gray50);
-    height: 30px;
+    height: 40px;
     font-size: 16px;
 }
