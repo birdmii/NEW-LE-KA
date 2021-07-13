@@ -56,17 +56,22 @@ function MyApp({ Component, pageProps }) {
     setCategory(currentCategory);
   }
 
-  return (
-    <Layout
-      handleQuery={handleQuery}
-      handleSubmit={handleSubmit}
-      handleShowSearchBar={handleShowSearchBar}
-      isSearchShow={isSearchShow}
-      handleClick={handleClick}
-    >
-      {loading ? <SkeletonGrid category={currCategory}/> : <Component {...pageProps} query={query} />}
-    </Layout>
-  );
-}
+  switch (Component.name) {
+    case "admin":
+      return <Component {...pageProps}/>;
+    default:
+      return (
+        <Layout
+          handleQuery={handleQuery}
+          handleSubmit={handleSubmit}
+          handleShowSearchBar={handleShowSearchBar}
+          isSearchShow={isSearchShow}
+          handleClick={handleClick}
+        >
+          {loading ? <SkeletonGrid category={currCategory}/> : <Component {...pageProps} query={query} />}
+        </Layout>
+      );
+    }
+  }
 
 export default MyApp;

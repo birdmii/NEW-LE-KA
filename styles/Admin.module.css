@@ -1,0 +1,21 @@
+.panel__msg {
+    color: var(--gray600);
+    font-size: 21px;
+    letter-spacing: 0;
+}
+
+.panel__loginForm--label {
+    margin-bottom: 5px;
+}
+
+.panel__loginForm--input {
+    width: 280px;
+    padding: 12px;
+}
+
+.panel__loginForm--btn {
+    background-color: var(--primary400);
+    color: var(--gray50);
+    height: 30px;
+    font-size: 16px;
+}
