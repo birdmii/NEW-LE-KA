@@ -1,47 +1,55 @@
 import LoginForm from "../components/LoginForm";
 import { useState } from "react";
-import { useRouter } from "next/router";
+import Router from "next/router";
 
-const admin = () => {
-  const router = useRouter();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const signin = async (username, password) => {
+  const user = {
+    identifier: username,
+    password,
+  };
+
+  const res = await fetch("/api/user", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+  
+  if(res.status !== 200) {
+    throw new Error(await res.text());
+  }
+
+  Router.push("/admin");
+};
+
+const login = () => {
+  const [userData, setUserData] = useState({
+    username: "",
+    password: "",
+    error: "",
+  });
 
   const handleUsername = (e) => {
-    setUsername(e.target.value);
-  }
+    setUserData(Object.assign({}, userData, { username: e.target.value }));
+  };
 
   const handlePassword = (e) => {
-    setPassword(e.target.value);
-  }
+    setUserData(Object.assign({}, userData, { password: e.target.value }));
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setUserData({ ...userData, error: "" });
 
-    const admin = {
-      identifier: username,
-      password,
-    };
+    const username = userData.username;
+    const password = userData.password;
 
-    fetch("/api/user", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(admin),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (!data.user) {
-          // TODO: Show Invalid Username or password
-          console.log(data);
-
-          return;
-        } else {
-          // TODO: Show admin page
-          router.push("/admin");
-        }
-      });
+    try {
+      await signin(username, password);
+    } catch (error) {
+      setUserData({ ...userData, error: error.message });
+    }
   };
 
   return (
@@ -50,9 +58,10 @@ const admin = () => {
         handleUsername={handleUsername}
         handlePassword={handlePassword}
         handleSubmit={handleSubmit}
+        error={userData.error}
       />
     </div>
   );
 };
 
-export default admin;
+export default login;

@@ -4,6 +4,15 @@
     letter-spacing: 0;
 }
 
+.panel__errorMsg {
+    background: #ffe6e8;
+    color: #ff4538;
+    padding: 24px 16px;
+    min-width: 280px;
+    border-left: 10px solid #ff4538;
+    letter-spacing: 0;
+}
+
 .panel__loginForm--label {
     margin-bottom: 5px;
 }
@@ -18,4 +27,5 @@
     color: var(--gray50);
     height: 40px;
     font-size: 16px;
+    text-align: center;
 }

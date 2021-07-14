@@ -1,9 +1,6 @@
 import adminStyle from "../styles/Admin.module.css";
 
-const LoginForm = ({handleUsername, handlePassword, handleSubmit}) => {
-  
-
-  
+const LoginForm = ({ handleUsername, handlePassword, handleSubmit, error }) => {
   return (
     <div
       className={`w-100 flex-vertical-center flex-col ${adminStyle["Admin__panel"]}`}
@@ -15,13 +12,16 @@ const LoginForm = ({handleUsername, handlePassword, handleSubmit}) => {
         height={32}
         className={`mt-80 mb-24`}
       />
-      <div className={`subtitle ${adminStyle["panel__msg"]}`}>
+      <div className={`subtitle mb-80 ${adminStyle["panel__msg"]}`}>
         Sign in to NEW・LE・KA
       </div>
-      {(<div></div>)}
+      {error && (
+        <div className={`mb-24 ${adminStyle["panel__errorMsg"]}`}>{error}</div>
+      )}
       <div className={``}>
         <form
-          className={`flex flex-col mt-80 border-rad-16 ${adminStyle["panel__loginForm"]}`}
+          onSubmit={(e) => handleSubmit(e)}
+          className={`flex flex-col border-rad-16 ${adminStyle["panel__loginForm"]}`}
         >
           <label
             htmlFor="username"
@@ -32,6 +32,7 @@ const LoginForm = ({handleUsername, handlePassword, handleSubmit}) => {
           <input
             type="text"
             id="username"
+            name="username"
             className={`border-rad-8 shadow-2 ${adminStyle["panel__loginForm--input"]}`}
             placeholder="Username"
             onChange={(e) => handleUsername(e)}
@@ -45,16 +46,17 @@ const LoginForm = ({handleUsername, handlePassword, handleSubmit}) => {
           <input
             type="password"
             id="password"
+            name="password"
             className={`border-rad-8 shadow-2 ${adminStyle["panel__loginForm--input"]}`}
             placeholder="Password"
             onChange={(e) => handlePassword(e)}
           ></input>
-          <input
+          <button
             type="submit"
-            value="Sign in"
             className={`mt-24 border-rad-8 ${adminStyle["panel__loginForm--btn"]}`}
-            onClick={handleSubmit}
-          ></input>
+          >
+            Sign in
+          </button>
         </form>
       </div>
     </div>
