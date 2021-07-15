@@ -20,3 +20,11 @@
   text-align: center;
   padding-right: 0;
 }
+
+.Nav__logout {
+  position: absolute;
+  right: 0;
+  top: 24px;
+  color: var(--primary400);
+  letter-spacing: 0;
+}

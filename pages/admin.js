@@ -1,9 +1,12 @@
-const admin = () => {
-    return (
-        <div>
-            <h1>ADMIN</h1>
-        </div>
-    )
-}
+import AdminNav from "../components/AdminNav";
 
-export default admin
+const admin = ({}) => {
+
+  return (
+    <div>
+      <AdminNav />
+    </div>
+  );
+};
+
+export default admin;
