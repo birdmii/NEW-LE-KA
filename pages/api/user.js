@@ -1,4 +1,5 @@
-import { serialize } from "cookie";
+import { setCookie } from "nookies";
+
 export default async function handler(req, res) {
   const { identifier, password } = await req.body;
   try {
@@ -6,7 +7,7 @@ export default async function handler(req, res) {
       throw new Error("Username and password must be provided.");
     }
 
-    const response = await fetch("https://newleka.herokuapp.com/auth/local", {
+    fetch("https://newleka.herokuapp.com/auth/local", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -14,7 +15,6 @@ export default async function handler(req, res) {
       body: JSON.stringify(req.body),
     })
       .then((res) => {
-        console.log(res);
         if (res.status !== 200) {
           throw new Error("Invalid username and password.");
         }
@@ -22,10 +22,9 @@ export default async function handler(req, res) {
       })
       .then((data) => {
         const token = data.jwt;
-        res.setHeader(
-          "Set-Cookie",
-          serialize("token", token, { httpOnly: true })
-        );
+
+        setCookie({ res }, "token", token, { httpOnly: true, maxAge: 60 * 30, path: '/' });
+
         res.status(200).send(token);
       });
   } catch (error) {

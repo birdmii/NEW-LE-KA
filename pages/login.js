@@ -15,8 +15,8 @@ const signin = async (username, password) => {
     },
     body: JSON.stringify(user),
   });
-  
-  if(res.status !== 200) {
+
+  if (res.status !== 200) {
     throw new Error(await res.text());
   }
 
