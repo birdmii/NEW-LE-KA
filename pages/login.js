@@ -1,6 +1,7 @@
 import LoginForm from "../components/LoginForm";
-import { useState } from "react";
-import Router from "next/router";
+import { useState, useEffect } from "react";
+import Router, { useRouter } from "next/router";
+import { parseCookies, destroyCookie } from "nookies";
 
 const signin = async (username, password) => {
   const user = {
@@ -19,11 +20,11 @@ const signin = async (username, password) => {
   if (res.status !== 200) {
     throw new Error(await res.text());
   }
-
+  
   Router.push("/admin");
 };
 
-const login = () => {
+const login = ({ refresh }) => {
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -62,6 +63,22 @@ const login = () => {
       />
     </div>
   );
+};
+
+export const getServerSideProps = async (context) => {
+  const { token } = parseCookies(context);
+  let refresh = false;
+
+  if (token) {
+    destroyCookie(context, "token");
+    refresh = true;
+  }
+
+  return {
+    props: {
+      refresh,
+    },
+  };
 };
 
 export default login;

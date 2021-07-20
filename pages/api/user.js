@@ -2,6 +2,11 @@ import { setCookie } from "nookies";
 
 export default async function handler(req, res) {
   const { identifier, password } = await req.body;
+
+  if(req.headers.referer !== `${process.env.URL}login`) {
+    res.status(400).send('Invalid Request!');
+  }
+
   try {
     if (!identifier || !password) {
       throw new Error("Username and password must be provided.");
@@ -23,7 +28,12 @@ export default async function handler(req, res) {
       .then((data) => {
         const token = data.jwt;
 
-        setCookie({ res }, "token", token, { httpOnly: true, maxAge: 60 * 30, path: '/' });
+        setCookie({ res }, "token", token, {
+          httpOnly: true,
+          secure: true,
+          maxAge: 60 * 30,
+          path: "/",
+        });
 
         res.status(200).send(token);
       });

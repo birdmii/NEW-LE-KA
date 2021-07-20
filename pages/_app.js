@@ -1,9 +1,11 @@
+import App from "next/app";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 // import pageView from '../lib/gtag';
 import SkeletonGrid from "../components/SkeletonGrid";
+import { destroyCookie, parseCookies } from "nookies";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -76,5 +78,33 @@ function MyApp({ Component, pageProps }) {
     );
   }
 }
+
+// function redirectUser(ctx, location) {
+//   if (ctx.req) {
+//     ctx.res.writeHead(302, { Location: location });
+//     ctx.res.end();
+//   } else {
+//     Router.push(location);
+//   }
+// }
+
+// MyApp.getInitialProps = async ({Component, ctx}) => {
+//   let pageProps = {}
+//   // const token = parseCookies(ctx).token;
+//   const {token} = parseCookies(ctx);
+  
+//   if(Component.getInitialProps) {
+//     pageProps = await Component.getInitialProps(ctx);
+//   }
+
+
+//   if (token) {
+//     if (ctx.pathname === "/login") {
+//       destroyCookie(ctx, "token");
+//     }
+//   }
+
+//   return { ...pageProps };
+// };
 
 export default MyApp;

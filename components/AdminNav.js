@@ -3,7 +3,7 @@ import navStyles from "../styles/Nav.module.css";
 import barsLine from "@iconify/icons-clarity/bars-line";
 import MediaQuery from "react-responsive";
 
-const Nav = () => {
+const Nav = ({ handleLogout }) => {
   const desktopNav = (
     <>
       <div className={navStyles["Nav__logo"]}>
@@ -18,7 +18,12 @@ const Nav = () => {
           /> */}
           <img src="/logo.png" alt="NEW・LE・KA Logo" width={127} height={32} />
         </a>
-        <div className={navStyles["Nav__logout"]}>Logout</div>
+        <div
+          className={navStyles["Nav__logout"]}
+          onClick={handleLogout}
+        >
+          Logout
+        </div>
       </div>
     </>
   );
