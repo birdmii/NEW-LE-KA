@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       throw new Error("Username and password must be provided.");
     }
 
-    fetch("https://newleka.herokuapp.com/auth/local", {
+    fetch(`${process.env.API_URL}auth/local`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

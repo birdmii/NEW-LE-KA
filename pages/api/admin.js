@@ -1,7 +1,7 @@
 import { destroyCookie } from "nookies";
 
 export async function getUser(context, token) {
-  const res = await fetch("https://newleka.herokuapp.com/users/me", {
+  const res = await fetch(`${process.env.API_URL}users/me`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
