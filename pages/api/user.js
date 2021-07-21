@@ -3,7 +3,7 @@ import { setCookie } from "nookies";
 export default async function handler(req, res) {
   const { identifier, password } = await req.body;
 
-  if(req.headers.referer !== `${process.env.URL}login`) {
+  if(process.env.NODE_ENV === 'production' && req.headers.referer !== `${process.env.URL}login`) {
     res.status(400).send('Invalid Request!');
   }
 
