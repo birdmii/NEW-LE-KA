@@ -230,6 +230,10 @@ span {
   margin-right: 8px;
 }
 
+.mr-24 {
+  margin-right: 24px;
+}
+
 .ml-0 {
   margin-left: 0px !important;
 }
