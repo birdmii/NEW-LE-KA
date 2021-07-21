@@ -5,7 +5,12 @@ import useSWR from "swr";
 import { parseCookies } from "nookies";
 import { getUser } from "./api/admin";
 import Router, { useRouter } from "next/router";
-import { editAlert, getAlert, getAllData } from "./api/newsletter";
+import {
+  deleteNewsletterItem,
+  editAlert,
+  getAlert,
+  getAllNewsletter,
+} from "./api/newsletter";
 import Card from "../components/Card";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -18,13 +23,10 @@ const admin = ({ admin, token, alert, newsletters }) => {
   const [isEdit, setEditMode] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [selectedId, setNewsletterId] = useState();
-  // const [newsletterList, setNewsletterList] = useState(newsletters);
   const { data, error } = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}newsletters?_limit=-1&_sort=id:asc`,
     fetcher
   );
-
-  console.log(data);
 
   useEffect(() => {
     if (!adminObj) router.push("/login");
@@ -32,10 +34,12 @@ const admin = ({ admin, token, alert, newsletters }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-    } catch (error) {}
+    console.log(searchText);
   };
+
+  const handleSearchText = (e) => {
+    setSearchText(e.target.value);
+  }
 
   const handleLogout = () => {
     setAdminObj(null);
@@ -52,12 +56,27 @@ const admin = ({ admin, token, alert, newsletters }) => {
     if (result === 200) {
       setEditMode(!isEdit);
     } else {
-      setErrorMsg("[Edit Alert Message] ⚠️ Something went wrong!!!");
+      setErrorMsg("[Edit Alert Message] ⚠️ Something went wrong :(");
     }
   };
 
   const handleNewsletterItem = (e) => {
     setNewsletterId(parseInt(e.target.id));
+  };
+
+  const handleDeleteBtnClick = async (e) => {
+    const targetId = e.target.id;
+    const deleteConfirm = confirm("Are you sure?");
+    if (!deleteConfirm) {
+      return false;
+    }
+    const result = await deleteNewsletterItem(targetId, token);
+    console.log(result);
+    if (result === 200) {
+      data.filter((item) => item.id !== targetId);
+    } else {
+      setErrorMsg("[Delete Newsletter] ⚠️ Something went wrong :(");
+    }
   };
 
   return (
@@ -88,7 +107,7 @@ const admin = ({ admin, token, alert, newsletters }) => {
                 <span>{alertMsg}</span>
               )}
               <button
-                className={`ml-10 ${adminStyle["editBtn"]}`}
+                className={`ml-10 ${adminStyle["btn"]}`}
                 onClick={() => {
                   handleEditBtnClick();
                 }}
@@ -97,7 +116,7 @@ const admin = ({ admin, token, alert, newsletters }) => {
               </button>
               {isEdit && (
                 <button
-                  className={`ml-10 ${adminStyle["editBtn"]}`}
+                  className={`ml-10 ${adminStyle["btn"]}`}
                   onClick={() => {
                     handleSaveBtnClick();
                   }}
@@ -109,27 +128,50 @@ const admin = ({ admin, token, alert, newsletters }) => {
           </div>
 
           <div className={`flex`}>
-            <div className={`mr-24 ${adminStyle["panel"]} ${adminStyle["newsletterPanel"]}`}>
-              <h4 className={`subtitle bold mb-8`}>Newsletter List</h4>
+            <div
+              className={`mr-24 ${adminStyle["panel"]} ${adminStyle["newsletterPanel"]}`}
+            >
+              <div className={`${adminStyle["newsletterItem"]}`}>
+                <h4 className={`subtitle bold mb-8`}>Newsletter List</h4>
+                <form onSubmit={(e) => handleSubmit(e)}>
+                  <input
+                    type="text"
+                    value={searchText}
+                    className={`${adminStyle['searchInput']}`}
+                    onChange={(e) => handleSearchText(e)}
+                  />
+                  <button type="submit" className={`${adminStyle["searchBtn"]}`}>
+                    Search
+                  </button>
+                </form>
+              </div>
               <ul className={`${adminStyle["newsletterList"]}`}>
-                {data
-                  ? data.map((newsletter) => (
-                      <li
-                        key={newsletter.id}
-                        className={`mb-8 ${adminStyle["newsletterItem"]}`}
+                {data ? (
+                  data.map((newsletter) => (
+                    <li
+                      key={newsletter.id}
+                      className={`mb-8 ${adminStyle["newsletterItem"]}`}
+                    >
+                      <span
+                        id={newsletter.id}
+                        onClick={(e) => handleNewsletterItem(e)}
                       >
-                        <span
-                          id={newsletter.id}
-                          onClick={(e) => handleNewsletterItem(e)}
-                        >
-                          {newsletter.title}
-                        </span>
-                        <button className={`ml-10 ${adminStyle["editBtn"]}`}>
-                          Delete
-                        </button>
-                      </li>
-                    ))
-                  : "loading!!!"}
+                        {newsletter.title}
+                      </span>
+                      <button
+                        className={`ml-10 ${adminStyle["btn"]}`}
+                        id={newsletter.id}
+                        onClick={(e) => {
+                          handleDeleteBtnClick(e);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </li>
+                  ))
+                ) : (
+                  <span className={`flex-center`}>Loading</span>
+                )}
               </ul>
             </div>
             <div
@@ -139,9 +181,7 @@ const admin = ({ admin, token, alert, newsletters }) => {
               {selectedId ? (
                 <Card newsletter={data[selectedId - 1]} />
               ) : (
-                <div className={`flex-center`}>
-                  No item has been selected
-                </div>
+                <div className={`flex-center`}>No item has been selected</div>
               )}
             </div>
           </div>
@@ -169,14 +209,12 @@ export const getServerSideProps = async (context) => {
   const admin = await getUser(context, token);
 
   const alert = await getAlert();
-  const newsletters = await getAllData();
 
   return {
     props: {
       admin: admin ? admin : null,
       token: admin ? token : null,
       alert,
-      newsletters,
     },
   };
 };

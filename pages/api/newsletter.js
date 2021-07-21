@@ -1,4 +1,6 @@
-export async function getAllData() {
+const API_URL = process.env.API_URL ? process.env.API_URL : 'https://newleka.herokuapp.com/';
+
+export async function getAllNewsletter() {
   const res = await fetch(
     `${process.env.API_URL}newsletters?_limit=-1`
   );
@@ -47,7 +49,7 @@ export async function getSearchResult(query) {
 }
 
 export async function editAlert(id, alertMsg, token) {
-  const res = await fetch(`${process.env.API_URL}alerts/${id}`, {
+  const res = await fetch(`${API_URL}alerts/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -58,6 +60,23 @@ export async function editAlert(id, alertMsg, token) {
     }),
   });
 
+  if (res.status === 200) {
+    return 200;
+  } else {
+    return 'error';
+  }
+}
+
+export async function deleteNewsletterItem(id, token) {
+  const res = await fetch(`${API_URL}newsletters/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    }
+  });
+
+  console.log(res);
   if (res.status === 200) {
     return 200;
   } else {
