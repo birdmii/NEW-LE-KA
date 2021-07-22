@@ -39,7 +39,7 @@ const admin = ({ admin, token, alert, newsletters }) => {
 
   const handleSearchText = (e) => {
     setSearchText(e.target.value);
-  }
+  };
 
   const handleLogout = () => {
     setAdminObj(null);
@@ -92,7 +92,7 @@ const admin = ({ admin, token, alert, newsletters }) => {
               </div>
             )}
           </div>
-          <div className={`mb-24 ${adminStyle["panel"]}`}>
+          <div className={`shadow-2 mb-24 ${adminStyle["panel"]}`}>
             <h4 className={`subtitle bold mb-8`}>Alert Message</h4>
             <div className={`flex`}>
               {isEdit ? (
@@ -129,18 +129,23 @@ const admin = ({ admin, token, alert, newsletters }) => {
 
           <div className={`flex`}>
             <div
-              className={`mr-24 ${adminStyle["panel"]} ${adminStyle["newsletterPanel"]}`}
+              className={`shadow-2 mr-24 ${adminStyle["panel"]} ${adminStyle["newsletterPanel"]}`}
             >
-              <div className={`${adminStyle["newsletterItem"]}`}>
-                <h4 className={`subtitle bold mb-8`}>Newsletter List</h4>
+              <div className={`${adminStyle["titleHeader"]}`}>
+                <h4 className={`subtitle bold text-vertical-center`}>
+                  Newsletter List
+                </h4>
                 <form onSubmit={(e) => handleSubmit(e)}>
                   <input
                     type="text"
                     value={searchText}
-                    className={`${adminStyle['searchInput']}`}
+                    className={`${adminStyle["searchInput"]}`}
                     onChange={(e) => handleSearchText(e)}
                   />
-                  <button type="submit" className={`${adminStyle["searchBtn"]}`}>
+                  <button
+                    type="submit"
+                    className={`${adminStyle["searchBtn"]}`}
+                  >
                     Search
                   </button>
                 </form>
@@ -150,11 +155,12 @@ const admin = ({ admin, token, alert, newsletters }) => {
                   data.map((newsletter) => (
                     <li
                       key={newsletter.id}
-                      className={`mb-8 ${adminStyle["newsletterItem"]}`}
+                      className={`${adminStyle["newsletterItem"]}`}
                     >
                       <span
                         id={newsletter.id}
                         onClick={(e) => handleNewsletterItem(e)}
+                        className={`text-vertical-center`}
                       >
                         {newsletter.title}
                       </span>
@@ -175,13 +181,37 @@ const admin = ({ admin, token, alert, newsletters }) => {
               </ul>
             </div>
             <div
-              className={`${adminStyle["panel"]} ${adminStyle["newsletterPanel"]}`}
+              className={`shadow-2 ${adminStyle["panel"]} ${adminStyle["newsletterPanel"]}`}
             >
-              <h4 className={`subtitle bold mb-8`}>Newsletter Item</h4>
+              <div className={`mb-8 ${adminStyle["titleHeader"]}`}>
+                <h4 className={`subtitle bold text-vertical-center`}>
+                  Newsletter Item
+                </h4>
+                <span>
+                  <button
+                    className={`ml-10 ${adminStyle["btn"]}`}
+                    onClick={() => {
+                      // handleEditBtnClick();
+                    }}
+                  >
+                    Add
+                  </button>
+                  <button
+                    className={`ml-10 ${adminStyle["btn"]}`}
+                    onClick={() => {
+                      // handleEditBtnClick();
+                    }}
+                  >
+                    {isEdit ? "Cancel" : "Edit"}
+                  </button>
+                </span>
+              </div>
               {selectedId ? (
                 <Card newsletter={data[selectedId - 1]} />
               ) : (
-                <div className={`flex-center`}>No item has been selected</div>
+                <div className={`flex-center`}>
+                  No newsletter has been selected
+                </div>
               )}
             </div>
           </div>

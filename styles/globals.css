@@ -311,6 +311,10 @@ span {
   justify-content: space-between;
 }
 
+.text-vertical-center {
+  align-self: center;
+}
+
 .text-center {
   text-align: center;
 }
