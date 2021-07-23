@@ -68,3 +68,43 @@
   border-left: 10px solid #ff4538;
   letter-spacing: 0;
 }
+
+.addForm {
+}
+
+.formRow {
+  height: 35px;
+}
+
+.addLabel {
+  background-color: var(--primary400);
+  text-align: center;
+  padding: 6px 12px;
+  width: 120px;
+}
+
+.addField {
+  padding-left: 16px;
+}
+
+.textField {
+  padding: 6px 8px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.tagField {
+  width: 30%;
+  margin-right: 8px;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+.textAreaField {
+  border-radius: 4px;
+}
+
+.selectField {
+  padding: 8px;
+  border-radius: 4px;
+}

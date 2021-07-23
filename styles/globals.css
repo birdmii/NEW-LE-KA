@@ -101,7 +101,9 @@ form {
 }
 
 input,
-input:focus {
+input:focus,
+textarea,
+select {
   border: 0;
   outline: 0;
 }

@@ -1,7 +1,8 @@
 import AdminNav from "../components/AdminNav";
 import adminStyle from "../styles/Admin.module.css";
 import { useState, useEffect } from "react";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
+import qs from "qs";
 import { parseCookies } from "nookies";
 import { getUser } from "./api/admin";
 import Router, { useRouter } from "next/router";
@@ -16,6 +17,28 @@ import Card from "../components/Card";
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const admin = ({ admin, token, alert, newsletters }) => {
+  const categoryArr = [
+    { code: "economy", title: "경제" },
+    { code: "education", title: "교육" },
+    { code: "news", title: "뉴스" },
+    { code: "design", title: "디자인" },
+    { code: "lifestyle", title: "라이프스타일" },
+    { code: "marketing", title: "마케팅" },
+    { code: "culture", title: "문화" },
+    { code: "work", title: "일과 노동" },
+    { code: "tech", title: "테크" },
+    { code: "trend", title: "트렌드" },
+    { code: "society", title: "사회" },
+  ];
+
+  const sendingTermArr = [
+    { code: "daily", name: "매일" },
+    { code: "weekly", name: "매주" },
+    { code: "tendays", name: "10일" },
+    { code: "biweekly", name: "격주" },
+    { code: "monthly", name: "매달" },
+    { code: "?", name: "?" },
+  ];
   const router = useRouter();
   const [adminObj, setAdminObj] = useState(admin);
   const [searchText, setSearchText] = useState("");
@@ -23,7 +46,7 @@ const admin = ({ admin, token, alert, newsletters }) => {
   const [isEdit, setEditMode] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [selectedId, setNewsletterId] = useState();
-  const { data, error } = useSWR(
+  let { data, error } = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}newsletters?_limit=-1&_sort=id:asc`,
     fetcher
   );
@@ -32,10 +55,10 @@ const admin = ({ admin, token, alert, newsletters }) => {
     if (!adminObj) router.push("/login");
   }, [adminObj]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log(searchText);
-  };
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   console.log(searchText);
+  // };
 
   const handleSearchText = (e) => {
     setSearchText(e.target.value);
@@ -77,6 +100,10 @@ const admin = ({ admin, token, alert, newsletters }) => {
     } else {
       setErrorMsg("[Delete Newsletter] ⚠️ Something went wrong :(");
     }
+  };
+
+  const handleAddBtn = () => {
+    console.log("ADD");
   };
 
   return (
@@ -135,6 +162,7 @@ const admin = ({ admin, token, alert, newsletters }) => {
                 <h4 className={`subtitle bold text-vertical-center`}>
                   Newsletter List
                 </h4>
+                {/* //TODO: Search Area
                 <form onSubmit={(e) => handleSubmit(e)}>
                   <input
                     type="text"
@@ -148,7 +176,7 @@ const admin = ({ admin, token, alert, newsletters }) => {
                   >
                     Search
                   </button>
-                </form>
+                </form> */}
               </div>
               <ul className={`${adminStyle["newsletterList"]}`}>
                 {data ? (
@@ -181,21 +209,13 @@ const admin = ({ admin, token, alert, newsletters }) => {
               </ul>
             </div>
             <div
-              className={`shadow-2 ${adminStyle["panel"]} ${adminStyle["newsletterPanel"]}`}
+              className={`shadow-2 mr-24 ${adminStyle["panel"]} ${adminStyle["newsletterPanel"]}`}
             >
               <div className={`mb-8 ${adminStyle["titleHeader"]}`}>
                 <h4 className={`subtitle bold text-vertical-center`}>
                   Newsletter Item
                 </h4>
                 <span>
-                  <button
-                    className={`ml-10 ${adminStyle["btn"]}`}
-                    onClick={() => {
-                      // handleEditBtnClick();
-                    }}
-                  >
-                    Add
-                  </button>
                   <button
                     className={`ml-10 ${adminStyle["btn"]}`}
                     onClick={() => {
@@ -213,6 +233,246 @@ const admin = ({ admin, token, alert, newsletters }) => {
                   No newsletter has been selected
                 </div>
               )}
+            </div>
+            <div
+              className={`shadow-2 ${adminStyle["panel"]} ${adminStyle["newsletterPanel"]}`}
+            >
+              <div className={`mb-8 ${adminStyle["titleHeader"]}`}>
+                <h4 className={`subtitle bold text-vertical-center`}>
+                  Add Newsletter
+                </h4>
+                <span>
+                  <button
+                    className={`${adminStyle["btn"]}`}
+                    onClick={() => {
+                      // handleEditBtnClick();
+                    }}
+                  >
+                    Save
+                  </button>
+                </span>
+              </div>
+              <form
+                onSubmit={handleAddBtn}
+                className={`${adminStyle["addForm"]}`}
+              >
+                <table>
+                  <tbody>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="title">Title</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        <input
+                          type="text"
+                          id="title"
+                          name="title"
+                          className={`${adminStyle["textField"]}`}
+                        />
+                      </td>
+                    </tr>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="description">Description</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        <textarea
+                          name="text"
+                          id="description"
+                          name="description"
+                          rows="10"
+                          cols="30"
+                          className={`${adminStyle["textAreaField"]}`}
+                        />
+                      </td>
+                    </tr>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="subscriptionlink">Sub Link</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        <input
+                          type="url"
+                          id="subscriptionlink"
+                          name="subscriptionlink"
+                          className={`${adminStyle["textField"]}`}
+                        />
+                      </td>
+                    </tr>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="samplelink">Samp Link</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        <input
+                          type="url"
+                          id="samplelink"
+                          name="samplelink"
+                          className={`${adminStyle["textField"]}`}
+                        />
+                      </td>
+                    </tr>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="sendingnumber">Sending Num</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        <input
+                          type="number"
+                          id="sendingnumber"
+                          name="sendingnumber"
+                          className={`${adminStyle["textField"]}`}
+                        />
+                      </td>
+                    </tr>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="category">Category</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        <select className={`${adminStyle["selectField"]}`}>
+                          {categoryArr.map((i) => (
+                            <option value={i.code} key={i.code}>
+                              {i.title}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="tag">Tags</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        <input
+                          type="text"
+                          id="tag"
+                          name="tag1"
+                          className={`${adminStyle["tagField"]}`}
+                        />
+                        <input
+                          type="text"
+                          id="tag"
+                          name="tag2"
+                          className={`${adminStyle["tagField"]}`}
+                        />
+                        <input
+                          type="text"
+                          id="tag"
+                          name="tag3"
+                          className={`${adminStyle["tagField"]}`}
+                        />
+                      </td>
+                    </tr>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="sendingterm">Sending Term</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        <select className={`${adminStyle["selectField"]}`}>
+                          {sendingTermArr.map((i) => (
+                            <option value={i.code} key={i.code}>
+                              {i.name}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
+                    </tr>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="sendingday">Sending Days</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        M
+                        <input
+                          type="checkbox"
+                          id="Mon"
+                          value="Mon"
+                          name="sendingday"
+                          className={`${adminStyle["checkField"]}`}
+                        ></input>
+                        T
+                        <input
+                          type="checkbox"
+                          id="Tue"
+                          value="Tue"
+                          name="sendingday"
+                          className={`${adminStyle["checkField"]}`}
+                        ></input>
+                        W
+                        <input
+                          type="checkbox"
+                          id="Wed"
+                          value="Wed"
+                          name="sendingday"
+                          className={`${adminStyle["checkField"]}`}
+                        ></input>
+                        T
+                        <input
+                          type="checkbox"
+                          id="Thu"
+                          value="Thu"
+                          name="sendingday"
+                          className={`${adminStyle["checkField"]}`}
+                        ></input>
+                        F
+                        <input
+                          type="checkbox"
+                          id="Fri"
+                          value="Fri"
+                          name="sendingday"
+                          className={`${adminStyle["checkField"]}`}
+                        ></input>
+                        S
+                        <input
+                          type="checkbox"
+                          id="Sat"
+                          value="Sat"
+                          name="sendingday"
+                          className={`${adminStyle["checkField"]}`}
+                        ></input>
+                        S
+                        <input
+                          type="checkbox"
+                          id="Sun"
+                          value="Sun"
+                          name="sendingday"
+                          className={`${adminStyle["checkField"]}`}
+                        ></input>
+                      </td>
+                    </tr>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="language">Lang</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        <select
+                          className={`${adminStyle["selectField"]}`}
+                          name="language"
+                          id="language"
+                        >
+                          <option value="ko">Korean</option>
+                          <option value="en">English</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr className={`${adminStyle["formRow"]}`}>
+                      <td className={`${adminStyle["addLabel"]}`}>
+                        <label htmlFor="publishing">Publishing</label>
+                      </td>
+                      <td className={`${adminStyle["addField"]}`}>
+                        <input
+                          type="checkbox"
+                          id="publishing"
+                          name="publishing"
+                          value="true"
+                          checked
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
             </div>
           </div>
         </div>
