@@ -1,22 +1,16 @@
 import AdminNav from "../components/AdminNav";
 import adminStyle from "../styles/Admin.module.css";
 import { useState, useEffect } from "react";
-import useSWR, { mutate } from "swr";
-import qs from "qs";
+import useSWR from "swr";
 import { parseCookies } from "nookies";
 import { getUser } from "./api/admin";
 import Router, { useRouter } from "next/router";
-import {
-  deleteNewsletterItem,
-  editAlert,
-  getAlert,
-  getAllNewsletter,
-} from "./api/newsletter";
+import { deleteNewsletterItem, editAlert, getAlert } from "./api/newsletter";
 import Card from "../components/Card";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const admin = ({ admin, token, alert, newsletters }) => {
+const admin = ({ admin, token, alert }) => {
   const categoryArr = [
     { code: "economy", title: "경제" },
     { code: "education", title: "교육" },
@@ -41,11 +35,22 @@ const admin = ({ admin, token, alert, newsletters }) => {
   ];
   const router = useRouter();
   const [adminObj, setAdminObj] = useState(admin);
-  const [searchText, setSearchText] = useState("");
+  // const [searchText, setSearchText] = useState("");
   const [alertMsg, setAlertMsg] = useState(alert.content);
   const [isEdit, setEditMode] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [selectedId, setNewsletterId] = useState();
+  const [newTitle, setNewTitle] = useState("");
+  const [newDescription, setNewDescription] = useState("");
+  const [newSubscriptionLink, setNewSubscriptionLink] = useState("");
+  const [newSampleLink, setNewSampleLink] = useState("");
+  const [newSendingNum, setNewSendingNum] = useState("");
+  const [newCategory, setNewCategory] = useState("");
+  const [newSendingTerm, setNewSendingTerm] = useState("");
+  const [newLang, setNewLang] = useState("");
+  const [newIsPublishing, setNewIsPublishing] = useState(true);
+  const [newTags, setNewTags] = useState([]);
+
   let { data, error } = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}newsletters?_limit=-1&_sort=id:asc`,
     fetcher
@@ -94,7 +99,6 @@ const admin = ({ admin, token, alert, newsletters }) => {
       return false;
     }
     const result = await deleteNewsletterItem(targetId, token);
-    console.log(result);
     if (result === 200) {
       data.filter((item) => item.id !== targetId);
     } else {
@@ -104,6 +108,14 @@ const admin = ({ admin, token, alert, newsletters }) => {
 
   const handleAddBtn = () => {
     console.log("ADD");
+  };
+
+  const handleSaveNewNewsltrClick = () => {
+    console.log(newIsPublishing);
+  };
+
+  const handleAddNewTags = (e) => {
+    const originalTags = [...newTags];
   };
 
   return (
@@ -245,7 +257,7 @@ const admin = ({ admin, token, alert, newsletters }) => {
                   <button
                     className={`${adminStyle["btn"]}`}
                     onClick={() => {
-                      // handleEditBtnClick();
+                      handleSaveNewNewsltrClick();
                     }}
                   >
                     Save
@@ -267,7 +279,9 @@ const admin = ({ admin, token, alert, newsletters }) => {
                           type="text"
                           id="title"
                           name="title"
+                          value={newTitle}
                           className={`${adminStyle["textField"]}`}
+                          onChange={(e) => setNewTitle(e.target.value)}
                         />
                       </td>
                     </tr>
@@ -282,7 +296,9 @@ const admin = ({ admin, token, alert, newsletters }) => {
                           name="description"
                           rows="10"
                           cols="30"
+                          value={newDescription}
                           className={`${adminStyle["textAreaField"]}`}
+                          onChange={(e) => setNewDescription(e.target.value)}
                         />
                       </td>
                     </tr>
@@ -295,7 +311,11 @@ const admin = ({ admin, token, alert, newsletters }) => {
                           type="url"
                           id="subscriptionlink"
                           name="subscriptionlink"
+                          value={newSubscriptionLink}
                           className={`${adminStyle["textField"]}`}
+                          onChange={(e) =>
+                            setNewSubscriptionLink(e.target.value)
+                          }
                         />
                       </td>
                     </tr>
@@ -308,7 +328,9 @@ const admin = ({ admin, token, alert, newsletters }) => {
                           type="url"
                           id="samplelink"
                           name="samplelink"
+                          value={newSampleLink}
                           className={`${adminStyle["textField"]}`}
+                          onChange={(e) => setNewSampleLink(e.target.value)}
                         />
                       </td>
                     </tr>
@@ -321,7 +343,9 @@ const admin = ({ admin, token, alert, newsletters }) => {
                           type="number"
                           id="sendingnumber"
                           name="sendingnumber"
+                          value={newSendingNum}
                           className={`${adminStyle["textField"]}`}
+                          onChange={(e) => setNewSendingNum(e.target.value)}
                         />
                       </td>
                     </tr>
@@ -330,7 +354,13 @@ const admin = ({ admin, token, alert, newsletters }) => {
                         <label htmlFor="category">Category</label>
                       </td>
                       <td className={`${adminStyle["addField"]}`}>
-                        <select className={`${adminStyle["selectField"]}`}>
+                        <select
+                          className={`${adminStyle["selectField"]}`}
+                          name="category"
+                          id="category"
+                          value={newCategory}
+                          onChange={(e) => setNewCategory(e.target.value)}
+                        >
                           {categoryArr.map((i) => (
                             <option value={i.code} key={i.code}>
                               {i.title}
@@ -346,21 +376,27 @@ const admin = ({ admin, token, alert, newsletters }) => {
                       <td className={`${adminStyle["addField"]}`}>
                         <input
                           type="text"
-                          id="tag"
-                          name="tag1"
+                          id="0"
+                          name="tag"
+                          value={newTags[0]}
                           className={`${adminStyle["tagField"]}`}
+                          onChange={(e) => handleAddNewTags(e)}
                         />
                         <input
                           type="text"
-                          id="tag"
-                          name="tag2"
+                          id="1"
+                          name="tag"
+                          value={newTags[1]}
                           className={`${adminStyle["tagField"]}`}
+                          onChange={(e) => handleAddNewTags(e)}
                         />
                         <input
                           type="text"
-                          id="tag"
-                          name="tag3"
+                          id="2"
+                          name="tag"
+                          value={newTags[2]}
                           className={`${adminStyle["tagField"]}`}
+                          onChange={(e) => handleAddNewTags(e)}
                         />
                       </td>
                     </tr>
@@ -369,7 +405,13 @@ const admin = ({ admin, token, alert, newsletters }) => {
                         <label htmlFor="sendingterm">Sending Term</label>
                       </td>
                       <td className={`${adminStyle["addField"]}`}>
-                        <select className={`${adminStyle["selectField"]}`}>
+                        <select
+                          className={`${adminStyle["selectField"]}`}
+                          name="sendingterm"
+                          id="sendingterm"
+                          value={newSendingTerm}
+                          onChange={(e) => setNewSendingTerm(e.target.value)}
+                        >
                           {sendingTermArr.map((i) => (
                             <option value={i.code} key={i.code}>
                               {i.name}
@@ -450,6 +492,8 @@ const admin = ({ admin, token, alert, newsletters }) => {
                           className={`${adminStyle["selectField"]}`}
                           name="language"
                           id="language"
+                          value={newLang}
+                          onChange={(e) => setNewLang(e.target.value)}
                         >
                           <option value="ko">Korean</option>
                           <option value="en">English</option>
@@ -465,8 +509,8 @@ const admin = ({ admin, token, alert, newsletters }) => {
                           type="checkbox"
                           id="publishing"
                           name="publishing"
-                          value="true"
-                          checked
+                          checked={newIsPublishing}
+                          onChange={(e) => setNewIsPublishing(!newIsPublishing)}
                         />
                       </td>
                     </tr>
