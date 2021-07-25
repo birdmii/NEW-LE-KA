@@ -33,6 +33,16 @@ const admin = ({ admin, token, alert }) => {
     { code: "monthly", name: "매달" },
     { code: "?", name: "?" },
   ];
+
+  const daysArr = [
+    { code: "Mon", name: "월" },
+    { code: "Tue", name: "화" },
+    { code: "Wed", name: "수" },
+    { code: "Thu", name: "목" },
+    { code: "Fri", name: "금" },
+    { code: "Sat", name: "토" },
+    { code: "Sun", name: "일" },
+  ];
   const router = useRouter();
   const [adminObj, setAdminObj] = useState(admin);
   // const [searchText, setSearchText] = useState("");
@@ -49,7 +59,8 @@ const admin = ({ admin, token, alert }) => {
   const [newSendingTerm, setNewSendingTerm] = useState("");
   const [newLang, setNewLang] = useState("");
   const [newIsPublishing, setNewIsPublishing] = useState(true);
-  const [newTags, setNewTags] = useState([]);
+  const [newTags, setNewTags] = useState(new Array(3).fill(''));
+  const [newSendingDays, setNewSendingDays] = useState(new Array(daysArr.length).fill(false));
 
   let { data, error } = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}newsletters?_limit=-1&_sort=id:asc`,
@@ -111,12 +122,25 @@ const admin = ({ admin, token, alert }) => {
   };
 
   const handleSaveNewNewsltrClick = () => {
-    console.log(newIsPublishing);
+    console.log(newSendingDays);
   };
 
-  const handleAddNewTags = (e) => {
-    const originalTags = [...newTags];
-  };
+  const handleAddNewTags = (e, idx) => {
+    const updatedTags = newTags.map((tag, index) => 
+      index === idx ? e.target.value : tag
+    )
+
+    setNewTags(updatedTags);
+    console.log(updatedTags);
+  }
+
+  const handleDaysChkbox = (idx) => {
+    const updatedSendingDays = newSendingDays.map((checked, index) =>
+      index === idx ? !checked : checked
+    );
+
+    setNewSendingDays(updatedSendingDays);
+  }
 
   return (
     adminObj && (
@@ -374,30 +398,16 @@ const admin = ({ admin, token, alert }) => {
                         <label htmlFor="tag">Tags</label>
                       </td>
                       <td className={`${adminStyle["addField"]}`}>
-                        <input
+                        {newTags.map((item, idx) => (
+                          <input
                           type="text"
-                          id="0"
+                          id={idx}
                           name="tag"
-                          value={newTags[0]}
+                          value={item}
                           className={`${adminStyle["tagField"]}`}
-                          onChange={(e) => handleAddNewTags(e)}
+                          onChange={(e) => handleAddNewTags(e, idx)}
                         />
-                        <input
-                          type="text"
-                          id="1"
-                          name="tag"
-                          value={newTags[1]}
-                          className={`${adminStyle["tagField"]}`}
-                          onChange={(e) => handleAddNewTags(e)}
-                        />
-                        <input
-                          type="text"
-                          id="2"
-                          name="tag"
-                          value={newTags[2]}
-                          className={`${adminStyle["tagField"]}`}
-                          onChange={(e) => handleAddNewTags(e)}
-                        />
+                        ))}
                       </td>
                     </tr>
                     <tr className={`${adminStyle["formRow"]}`}>
@@ -425,62 +435,19 @@ const admin = ({ admin, token, alert }) => {
                         <label htmlFor="sendingday">Sending Days</label>
                       </td>
                       <td className={`${adminStyle["addField"]}`}>
-                        M
-                        <input
-                          type="checkbox"
-                          id="Mon"
-                          value="Mon"
-                          name="sendingday"
-                          className={`${adminStyle["checkField"]}`}
-                        ></input>
-                        T
-                        <input
-                          type="checkbox"
-                          id="Tue"
-                          value="Tue"
-                          name="sendingday"
-                          className={`${adminStyle["checkField"]}`}
-                        ></input>
-                        W
-                        <input
-                          type="checkbox"
-                          id="Wed"
-                          value="Wed"
-                          name="sendingday"
-                          className={`${adminStyle["checkField"]}`}
-                        ></input>
-                        T
-                        <input
-                          type="checkbox"
-                          id="Thu"
-                          value="Thu"
-                          name="sendingday"
-                          className={`${adminStyle["checkField"]}`}
-                        ></input>
-                        F
-                        <input
-                          type="checkbox"
-                          id="Fri"
-                          value="Fri"
-                          name="sendingday"
-                          className={`${adminStyle["checkField"]}`}
-                        ></input>
-                        S
-                        <input
-                          type="checkbox"
-                          id="Sat"
-                          value="Sat"
-                          name="sendingday"
-                          className={`${adminStyle["checkField"]}`}
-                        ></input>
-                        S
-                        <input
-                          type="checkbox"
-                          id="Sun"
-                          value="Sun"
-                          name="sendingday"
-                          className={`${adminStyle["checkField"]}`}
-                        ></input>
+                        {daysArr.map((day, idx) => (
+                          <label id={day.code}>
+                            {day.code}
+                            <input
+                              type="checkbox"
+                              id={day.code}
+                              value={day.code}
+                              name="sendingday"
+                              className={`${adminStyle["checkField"]}`}
+                              onChange={() => handleDaysChkbox(idx)}
+                            ></input>
+                          </label>
+                        ))}
                       </td>
                     </tr>
                     <tr className={`${adminStyle["formRow"]}`}>
