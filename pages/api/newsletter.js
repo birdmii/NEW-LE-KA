@@ -99,3 +99,21 @@ export async function createNewsletterItem(form, token) {
     return 'error';
   }
 }
+
+export async function updateNewsletterItem(id, form, token) {
+  const res = await fetch(`${API_URL}newsletters/${id}`, {
+    method: 'PUT',
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(form),
+  });
+
+  console.log(res);
+  if(res.status === 200) {
+    return 200;
+  } else {
+    return 'error';
+  }
+}
