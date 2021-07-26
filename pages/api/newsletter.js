@@ -76,8 +76,24 @@ export async function deleteNewsletterItem(id, token) {
     }
   });
 
-  console.log(res);
   if (res.status === 200) {
+    return 200;
+  } else {
+    return 'error';
+  }
+}
+
+export async function createNewsletterItem(form, token) {
+  const res = await fetch(`${API_URL}newsletters`, {
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(form),
+  });
+
+  if(res.status === 200) {
     return 200;
   } else {
     return 'error';
