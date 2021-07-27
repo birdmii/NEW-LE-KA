@@ -1,16 +1,11 @@
 import AdminNav from "../components/AdminNav";
 import adminStyle from "../styles/Admin.module.css";
 import { useState, useEffect } from "react";
-import useSWR from "swr";
+import useSWR, { mutate } from "swr";
 import { parseCookies } from "nookies";
 import { getUser } from "./api/admin";
 import Router, { useRouter } from "next/router";
-import {
-  createNewsletterItem,
-  deleteNewsletterItem,
-  editAlert,
-  getAlert,
-} from "./api/newsletter";
+import { deleteNewsletterItem, editAlert, getAlert } from "./api/newsletter";
 import Card from "../components/Card";
 import NewsletterForm from "../components/NewsletterForm";
 
@@ -28,8 +23,8 @@ const admin = ({ admin, token, alert }) => {
   const [selectedId, setNewsletterId] = useState();
   const [selectedNewsletter, setSelectedNewsletter] = useState({});
 
-  let { data, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_API_URL}newsletters?_limit=-1&_sort=id:asc`,
+  const { data, isValidating, mutate } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}newsletters?_limit=-1&_sort=id:desc`,
     fetcher
   );
 
@@ -80,6 +75,9 @@ const admin = ({ admin, token, alert }) => {
     const result = await deleteNewsletterItem(targetId, token);
     if (result === 200) {
       data.filter((item) => item.id !== targetId); // FIXME: use mutate
+      mutate(data);
+      setNewsletterId();
+      setSelectedNewsletter({});
     } else {
       setErrorMsg("[Delete Newsletter] ⚠️ Something went wrong :(");
     }
@@ -91,6 +89,19 @@ const admin = ({ admin, token, alert }) => {
 
     // }
     setNewsltrEditMode(!isEditingNewsltr);
+  };
+
+  const handleEdited = (newForm) => {
+    setSelectedNewsletter(newForm);
+    setNewsltrEditMode(!isEditingNewsltr);
+    mutate(data.map((item) => (item.id === newForm.id ? newForm : item)));
+  };
+
+  const handleCreated = (newForm) => {
+    setSelectedNewsletter(newForm);
+    setNewsletterId(newForm.id);
+    data.push(newForm);
+    mutate(data);
   };
 
   return (
@@ -147,7 +158,7 @@ const admin = ({ admin, token, alert }) => {
             >
               <div className={`${adminStyle["titleHeader"]}`}>
                 <h4 className={`subtitle bold text-vertical-center`}>
-                  Newsletter List
+                  Newsletter List {data && <span>({data.length})</span>}
                 </h4>
                 {/* //TODO: Search Area
                 <form onSubmit={(e) => handleSubmit(e)}>
@@ -166,7 +177,7 @@ const admin = ({ admin, token, alert }) => {
                 </form> */}
               </div>
               <ul className={`${adminStyle["newsletterList"]}`}>
-                {data ? (
+                {!isValidating && data ? (
                   data.map((newsletter) => (
                     <li
                       key={newsletter.id}
@@ -217,15 +228,12 @@ const admin = ({ admin, token, alert }) => {
               </div>
               {selectedId ? (
                 !isEditingNewsltr ? (
-                  <Card
-                    newsletter={
-                      data.filter((item) => item.id === selectedId)[0]
-                    }
-                  />
+                  <Card newsletter={selectedNewsletter} />
                 ) : (
                   <NewsletterForm
                     newsletter={selectedNewsletter}
                     token={token}
+                    edited={handleEdited}
                   />
                 )
               ) : (
@@ -247,7 +255,7 @@ const admin = ({ admin, token, alert }) => {
                   </span>
                 )}
               </div>
-              <NewsletterForm token={token} />
+              <NewsletterForm token={token} created={handleCreated} />
             </div>
           </div>
         </div>

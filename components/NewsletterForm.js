@@ -5,7 +5,7 @@ import {
   updateNewsletterItem,
 } from "../pages/api/newsletter";
 
-const NewsletterForm = ({ newsletter, token }) => {
+const NewsletterForm = ({ newsletter, token, edited, created }) => {
   const categoryArr = [
     { code: "economy", title: "경제" },
     { code: "education", title: "교육" },
@@ -60,7 +60,7 @@ const NewsletterForm = ({ newsletter, token }) => {
   function initialNewsletterData(copiedNewsletter) {
     function initialTag(tags) {
       if (tags.length < 3) {
-        for (let i = 0; i < 3 - tags.length; i++) {
+        for (let i = 0; i <= 3 - tags.length; i++) {
           tags.push("");
         }
       }
@@ -181,22 +181,23 @@ const NewsletterForm = ({ newsletter, token }) => {
         samplelink: newsletterForm.samplelink,
       };
 
-      console.log(newForm);
       let result;
       if (!copiedNewsletter.id) {
-        console.log('create');
-        // result = await createNewsletterItem(newForm, token);
+        // Create a Newsletter
+        result = await createNewsletterItem(newForm, token);
+        created(result);
       } else {
-        console.log('update');
-        // result = await updateNewsletterItem(
-        //   copiedNewsletter.id,
-        //   newForm,
-        //   token
-        // );
+        // Update a Newsletter
+        result = await updateNewsletterItem(
+          copiedNewsletter.id,
+          newForm,
+          token
+        );
+        console.log(result);
+        edited(result);
       }
 
-      if (result === 200) {
-        console.log("success");
+      if (result !== "error") {
         // TODO: Reload list
         // setSuccessMsg("✅ New newsletter has been added!");
         setNewsletterForm({

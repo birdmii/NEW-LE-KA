@@ -1,18 +1,16 @@
-const API_URL = process.env.API_URL ? process.env.API_URL : 'https://newleka.herokuapp.com/';
+const API_URL = process.env.API_URL
+  ? process.env.API_URL
+  : "https://newleka.herokuapp.com/";
 
 export async function getAllNewsletter() {
-  const res = await fetch(
-    `${process.env.API_URL}newsletters?_limit=-1`
-  );
+  const res = await fetch(`${process.env.API_URL}newsletters?_limit=-1`);
   const newsletters = res.json();
 
   return newsletters;
 }
 
 export async function getData(cnt) {
-  const res = await fetch(
-    `${process.env.API_URL}newsletters?_limit=${cnt}`
-  );
+  const res = await fetch(`${process.env.API_URL}newsletters?_limit=${cnt}`);
   const newsletters = res.json();
 
   return newsletters;
@@ -63,7 +61,7 @@ export async function editAlert(id, alertMsg, token) {
   if (res.status === 200) {
     return 200;
   } else {
-    return 'error';
+    return "error";
   }
 }
 
@@ -73,19 +71,19 @@ export async function deleteNewsletterItem(id, token) {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
-    }
+    },
   });
 
   if (res.status === 200) {
     return 200;
   } else {
-    return 'error';
+    return "error";
   }
 }
 
 export async function createNewsletterItem(form, token) {
   const res = await fetch(`${API_URL}newsletters`, {
-    method: 'POST',
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -93,16 +91,16 @@ export async function createNewsletterItem(form, token) {
     body: JSON.stringify(form),
   });
 
-  if(res.status === 200) {
-    return 200;
+  if (res.status === 200) {
+    return res.json();
   } else {
-    return 'error';
+    return "error";
   }
 }
 
 export async function updateNewsletterItem(id, form, token) {
   const res = await fetch(`${API_URL}newsletters/${id}`, {
-    method: 'PUT',
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -110,10 +108,9 @@ export async function updateNewsletterItem(id, form, token) {
     body: JSON.stringify(form),
   });
 
-  console.log(res);
-  if(res.status === 200) {
-    return 200;
+  if (res.status === 200) {
+    return res.json();
   } else {
-    return 'error';
+    return "error";
   }
 }
