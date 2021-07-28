@@ -8,6 +8,7 @@
 
 .btn {
   background-color: var(--primary400);
+  color: #fff;
   padding: 4px 8px;
   border-radius: 8px;
 }
@@ -88,6 +89,7 @@
 
 .addLabel {
   background-color: var(--primary400);
+  color: #fff;
   text-align: center;
   padding: 6px 12px;
   width: 120px;
@@ -124,4 +126,5 @@
   padding: 12px;
   border-radius: 8px;
   background-color: var(--primary400);
+  color: #fff;
 }

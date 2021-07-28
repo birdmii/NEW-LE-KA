@@ -84,10 +84,6 @@ const admin = ({ admin, token, alert }) => {
   };
 
   const handleNewsletterEditBtnClick = () => {
-    // if(isEditingNewsltr) {
-    //   // Cancel clicked
-
-    // }
     setNewsltrEditMode(!isEditingNewsltr);
   };
 
