@@ -148,7 +148,7 @@ const admin = ({ admin, token, alert }) => {
             </div>
           </div>
 
-          <div className={`flex`}>
+          <div className={`flex mb-24`}>
             <div
               className={`shadow-2 mr-24 ${adminStyle["panel"]} ${adminStyle["newsletterPanel"]}`}
             >

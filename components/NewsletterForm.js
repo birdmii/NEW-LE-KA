@@ -288,7 +288,7 @@ const NewsletterForm = ({ newsletter, token, edited, created }) => {
                 name="text"
                 id="description"
                 name="description"
-                rows="10"
+                rows="8"
                 cols="30"
                 value={newsletterForm.description}
                 className={`${adminStyle["textAreaField"]}`}
