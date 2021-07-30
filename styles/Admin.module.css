@@ -80,6 +80,11 @@
   letter-spacing: 0;
 }
 
+.errorMsg {
+  color: #ff4538;
+  font-size: 12px;
+}
+
 .addForm {
 }
 

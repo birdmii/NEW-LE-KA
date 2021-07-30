@@ -107,6 +107,13 @@ const NewsletterForm = ({ newsletter, token, edited, created }) => {
       : copiedNewsletter
   );
 
+  const [validationErrors, setValidationError] = useState({
+    titleError: "",
+    linkError: "",
+    categoryError: "",
+    tagError: "",
+  });
+
   const handleAddNewTags = (e, idx) => {
     const updatedTags = newsletterForm.tag.tag.map((tag, index) =>
       index === idx ? e.target.value : tag
@@ -141,23 +148,40 @@ const NewsletterForm = ({ newsletter, token, edited, created }) => {
 
   const validateNewsltrForm = () => {
     let isValid = true;
+    let validationErrorObj = {};
 
     if (!newsletterForm.title) {
       isValid = false;
+      validationErrorObj = {
+        titleError: "There must be a title 🤔",
+      };
     }
 
     if (!newsletterForm.subscriptionlink) {
       isValid = false;
+      validationErrorObj = {
+        ...validationErrorObj,
+        linkError: "Please provide us a subsciprtion link 🔗",
+      };
     }
 
     if (newsletterForm.category.length <= 0) {
       isValid = false;
+      validationErrorObj = {
+        ...validationErrorObj,
+        categoryError: "Please set a category to it 🎨",
+      };
     }
 
-    if (newsletterForm.tag.length <= 0) {
+    if (handleTagsValue(newsletterForm.tag.tag).length <= 0) {
       isValid = false;
+      validationErrorObj = {
+        ...validationErrorObj,
+        tagError: "Add just one tag is okay! 👌",
+      };
     }
 
+    setValidationError(validationErrorObj);
     return isValid;
   };
 
@@ -218,7 +242,6 @@ const NewsletterForm = ({ newsletter, token, edited, created }) => {
         //   setErrorMsg("[Create Newsletter] ⚠️ Something went wrong :(");
       }
     } else {
-      console.log("invalid");
       return;
     }
   };
@@ -249,6 +272,11 @@ const NewsletterForm = ({ newsletter, token, edited, created }) => {
                   )
                 }
               />
+              {validationErrors.titleError && (
+                <span className={`${adminStyle["errorMsg"]}`}>
+                  {validationErrors.titleError}
+                </span>
+              )}
             </td>
           </tr>
           <tr className={`${adminStyle["formRow"]}`}>
@@ -293,6 +321,11 @@ const NewsletterForm = ({ newsletter, token, edited, created }) => {
                   )
                 }
               />
+              {validationErrors.linkError && (
+                <span className={`${adminStyle["errorMsg"]}`}>
+                  {validationErrors.linkError}
+                </span>
+              )}
             </td>
           </tr>
           <tr className={`${adminStyle["formRow"]}`}>
@@ -362,6 +395,11 @@ const NewsletterForm = ({ newsletter, token, edited, created }) => {
                   </option>
                 ))}
               </select>
+              {validationErrors.categoryError && (
+                <span className={`${adminStyle["errorMsg"]}`}>
+                  {validationErrors.categoryError}
+                </span>
+              )}
             </td>
           </tr>
           <tr className={`${adminStyle["formRow"]}`}>
@@ -380,6 +418,11 @@ const NewsletterForm = ({ newsletter, token, edited, created }) => {
                   onChange={(e) => handleAddNewTags(e, idx)}
                 />
               ))}
+              {validationErrors.tagError && (
+                <span className={`${adminStyle["errorMsg"]}`}>
+                  {validationErrors.tagError}
+                </span>
+              )}
             </td>
           </tr>
           <tr className={`${adminStyle["formRow"]}`}>
