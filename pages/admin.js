@@ -18,8 +18,7 @@ const admin = ({ admin, token, alert }) => {
   const [alertMsg, setAlertMsg] = useState(alert.content);
   const [isEditingAlert, setAlertEditMode] = useState(false);
   const [isEditingNewsltr, setNewsltrEditMode] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
-  const [successMsg, setSuccessMsg] = useState("");
+  const [msg, setMsg] = useState({ type: "", msg: "" });
   const [selectedId, setNewsletterId] = useState();
   const [selectedNewsletter, setSelectedNewsletter] = useState({});
 
@@ -56,7 +55,10 @@ const admin = ({ admin, token, alert }) => {
     if (result === 200) {
       setAlertEditMode(!isEditingAlert);
     } else {
-      setErrorMsg("[Edit Alert Message] ⚠️ Something went wrong :(");
+      setMsg({
+        type: "error",
+        msg: "[Edit Alert Message] ⚠️ Something went wrong :(",
+      });
     }
   };
 
@@ -79,7 +81,10 @@ const admin = ({ admin, token, alert }) => {
       setNewsletterId();
       setSelectedNewsletter({});
     } else {
-      setErrorMsg("[Delete Newsletter] ⚠️ Something went wrong :(");
+      setMsg({
+        type: "error",
+        msg: "[Delete Newsletter] ⚠️ Something went wrong :(",
+      });
     }
   };
 
@@ -100,6 +105,10 @@ const admin = ({ admin, token, alert }) => {
     mutate(data);
   };
 
+  const handleMsg = (type, msg) => {
+    setMsg({ type, msg });
+  };
+
   return (
     adminObj && (
       <div>
@@ -107,9 +116,15 @@ const admin = ({ admin, token, alert }) => {
         <div className={`container`}>
           <div className={`flex flex-vertical-center`}>
             <h3 className={`mt-24 mb-24`}>Welcome, {adminObj.username} 🐥</h3>
-            {errorMsg && (
-              <div className={`ml-10 ${adminStyle["errorPanel"]}`}>
-                {errorMsg}
+            {msg.msg && (
+              <div
+                className={`ml-10 ${
+                  msg.type === "error"
+                    ? adminStyle["errorPanel"]
+                    : adminStyle["successPanel"]
+                }`}
+              >
+                {msg.msg}
               </div>
             )}
           </div>
@@ -230,6 +245,7 @@ const admin = ({ admin, token, alert }) => {
                     newsletter={selectedNewsletter}
                     token={token}
                     edited={handleEdited}
+                    handleMsg={handleMsg}
                   />
                 )
               ) : (
@@ -245,13 +261,12 @@ const admin = ({ admin, token, alert }) => {
                 <h4 className={`subtitle bold text-vertical-center`}>
                   Add Newsletter
                 </h4>
-                {successMsg && (
-                  <span className={`${adminStyle["successPanel"]}`}>
-                    {successMsg}
-                  </span>
-                )}
               </div>
-              <NewsletterForm token={token} created={handleCreated} />
+              <NewsletterForm
+                token={token}
+                created={handleCreated}
+                handleMsg={handleMsg}
+              />
             </div>
           </div>
         </div>

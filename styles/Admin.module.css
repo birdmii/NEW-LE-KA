@@ -85,6 +85,10 @@
   font-size: 12px;
 }
 
+.required {
+  color: #ff4538;
+}
+
 .addForm {
 }
 
