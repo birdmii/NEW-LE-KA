@@ -63,7 +63,7 @@
 .errorPanel {
   background: #ffe6e8;
   color: #ff4538;
-  padding: 8px 4px;
+  padding: 6px 16px;
   min-width: 280px;
   height: 40px;
   border-left: 10px solid #ff4538;
@@ -73,7 +73,7 @@
 .successPanel {
   background: #eaffe6;
   color: #278042;
-  padding: 8px 4px;
+  padding: 6px 16px;
   min-width: 280px;
   height: 40px;
   border-left: 10px solid #278042;
