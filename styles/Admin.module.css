@@ -89,9 +89,6 @@
   color: #ff4538;
 }
 
-.addForm {
-}
-
 .formRow {
   height: 35px;
 }
@@ -122,6 +119,7 @@
 }
 
 .textAreaField {
+  padding: 6px 8px;
   border-radius: 4px;
 }
 
