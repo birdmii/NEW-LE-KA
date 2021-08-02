@@ -14,7 +14,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 const admin = ({ admin, token, alert }) => {
   const router = useRouter();
   const [adminObj, setAdminObj] = useState(admin);
-  // const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [alertMsg, setAlertMsg] = useState(alert.content);
   const [isEditingAlert, setAlertEditMode] = useState(false);
   const [isEditingNewsltr, setNewsltrEditMode] = useState(false);
@@ -24,17 +24,27 @@ const admin = ({ admin, token, alert }) => {
 
   const { data, isValidating, mutate } = useSWR(
     `${process.env.NEXT_PUBLIC_API_URL}newsletters?_limit=-1&_sort=id:desc`,
-    fetcher
+    fetcher,
+    {
+      revalidateOnFocus: false,
+    }
   );
 
   useEffect(() => {
     if (!adminObj) router.push("/login");
   }, [adminObj]);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log(searchText);
-  // };
+  useEffect(() => {
+    if(!searchText) {
+      mutate();
+    }
+  }, [searchText]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const searchResult = data.filter((item) => item.title.includes(searchText));
+    mutate(searchResult, false);
+  };
 
   const handleSearchText = (e) => {
     setSearchText(e.target.value);
@@ -76,7 +86,7 @@ const admin = ({ admin, token, alert }) => {
     }
     const result = await deleteNewsletterItem(targetId, token);
     if (result === 200) {
-      data.filter((item) => item.id !== targetId); // FIXME: use mutate
+      // data.filter((item) => item.id !== targetId); // FIXME: use mutate
       mutate(data);
       setNewsletterId();
       setSelectedNewsletter({});
@@ -101,7 +111,7 @@ const admin = ({ admin, token, alert }) => {
   const handleCreated = (newForm) => {
     setSelectedNewsletter(newForm);
     setNewsletterId(newForm.id);
-    data.push(newForm);
+    // data.push(newForm);
     mutate(data);
   };
 
@@ -171,22 +181,18 @@ const admin = ({ admin, token, alert }) => {
                 <h4 className={`subtitle bold text-vertical-center`}>
                   Newsletter List {data && <span>({data.length})</span>}
                 </h4>
-                {/* //TODO: Search Area
-                <form onSubmit={(e) => handleSubmit(e)}>
-                  <input
-                    type="text"
-                    value={searchText}
-                    className={`${adminStyle["searchInput"]}`}
-                    onChange={(e) => handleSearchText(e)}
-                  />
-                  <button
-                    type="submit"
-                    className={`${adminStyle["searchBtn"]}`}
-                  >
-                    Search
-                  </button>
-                </form> */}
               </div>
+              <form onSubmit={(e) => handleSubmit(e)} className={`flex`}>
+                <input
+                  type="text"
+                  value={searchText}
+                  className={`${adminStyle["searchInput"]}`}
+                  onChange={(e) => handleSearchText(e)}
+                />
+                <button type="submit" className={`${adminStyle["searchBtn"]}`}>
+                  Search
+                </button>
+              </form>
               <ul className={`${adminStyle["newsletterList"]}`}>
                 {!isValidating && data ? (
                   data.map((newsletter) => (
