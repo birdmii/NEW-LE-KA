@@ -101,7 +101,9 @@ form {
 }
 
 input,
-input:focus {
+input:focus,
+textarea,
+select {
   border: 0;
   outline: 0;
 }
@@ -214,6 +216,10 @@ span {
   margin-bottom: 24px;
 }
 
+.mb-80 {
+  margin-bottom: 80px;
+}
+ 
 .mb-120 {
   margin-bottom: 120px;
 }
@@ -224,6 +230,10 @@ span {
 
 .mr-8 {
   margin-right: 8px;
+}
+
+.mr-24 {
+  margin-right: 24px;
 }
 
 .ml-0 {
@@ -301,6 +311,10 @@ span {
 
 .flex-space-between {
   justify-content: space-between;
+}
+
+.text-vertical-center {
+  align-self: center;
 }
 
 .text-center {

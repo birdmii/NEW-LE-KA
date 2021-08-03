@@ -5,7 +5,7 @@ import Cards from "../components/Cards";
 import Alert from "../components/Alert";
 import SkeletonCard from "../components/SkeletonCard";
 import cardsStyles from "../styles/Cards.module.css";
-import { getAlert, getAllData, getCnt } from "./api/newsletter";
+import { getAlert, getAllNewsletter, getCnt } from "./api/newsletter";
 
 export default function Home({ newsletters, newslettersCnt, alertContent }) {
   const [newsletterList, setNewsletterList] = useState(newsletters.slice(0, 18));
@@ -62,7 +62,7 @@ export default function Home({ newsletters, newslettersCnt, alertContent }) {
 }
 
 export const getStaticProps = async () => {
-  const newsletters = await getAllData();
+  const newsletters = await getAllNewsletter();
   const alertContent = await getAlert();
 
   let m = newsletters.length;
