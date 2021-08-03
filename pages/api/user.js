@@ -7,12 +7,17 @@ export async function getUser(context, token) {
     },
   });
 
-  if(!res.ok) {
-      destroyCookie(context, "token");
-      return null;
-  } 
+  if (!res.ok) {
+    destroyCookie(context, "token");
+    return null;
+  }
 
   const user = await res.json();
-  
+
+  if (!user.confirmed) {
+    destroyCookie(context, "token");
+    return null;
+  }
+
   return user;
 }

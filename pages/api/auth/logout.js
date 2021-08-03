@@ -1,4 +1,4 @@
-import { parseCookies, setCookie, destroyCookie } from "nookies";
+import { parseCookies, setCookie } from "nookies";
 
 export default async function handler(req, res) {
   const { token } = parseCookies({ req });
@@ -9,7 +9,6 @@ export default async function handler(req, res) {
       maxAge: -1,
       path: "/",
     });
-
-    res.status(200).send(token);
   }
+  return res.status(200).end();
 }

@@ -35,7 +35,7 @@ const admin = ({ admin, token, alert }) => {
   }, [adminObj]);
 
   useEffect(() => {
-    if(!searchText) {
+    if (!searchText) {
       mutate();
     }
   }, [searchText]);
@@ -51,13 +51,13 @@ const admin = ({ admin, token, alert }) => {
   };
 
   const handleLogout = async () => {
-    setAdminObj(null);
     const res = await fetch("/api/auth/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
     });
+    setAdminObj(null);
   };
 
   const handleEditBtnClick = () => {
