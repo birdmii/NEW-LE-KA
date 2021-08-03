@@ -27,4 +27,5 @@
   top: 24px;
   color: var(--primary400);
   letter-spacing: 0;
+  cursor: pointer;
 }

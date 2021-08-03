@@ -205,7 +205,7 @@ const NewsletterForm = ({ newsletter, token, edited, created, handleMsg }) => {
         samplelink: newsletterForm.samplelink,
       };
 
-      let result = 'success';
+      let result = "success";
       if (!copiedNewsletter.id) {
         // Create a Newsletter
         result = await createNewsletterItem(newForm, token);
@@ -222,7 +222,12 @@ const NewsletterForm = ({ newsletter, token, edited, created, handleMsg }) => {
 
       if (result !== "error") {
         // TODO: Reload list
-        handleMsg('success', copiedNewsletter.id ? "[Edit Newsletter] ✅ Newsletter has been edited! ":"[Create Newsletter] ✅ New newsletter has been added!");
+        handleMsg(
+          "success",
+          copiedNewsletter.id
+            ? "[Edit Newsletter] ✅ Newsletter has been edited! "
+            : "[Create Newsletter] ✅ New newsletter has been added!"
+        );
         setNewsletterForm({
           title: "",
           description: "",
@@ -238,7 +243,12 @@ const NewsletterForm = ({ newsletter, token, edited, created, handleMsg }) => {
         });
       } else {
         console.log("error occured");
-        handleMsg('error', copiedNewsletter.id ? '[Edit Newsletter] ⚠️ Something went wrong :(':"[Create Newsletter] ⚠️ Something went wrong :(");
+        handleMsg(
+          "error",
+          copiedNewsletter.id
+            ? "[Edit Newsletter] ⚠️ Something went wrong :("
+            : "[Create Newsletter] ⚠️ Something went wrong :("
+        );
       }
     } else {
       return;
@@ -254,7 +264,9 @@ const NewsletterForm = ({ newsletter, token, edited, created, handleMsg }) => {
         <tbody>
           <tr className={`${adminStyle["formRow"]}`}>
             <td className={`${adminStyle["addLabel"]}`}>
-              <label htmlFor="title">Title<span className={adminStyle['required']}>*</span></label>
+              <label htmlFor="title">
+                Title<span className={adminStyle["required"]}>*</span>
+              </label>
             </td>
             <td className={`${adminStyle["addField"]}`}>
               <input
@@ -303,7 +315,9 @@ const NewsletterForm = ({ newsletter, token, edited, created, handleMsg }) => {
           </tr>
           <tr className={`${adminStyle["formRow"]}`}>
             <td className={`${adminStyle["addLabel"]}`}>
-              <label htmlFor="subscriptionlink">Sub Link<span className={adminStyle['required']}>*</span></label>
+              <label htmlFor="subscriptionlink">
+                Sub Link<span className={adminStyle["required"]}>*</span>
+              </label>
             </td>
             <td className={`${adminStyle["addField"]}`}>
               <input
@@ -371,7 +385,9 @@ const NewsletterForm = ({ newsletter, token, edited, created, handleMsg }) => {
           </tr>
           <tr className={`${adminStyle["formRow"]}`}>
             <td className={`${adminStyle["addLabel"]}`}>
-              <label htmlFor="category">Category<span className={adminStyle['required']}>*</span></label>
+              <label htmlFor="category">
+                Category<span className={adminStyle["required"]}>*</span>
+              </label>
             </td>
             <td className={`${adminStyle["addField"]}`}>
               <select
@@ -403,7 +419,9 @@ const NewsletterForm = ({ newsletter, token, edited, created, handleMsg }) => {
           </tr>
           <tr className={`${adminStyle["formRow"]}`}>
             <td className={`${adminStyle["addLabel"]}`}>
-              <label htmlFor="tag">Tags<span className={adminStyle['required']}>*</span></label>
+              <label htmlFor="tag">
+                Tags<span className={adminStyle["required"]}>*</span>
+              </label>
             </td>
             <td className={`${adminStyle["addField"]}`}>
               {newsletterForm.tag.tag.map((item, idx) => (
@@ -455,19 +473,21 @@ const NewsletterForm = ({ newsletter, token, edited, created, handleMsg }) => {
               <label htmlFor="sendingday">Sending Days</label>
             </td>
             <td className={`${adminStyle["addField"]}`}>
-              {daysArr.map((day, idx) => (
-                <label id={day.code} key={day.code}>
-                  {day.name}
-                  <input
-                    type="checkbox"
-                    id={day.code}
-                    name="sendingday"
-                    checked={newsletterForm.sendingday.day[idx]}
-                    className={`${adminStyle["checkField"]}`}
-                    onChange={() => handleDaysChkbox(idx)}
-                  ></input>
-                </label>
-              ))}
+              <div className={`flex text-center`}>
+                {daysArr.map((day, idx) => (
+                  <label id={day.code} className={`caption`}>
+                    <div>{day.code}</div>
+                    <input
+                      type="checkbox"
+                      id={day.code}
+                      name="sendingday"
+                      checked={newsletterForm.sendingday.day[idx]}
+                      className={`${adminStyle["checkField"]} mr-8`}
+                      onChange={() => handleDaysChkbox(idx)}
+                    ></input>
+                  </label>
+                ))}
+              </div>
             </td>
           </tr>
           <tr className={`${adminStyle["formRow"]}`}>
