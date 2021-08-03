@@ -4,7 +4,7 @@ import Nav from './Nav';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 
-const Layout = ({ children, query, handleQuery, handleSubmit, handleShowSearchBar, isSearchShow, handleClick}) => {
+const MainLayout = ({ children, query, handleQuery, handleSubmit, handleShowSearchBar, isSearchShow, handleClick}) => {
   const [isSideBarOpen, setSideBar] = useState(false);
 
   const handleShowSideNav = () => {
@@ -26,4 +26,4 @@ const Layout = ({ children, query, handleQuery, handleSubmit, handleShowSearchBa
   );
 };
 
-export default Layout;
+export default MainLayout;

@@ -1,11 +1,11 @@
 import App from "next/app";
 import { useState, useEffect } from "react";
-import Router, { useRouter } from "next/router";
-import Layout from "../components/Layout";
+import { useRouter } from "next/router";
+import MainLayout from "../components/MainLayout";
+import AdminLayout from "../components/AdminLayout";
 import "../styles/globals.css";
 // import pageView from '../lib/gtag';
 import SkeletonGrid from "../components/SkeletonGrid";
-import { destroyCookie, parseCookies } from "nookies";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -58,53 +58,28 @@ function MyApp({ Component, pageProps }) {
     setCategory(currentCategory);
   };
 
-  if (Component.name === "admin" || Component.name === "login") {
-    return <Component {...pageProps} />;
-  } else {
+  if (router.pathname === "/admin" || router.pathname === "/login") {
     return (
-      <Layout
-        handleQuery={handleQuery}
-        handleSubmit={handleSubmit}
-        handleShowSearchBar={handleShowSearchBar}
-        isSearchShow={isSearchShow}
-        handleClick={handleClick}
-      >
-        {loading ? (
-          <SkeletonGrid category={currCategory} />
-        ) : (
-          <Component {...pageProps} query={query} />
-        )}
-      </Layout>
+      <AdminLayout>
+        <Component {...pageProps} />;
+      </AdminLayout>
     );
   }
+  return (
+    <MainLayout
+      handleQuery={handleQuery}
+      handleSubmit={handleSubmit}
+      handleShowSearchBar={handleShowSearchBar}
+      isSearchShow={isSearchShow}
+      handleClick={handleClick}
+    >
+      {loading ? (
+        <SkeletonGrid category={currCategory} />
+      ) : (
+        <Component {...pageProps} query={query} />
+      )}
+    </MainLayout>
+  );
 }
-
-// function redirectUser(ctx, location) {
-//   if (ctx.req) {
-//     ctx.res.writeHead(302, { Location: location });
-//     ctx.res.end();
-//   } else {
-//     Router.push(location);
-//   }
-// }
-
-// MyApp.getInitialProps = async ({Component, ctx}) => {
-//   let pageProps = {}
-//   // const token = parseCookies(ctx).token;
-//   const {token} = parseCookies(ctx);
-  
-//   if(Component.getInitialProps) {
-//     pageProps = await Component.getInitialProps(ctx);
-//   }
-
-
-//   if (token) {
-//     if (ctx.pathname === "/login") {
-//       destroyCookie(ctx, "token");
-//     }
-//   }
-
-//   return { ...pageProps };
-// };
 
 export default MyApp;

@@ -475,7 +475,7 @@ const NewsletterForm = ({ newsletter, token, edited, created, handleMsg }) => {
             <td className={`${adminStyle["addField"]}`}>
               <div className={`flex text-center`}>
                 {daysArr.map((day, idx) => (
-                  <label id={day.code} className={`caption`}>
+                  <label id={day.code} key={day.code} className={`caption`}>
                     <div>{day.code}</div>
                     <input
                       type="checkbox"
