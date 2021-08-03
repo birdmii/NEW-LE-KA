@@ -1,6 +1,7 @@
 import LoginForm from "../components/LoginForm";
-import { useState, useEffect } from "react";
-import Router, { useRouter } from "next/router";
+import { useState } from "react";
+import Router from "next/router";
+import { getUser } from "./api/user";
 import { parseCookies, destroyCookie } from "nookies";
 
 const signin = async (username, password) => {
@@ -9,7 +10,7 @@ const signin = async (username, password) => {
     password,
   };
 
-  const res = await fetch("/api/user", {
+  const res = await fetch("/api/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -20,11 +21,11 @@ const signin = async (username, password) => {
   if (res.status !== 200) {
     throw new Error(await res.text());
   }
-  
+
   Router.push("/admin");
 };
 
-const login = ({ refresh }) => {
+const login = () => {
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -65,19 +66,28 @@ const login = ({ refresh }) => {
   );
 };
 
+function redirectUser(ctx, location) {
+  if (ctx.req) {
+    ctx.res.writeHead(302, { Location: location });
+    ctx.res.end();
+  } else {
+    Router.push(location);
+  }
+}
+
 export const getServerSideProps = async (context) => {
   const { token } = parseCookies(context);
-  let refresh = false;
 
   if (token) {
+    const admin = await getUser(context, token);
+    if (admin) {
+      redirectUser(context, "/admin");
+    }
     destroyCookie(context, "token");
-    refresh = true;
   }
 
   return {
-    props: {
-      refresh,
-    },
+    props: {},
   };
 };
 

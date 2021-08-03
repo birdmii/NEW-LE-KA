@@ -1,49 +1,18 @@
-import { setCookie } from "nookies";
+import { destroyCookie } from "nookies";
 
-export default async function handler(req, res) {
-  const { identifier, password } = await req.body;
+export async function getUser(context, token) {
+  const res = await fetch(`${process.env.API_URL}users/me`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
-  if(process.env.NODE_ENV === 'production' && req.headers.referer !== `${process.env.URL}login`) {
-    res.status(400).send('Invalid Request!');
-  }
+  if(!res.ok) {
+      destroyCookie(context, "token");
+      return null;
+  } 
 
-  try {
-    if (!identifier || !password) {
-      throw new Error("Username and password must be provided.");
-    }
-
-    fetch(`${process.env.API_URL}auth/local`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(req.body),
-    })
-      .then((res) => {
-        if (res.status !== 200) {
-          throw new Error("Invalid username and password.");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        const token = data.jwt;
-
-        setCookie({ res }, "token", token, {
-          httpOnly: true,
-          secure: true,
-          maxAge: 60 * 30,
-          path: "/",
-        });
-
-        res.status(200).send(token);
-      });
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
+  const user = await res.json();
+  
+  return user;
 }
-
-export const config = {
-  api: {
-    externalResolver: true,
-  },
-};

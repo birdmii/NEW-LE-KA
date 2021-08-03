@@ -3,7 +3,7 @@ import adminStyle from "../styles/Admin.module.css";
 import { useState, useEffect } from "react";
 import useSWR, { mutate } from "swr";
 import { parseCookies } from "nookies";
-import { getUser } from "./api/admin";
+import { getUser } from "./api/user";
 import Router, { useRouter } from "next/router";
 import { deleteNewsletterItem, editAlert, getAlert } from "./api/newsletter";
 import Card from "../components/Card";
@@ -50,8 +50,14 @@ const admin = ({ admin, token, alert }) => {
     setSearchText(e.target.value);
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     setAdminObj(null);
+    const res = await fetch("/api/auth/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   };
 
   const handleEditBtnClick = () => {
@@ -292,7 +298,6 @@ function redirectUser(ctx, location) {
 
 export const getServerSideProps = async (context) => {
   const { token } = parseCookies(context);
-
   if (!token) {
     redirectUser(context, "/login");
   }
