@@ -1,7 +1,3 @@
-const API_URL = process.env.API_URL
-  ? process.env.API_URL
-  : "https://newleka.herokuapp.com/";
-
 export async function getAllNewsletter() {
   const res = await fetch(`${process.env.API_URL}newsletters?_limit=-1`);
   const newsletters = res.json();
@@ -47,7 +43,7 @@ export async function getSearchResult(query) {
 }
 
 export async function editAlert(id, alertMsg, token) {
-  const res = await fetch(`${API_URL}alerts/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}alerts/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -66,7 +62,7 @@ export async function editAlert(id, alertMsg, token) {
 }
 
 export async function deleteNewsletterItem(id, token) {
-  const res = await fetch(`${API_URL}newsletters/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}newsletters/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -82,7 +78,7 @@ export async function deleteNewsletterItem(id, token) {
 }
 
 export async function createNewsletterItem(form, token) {
-  const res = await fetch(`${API_URL}newsletters`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}newsletters`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -99,7 +95,7 @@ export async function createNewsletterItem(form, token) {
 }
 
 export async function updateNewsletterItem(id, form, token) {
-  const res = await fetch(`${API_URL}newsletters/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}newsletters/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -217,7 +217,6 @@ const NewsletterForm = ({ newsletter, token, edited, created, handleMsg }) => {
           newForm,
           token
         );
-        console.log(result);
         edited(result);
       }
 
