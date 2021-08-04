@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import MainLayout from "../components/MainLayout";
 import AdminLayout from "../components/AdminLayout";
 import "../styles/globals.css";
-// import pageView from '../lib/gtag';
+import * as gtag from '../lib/gtag';
 import SkeletonGrid from "../components/SkeletonGrid";
 
 function MyApp({ Component, pageProps }) {
@@ -22,18 +22,18 @@ function MyApp({ Component, pageProps }) {
       setLoading(false);
     };
 
-    // const handleRouteChange = (url) => {
-    //   pageView(url);
-    // };
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
     router.events.on("routeChangeStart", start);
     router.events.on("routeChangeComplete", end);
     router.events.on("routeChangeError", end);
-    // router.events.on('routerChangeComplete', handleRouteChange);
+    router.events.on('routerChangeComplete', handleRouteChange);
     return () => {
       router.events.off("routeChangeStart", start);
       router.events.off("routeChangeComplete", end);
       router.events.off("routeChangeError", end);
-      // router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
 
