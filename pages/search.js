@@ -3,23 +3,6 @@ import qs from 'qs';
 import { getSearchResult } from './api/newsletter';
 
 const search = ({ newsletters }) => {
-  // const filterQuery = router.query.filter;
-
-  // if(filterQuery !== undefined) {
-  //   let filterQuaryArr = filterQuery.split('|');
-  //   newsletters = newsletters.filter((item) => {
-  //     let isFiltered = false;
-  //     filterQuaryArr.forEach((filter) => {
-  //       if (item.sendingTerm === filter) {
-  //         isFiltered = true;
-  //       }
-  //     });
-
-  //     if (isFiltered) {
-  //       return item;
-  //     }
-  //   });
-  // }
 
   return (
     <div>

@@ -92,7 +92,6 @@ const admin = ({ admin, token, alert }) => {
     }
     const result = await deleteNewsletterItem(targetId, token);
     if (result === 200) {
-      // data.filter((item) => item.id !== targetId); // FIXME: use mutate
       mutate(data);
       setNewsletterId();
       setSelectedNewsletter({});
@@ -117,7 +116,6 @@ const admin = ({ admin, token, alert }) => {
   const handleCreated = (newForm) => {
     setSelectedNewsletter(newForm);
     setNewsletterId(newForm.id);
-    // data.push(newForm);
     mutate(data);
   };
 
