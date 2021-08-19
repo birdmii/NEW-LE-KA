@@ -110,13 +110,13 @@ const admin = ({ admin, token, alert }) => {
   const handleEdited = (newForm) => {
     setSelectedNewsletter(newForm);
     setNewsltrEditMode(!isEditingNewsltr);
-    mutate(data.map((item) => (item.id === newForm.id ? newForm : item)));
+    mutate();
   };
 
   const handleCreated = (newForm) => {
     setSelectedNewsletter(newForm);
     setNewsletterId(newForm.id);
-    mutate(data);
+    mutate();
   };
 
   const handleMsg = (type, msg) => {
