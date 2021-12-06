@@ -36,7 +36,7 @@ export async function getCategoryData(category) {
 }
 
 export async function getSearchResult(query) {
-  const res = await fetch(`${process.env.API_URL}newsletters?${query}&?publishing_eq=true`);
+  const res = await fetch(`${process.env.API_URL}newsletters?${query}&publishing_eq=true`);
   const newsletters = await res.json();
 
   return newsletters;
