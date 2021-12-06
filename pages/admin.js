@@ -207,7 +207,7 @@ const admin = ({ admin, token, alert }) => {
                       <span
                         id={newsletter.id}
                         onClick={(e) => handleNewsletterItem(e)}
-                        className={`text-vertical-center`}
+                        className={`text-vertical-center ${newsletter.publishing ? '' : adminStyle['stopPublishing']}`}
                       >
                         {newsletter.title}
                       </span>

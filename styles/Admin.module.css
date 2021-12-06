@@ -138,3 +138,8 @@
   color: #fff;
   cursor: pointer;
 }
+
+.stopPublishing {
+  text-decoration: line-through;
+  color: #ff4538;
+}
