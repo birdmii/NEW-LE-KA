@@ -3,7 +3,7 @@ import Card from './Card';
 import NoCard from './NoCard';
 
 const Cards = ({ category, newsletters }) => {
-  const count = newsletters.length;
+  const count = newsletters ? newsletters.length : 0;
   return (
     <>
       <h3 className="bold pt-32">
@@ -12,7 +12,7 @@ const Cards = ({ category, newsletters }) => {
           <span className="subtitle"> ({count})</span>
         ) : null}
       </h3>
-      {count ? (
+      {count > 0 ? (
         <div className={`mt-16 ${cardsStyles['Cards--grid']}`}>
           {newsletters.map((newsletter) => (
             <Card key={newsletter.id} newsletter={newsletter} />
