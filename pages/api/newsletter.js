@@ -1,19 +1,19 @@
 export async function getAllNewsletter() {
-  const res = await fetch(`${process.env.API_URL}newsletters?_limit=-1`);
+  const res = await fetch(`${process.env.API_URL}newsletters?publishing_eq=true&_limit=-1`);
   const newsletters = res.json();
 
   return newsletters;
 }
 
 export async function getData(cnt) {
-  const res = await fetch(`${process.env.API_URL}newsletters?_limit=${cnt}`);
+  const res = await fetch(`${process.env.API_URL}newsletters?publishing_eq=true&_limit=${cnt}`);
   const newsletters = res.json();
 
   return newsletters;
 }
 
 export async function getCnt() {
-  const res = await fetch(`${process.env.API_URL}newsletters/count`);
+  const res = await fetch(`${process.env.API_URL}newsletters/count?publishing_eq=true`);
   const cnt = res.json();
 
   return cnt;
@@ -36,7 +36,7 @@ export async function getCategoryData(category) {
 }
 
 export async function getSearchResult(query) {
-  const res = await fetch(`${process.env.API_URL}newsletters?${query}`);
+  const res = await fetch(`${process.env.API_URL}newsletters?${query}&?publishing_eq=true`);
   const newsletters = await res.json();
 
   return newsletters;
