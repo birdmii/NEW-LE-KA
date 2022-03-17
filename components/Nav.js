@@ -36,11 +36,6 @@ const Nav = ({
         handleSubmit={handleSubmit}
       />
       <div className={`flex-vertical-center ${navStyles['Nav__btnContainer']}`}>
-        <NavBtn
-          content="커피한잔"
-          name="donation"
-          link="https://donaricano.com/mypage/1679663183_mMG77l"
-        />
         <NavBtn content="제안하기" name="suggest" />
       </div>
     </>
