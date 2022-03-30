@@ -31,22 +31,22 @@ const Meta = ({ title, keywords, description }) => {
 
       {/* <!-- Open Graph / Facebook --> */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://www.newleka.xyz/" />
+      <meta property="og:url" content="https://newleka.vercel.app/" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta
         property="og:image"
-        content="https://www.newleka.xyz/metadata-img.png"
+        content="https://newleka.vercel.app/metadata-img.png"
       />
 
       {/* <!-- Twitter --> */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content="https://www.newleka.xyz/" />
+      <meta property="twitter:url" content="https://newleka.vercel.app/" />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
       <meta
         property="twitter:image"
-        content="https://www.newleka.xyz/metadata-img.png"
+        content="https://newleka.vercel.app/metadata-img.png"
       ></meta>
 
       <meta

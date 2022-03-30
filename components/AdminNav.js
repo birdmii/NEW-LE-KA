@@ -7,7 +7,7 @@ const Nav = ({ handleLogout }) => {
   const desktopNav = (
     <>
       <div className={navStyles["Nav__logo"]}>
-        <a href="https://www.newleka.xyz/">
+        <a href="https://newleka.vercel.app/">
           {/* <Image
             src="/logo.png"
             alt="NEW・LE・KA Logo"
@@ -31,7 +31,7 @@ const Nav = ({ handleLogout }) => {
   const mobileNav = (
     <>
       <div className={navStyles["Nav__logo--mobile"]}>
-        <a href="https://www.newleka.xyz/">
+        <a href="https://newleka.vercel.app/">
           {/* <Image
             src="/logo.png"
             alt="NEW・LE・KA Logo"

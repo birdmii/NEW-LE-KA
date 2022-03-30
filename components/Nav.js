@@ -18,7 +18,7 @@ const Nav = ({
   const desktopNav = (
     <>
       <div className={navStyles['Nav__logo']}>
-        <a href="https://www.newleka.xyz/">
+        <a href="https://newleka.vercel.app/">
           {/* <Image
             src="/logo.png"
             alt="NEW・LE・KA Logo"
@@ -49,7 +49,7 @@ const Nav = ({
         onClick={handleShowSideNav}
       />
       <div className={navStyles['Nav__logo--mobile']}>
-        <a href="https://www.newleka.xyz/">
+        <a href="https://newleka.vercel.app/">
           {/* <Image
             src="/logo.png"
             alt="NEW・LE・KA Logo"
