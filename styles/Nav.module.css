@@ -11,6 +11,10 @@
   width: 20%;
 }
 
+.Nav__logo img, .Nav__logo--mobile img {
+  vertical-align: middle;
+}
+
 .Nav__btnContainer {
   margin-left: auto;
 }
